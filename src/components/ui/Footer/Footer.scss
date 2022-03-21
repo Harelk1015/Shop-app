@@ -1,0 +1,41 @@
+footer {
+  background: #360a14;
+  color: white;
+  font-size: 13px;
+  padding: 1em 0;
+}
+
+.links {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+
+    li {
+        cursor: pointer;
+    }
+  }
+
+.nav__link {
+  text-decoration: none;
+  color: white;
+}
+
+p {
+    text-align: center;
+  margin: 0;
+}
+
+@media (min-width: 820px) {
+    .links {
+        flex-direction: row;
+    }
+    
+}

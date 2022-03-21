@@ -1,0 +1,157 @@
+.container {
+  width: 80%;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+header {
+  background: #360a14;
+  padding: 1em 0;
+  text-align: center;
+}
+
+.nav {
+  width: 100%;
+  position: relative;
+}
+
+.nav__list {
+  list-style: none;
+  padding: 0;
+}
+
+.nav__item {
+  padding: 0.3em 0;
+}
+
+.nav__search {
+  border: none;
+  border-radius: 6px;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: white;
+}
+
+.nav__link:hover {
+  opacity: 50%;
+}
+
+
+.nav-toggle {
+  cursor: pointer;
+  border: 0;
+  width: 3em;
+  height: 3em;
+  padding: 0em;
+  border-radius: 50%;
+
+  background: #072a2d;
+  color: white;
+  transition: opacity 250ms ease;
+
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle:focus,
+.nav-toggle:hover {
+  opacity: 0.75;
+}
+
+.hamburger {
+  width: 50%;
+  position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  margin: 0 auto;
+  height: 3px;
+  background: white;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  width: 100%;
+}
+
+.hamburger::before {
+  transform: translateY(-6px);
+}
+
+.hamburger::after {
+  transform: translateY(3px);
+}
+
+/* made changes here from video
+     to make it more accessible.
+     
+     Works the same :) */
+.nav {
+  visibility: hidden;
+  height: 0;
+  position: absolute;
+}
+
+.nav--visible {
+  visibility: visible;
+  height: auto;
+  position: relative;
+}
+
+.logo {
+  height: 40px;
+}
+
+@media (min-width: 820px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav {
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    margin-left: 5%;
+    position: relative;
+  }
+
+  .nav__list--primary {
+    width: 50%;
+  }
+
+  .nav__list--secondary {
+    //   width: 40%;
+  }
+
+  .nav__search {
+    padding: 0.4em 0;
+    width: 100%;
+  }
+
+  .nav__list {
+    display: flex;
+    margin: 0;
+  }
+
+  .nav__item {
+    margin: 0;
+    margin-left: 0.5em;
+  }
+
+  .logo {
+    align-self: center;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
+}
