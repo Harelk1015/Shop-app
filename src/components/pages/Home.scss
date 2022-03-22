@@ -29,6 +29,7 @@
 
 .second {
   background-color: #aa4fa1;
+  margin: 2em 0;
   
 }
 
@@ -37,12 +38,8 @@
   flex-direction: column;
   align-items: center;
   color: white;
-  padding: 2em 0;
+  padding: 1em 0;
   //   padding: 2em;
-}
-
-.second__section {
-    margin: 2em 0;
 }
 
 .header {
@@ -50,10 +47,33 @@
 }
 
 .second__woman {
+  cursor: pointer;
   text-align: center;
 }
 .second__man {
+  cursor: pointer;
   text-align: center;
+}
+
+.dialog {
+  background-color: black;
+  position:static;
+  margin-top: 2%;
+  cursor: auto;
+}
+
+
+.dialog__man::backdrop {
+  background: black;
+}
+
+.dialog--btn {
+  background-color: black;
+  color: white;
+  border: none;
+  font-family: 'Ribeye Marrow', cursive;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 @media (min-width: 880px) {

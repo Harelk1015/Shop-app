@@ -6,9 +6,10 @@ footer {
 }
 
 .links {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
+    max-width: 1500px;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
@@ -17,10 +18,12 @@ footer {
 .list {
     list-style: none;
     padding: 0;
-
     li {
         cursor: pointer;
     }
+  }
+  .center {
+    width: 100%;
   }
 
 .nav__link {

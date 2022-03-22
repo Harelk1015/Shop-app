@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer>
       <div className="links">
-        <div className="links__left">
+        <div className="links__left center">
           <ul className="list">
             <h2>Tools</h2>
             <li>
@@ -22,7 +22,7 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="links__middle">
+        <div className="links__middle center">
           <ul className="list">
             <h2>Credits</h2>
             <li>
@@ -39,7 +39,7 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="links__right">
+        <div className="links__right center">
           <ul className="list">
             <h2>Social</h2>
             <li>
