@@ -27,6 +27,14 @@
   margin-bottom: 1em;
 }
 
+.main__img {
+  cursor: pointer;
+}
+
+dialog::backdrop {
+  background-color: black;
+}
+
 .second {
   background-color: #aa4fa1;
   margin: 2em 0;
@@ -63,9 +71,6 @@
 }
 
 
-.dialog__man::backdrop {
-  background: black;
-}
 
 .dialog--btn {
   background-color: black;
@@ -81,15 +86,17 @@
     flex-direction: row;
     gap: 4em;
   }
-
+  
   .main__text {
     width: 100%;
+    align-self: flex-start;
   }
   .main__img {
     width: 100%;
     padding: 0;
     margin: 0;
   }
+  
 
   .second__container {
     width: 70%;

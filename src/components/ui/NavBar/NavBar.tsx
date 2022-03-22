@@ -10,7 +10,6 @@ const NavBar = () => {
 
   const ToggleClass = () => {
     setActive(!isActive);
-    console.log(isActive);
   };
   return (
     <header>
@@ -40,17 +39,17 @@ const NavBar = () => {
               </Link>
             </li>
             <li className="nav__item">
-              <Link to="/Contact" className="nav__link">
+              <Link to="/contact" className="nav__link">
                 Contact
               </Link>
             </li>
             <li className="nav__item">
-              <Link to="/signin" className="nav__link">
-                Sign In
+              <Link to="/login" className="nav__link">
+                Login
               </Link>
             </li>
             <li className="nav__item">
-              <Link to="/Register" className="nav__link">
+              <Link to="/register" className="nav__link">
                 Register
               </Link>
             </li>

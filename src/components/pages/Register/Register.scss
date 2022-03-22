@@ -1,0 +1,70 @@
+.register {
+  width: 80%;
+  max-width: 600px;
+  margin: 11.05vh auto;
+  background-color: #360a14;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: 'share';
+
+  &__header {
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  &__form {
+    background-color: #961d4e;
+    max-width: 300px;
+    width: 80%;
+    margin: 2rem auto;
+    padding: 2rem;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin-bottom: 0.3rem;
+      }
+
+      input {
+        margin-bottom: 1.5rem;
+        border: black 0.25rem solid;
+        background-color: #c4c4c4;
+        opacity: 90%;
+      }
+
+      input:focus {
+          outline: none;
+          opacity: 100%;
+      }
+    }
+
+    &--btn {
+      width: 40%;
+      margin: 0.75rem auto;
+      border: black 0.4rem solid;
+      background-color: #c4c4c4;
+      color: black;
+      opacity: 90%;
+      padding: 0.2rem;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    &--btn:hover {
+        opacity: 100%;
+    }
+
+    &--switch {
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    &--switch:hover {
+        opacity: 80%;
+    }
+  }
+}
