@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 const NavBar = () => {
   const [isActive, setActive] = useState<boolean>(false);
+  const pageWidth = window.innerWidth;
+  console.log(pageWidth);
 
   const ToggleClass = () => {
     setActive(!isActive);
@@ -34,22 +36,54 @@ const NavBar = () => {
           </ul>
           <ul className="nav__list nav__list--secondary">
             <li className="nav__item">
-              <Link to="/profile" className="nav__link">
+              <Link
+                to="/profile"
+                className="nav__link"
+                onClick={() => {
+                  if (pageWidth < 880) {
+                    ToggleClass();
+                  }
+                }}
+              >
                 Profile
               </Link>
             </li>
             <li className="nav__item">
-              <Link to="/contact" className="nav__link">
+              <Link
+                to="/contact"
+                className="nav__link"
+                onClick={() => {
+                  if (pageWidth < 880) {
+                    ToggleClass();
+                  }
+                }}
+              >
                 Contact
               </Link>
             </li>
             <li className="nav__item">
-              <Link to="/login" className="nav__link">
+              <Link
+                to="/login"
+                className="nav__link"
+                onClick={() => {
+                  if (pageWidth < 880) {
+                    ToggleClass();
+                  }
+                }}
+              >
                 Login
               </Link>
             </li>
             <li className="nav__item">
-              <Link to="/register" className="nav__link">
+              <Link
+                to="/register"
+                className="nav__link"
+                onClick={() => {
+                  if (pageWidth < 880) {
+                    ToggleClass();
+                  }
+                }}
+              >
                 Register
               </Link>
             </li>
