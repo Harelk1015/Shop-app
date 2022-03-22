@@ -1,0 +1,67 @@
+.contact {
+  width: 70%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  color: white;
+  font-family: 'Share';
+}
+
+.header {
+  background-color: #360a14;
+  color: white;
+  padding: 1.5rem;
+}
+
+.main {
+  background-color: #961d4e;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+
+
+    input , .main__form__message {
+      margin-bottom: 1.5rem;
+      border: black 0.25rem solid;
+      background-color: #c4c4c4;
+      opacity: 90%;
+      margin-top: .5rem;
+      outline: none;
+      font-family: '';
+      font-size: 15px;
+
+    }
+
+    .main__form__message {
+        max-width: 400px;
+        font-size: 17px;
+    }
+
+    input {
+        max-width: 190px;
+    }
+
+    &__message {
+        height: 10rem;
+        text-align: start;
+        resize: none;
+    }
+
+    &--btn {
+        width: 40%;
+        max-width: 120px;
+        border: black 0.4rem solid;
+        background-color: #c4c4c4;
+        color: black;
+        opacity: 90%;
+        padding: 0.2rem;
+        cursor: pointer;
+        text-align: center;
+      }
+  
+      &--btn:hover {
+          opacity: 100%;
+      }
+  }
+}

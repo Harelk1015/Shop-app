@@ -1,18 +1,16 @@
 import { Link } from 'react-router-dom';
-
 import './NavBar.scss';
 import logoSvg from './snapsvg-seeklogo.com.svg';
-import profileSvg from './profile-svgrepo-com.svg';
 import { useState } from 'react';
 
 const NavBar = () => {
   const [isActive, setActive] = useState<boolean>(false);
   const pageWidth = window.innerWidth;
-  console.log(pageWidth);
 
   const ToggleClass = () => {
     setActive(!isActive);
   };
+
   return (
     <header>
       <div className="container row">

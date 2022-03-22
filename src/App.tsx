@@ -5,7 +5,8 @@ import Login from './components/pages/Login/Login';
 import Register from './components/pages/Register/Register';
 import Footer from './components/ui/Footer/Footer';
 import NavBar from './components/ui/NavBar/NavBar';
-
+import PageNotFound from './components/pages/404/PageNotFound';
+import Contact from './components/pages/Contact/Contact';
 
 function App() {
   return (
@@ -14,12 +15,10 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-        </Routes>
-        <Routes>
           <Route path="/login" element={<Login />} />
-        </Routes>
-        <Routes>
           <Route path="/register" element={<Register />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
