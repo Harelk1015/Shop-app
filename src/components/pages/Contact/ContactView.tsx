@@ -3,7 +3,7 @@ import './Contact.scss';
 const ContactView = () => {
   return (
     <div className="contact">
-      <div className="header">
+      <div className="contact__header">
         <h1>Contact</h1>
       </div>
       <div className="main">
