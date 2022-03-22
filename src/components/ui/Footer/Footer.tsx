@@ -10,49 +10,49 @@ function Footer() {
             <h2>Tools</h2>
             <li>
               <Link to="#" className="nav__link" />
-              Link
+              Create
             </li>
             <li>
               <Link to="#" className="nav__link" />
-              Link
+              Paint
             </li>
             <li>
               <Link to="#" className="nav__link" />
-              Link
+              Style
             </li>
           </ul>
         </div>
         <div className="links__middle">
           <ul className="list">
-            <h2>Tools</h2>
+            <h2>Credits</h2>
             <li>
               <Link to="#" className="nav__link" />
-              Link
+              Harel
             </li>
             <li>
               <Link to="#" className="nav__link" />
-              Link
+              Kaufman
             </li>
             <li>
               <Link to="#" className="nav__link" />
-              Link
+              Hagever
             </li>
           </ul>
         </div>
         <div className="links__right">
           <ul className="list">
-            <h2>Tools</h2>
+            <h2>Social</h2>
             <li>
               <Link to="#" className="nav__link" />
-              Link
+              Instagram
             </li>
             <li>
               <Link to="#" className="nav__link" />
-              Link
+              Facebook
             </li>
             <li>
               <Link to="#" className="nav__link" />
-              Link
+              Discord
             </li>
           </ul>
         </div>
