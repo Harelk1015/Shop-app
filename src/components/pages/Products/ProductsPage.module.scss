@@ -1,0 +1,44 @@
+.productsPage {
+  &__header {
+    color: white;
+    text-decoration: underline;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__text {
+        margin: .5rem 0;
+    }
+  }
+
+  &__main {
+    width: 80%;
+    margin: 2rem auto;
+  }
+}
+
+.productItem {
+  margin: 3rem 0;
+  color: white;
+  &__heart {
+    width: 10%;
+    margin-top: 0.6rem;
+  }
+
+  &__details {
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__details__text {
+    display: flex;
+    flex-direction: column;
+
+    &__name,
+    &__price {
+      margin: 0.3rem;
+    }
+  }
+}

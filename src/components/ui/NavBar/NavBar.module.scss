@@ -5,7 +5,7 @@
   position: relative;
 }
 
-header {
+.header {
   background: #360a14;
   padding: 1em 0;
   text-align: center;
@@ -51,7 +51,7 @@ header {
   opacity: 50%;
 }
 
-.nav-toggle {
+.nav_toggle {
   cursor: pointer;
   border: 0;
   width: 3em;
@@ -67,8 +67,8 @@ header {
   left: 0;
 }
 
-.nav-toggle:focus,
-.nav-toggle:hover {
+.nav_toggle:focus,
+.nav_toggle:hover {
   opacity: 0.75;
 }
 
@@ -110,7 +110,7 @@ Works the same :) */
   position: absolute;
 }
 
-.nav--visible {
+.nav__visible {
   visibility: visible;
   height: auto;
   position: relative;
@@ -121,7 +121,7 @@ Works the same :) */
 }
 
 @media (min-width: 880px) {
-  .nav-toggle {
+  .nav_toggle {
     display: none;
   }
   

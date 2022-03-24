@@ -7,6 +7,7 @@ import Footer from './components/ui/Footer/Footer';
 import NavBar from './components/ui/NavBar/NavBar';
 import PageNotFound from './components/pages/404/PageNotFound';
 import Contact from './components/pages/Contact/Contact';
+import ProductsPage from './components/pages/Products/ProductsPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/productsPage" element={<ProductsPage />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
         <Footer />

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import './NavBar.scss';
+// import './NavBar.scss';
 import logoSvg from './snapsvg-seeklogo.com.svg';
 import { useState } from 'react';
+import classes from './NavBar.module.scss';
 
 const NavBar = () => {
   const [isActive, setActive] = useState<boolean>(false);
@@ -12,17 +13,18 @@ const NavBar = () => {
   };
 
   return (
-    <header>
-      <div className="container row">
-        <button onClick={ToggleClass} className="nav-toggle">
-          <span className="hamburger"></span>
+    <header className={classes.header}>
+      <div className={`${classes.container} ${classes.row}`}>
+        <button onClick={ToggleClass} className={classes.nav_toggle}>
+          <span className={classes.hamburger}></span>
         </button>
-        <Link to="/" className="logo">
-          <img className="logo" src={logoSvg} alt="logo" />
+        <Link to="/" className={classes.logo}>
+          <img className={classes.logo} src={logoSvg} alt="logo" />
         </Link>
-        <nav className={`nav${isActive ? 'nav--visible' : ''}`}>
-          <ul className="nav__list nav__list--primary">
-            <li className="nav__item nav__search">
+        {/* <nav className={`nav${isActive ? 'nav--visible' : ''}`}> */}
+        <nav className={`${classes.nav} ${isActive ? classes.nav__visible : ''}`}>
+          <ul className={`${classes.nav__list} ${classes.nav__list__primary}`}>
+            <li className={`${classes.nav__item} ${classes.nav__search}`}>
               <input
                 placeholder="Serch for items..."
                 className="nav__input"
@@ -32,11 +34,11 @@ const NavBar = () => {
               />
             </li>
           </ul>
-          <ul className="nav__list nav__list--secondary">
-            <li className="nav__item">
+          <ul className={`${classes.nav__list} ${classes.nav__list__secondary}`}>
+            <li className={classes.nav__item}>
               <Link
                 to="/profile"
-                className="nav__link"
+                className={classes.nav__link}
                 onClick={() => {
                   if (pageWidth < 880) {
                     ToggleClass();
@@ -46,10 +48,10 @@ const NavBar = () => {
                 Profile
               </Link>
             </li>
-            <li className="nav__item">
+            <li className={classes.nav__item}>
               <Link
                 to="/contact"
-                className="nav__link"
+                className={classes.nav__link}
                 onClick={() => {
                   if (pageWidth < 880) {
                     ToggleClass();
@@ -59,10 +61,10 @@ const NavBar = () => {
                 Contact
               </Link>
             </li>
-            <li className="nav__item">
+            <li className={classes.nav__item}>
               <Link
                 to="/login"
-                className="nav__link"
+                className={classes.nav__link}
                 onClick={() => {
                   if (pageWidth < 880) {
                     ToggleClass();
@@ -72,10 +74,10 @@ const NavBar = () => {
                 Login
               </Link>
             </li>
-            <li className="nav__item">
+            <li className={classes.nav__item}>
               <Link
                 to="/register"
-                className="nav__link"
+                className={classes.nav__link}
                 onClick={() => {
                   if (pageWidth < 880) {
                     ToggleClass();

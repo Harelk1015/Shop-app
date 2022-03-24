@@ -32,7 +32,7 @@ const HomeView = () => {
                 </button>
                 <hr></hr>
                 <button className="dialog--btn">
-                  <Link to="man/pants" className="dialog--btn">
+                  <Link to="productsPage?gender=male&category=pants" className="dialog--btn">
                     Man
                   </Link>
                 </button>
