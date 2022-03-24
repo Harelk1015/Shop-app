@@ -24,7 +24,7 @@ const ProductsPageView: React.FC<ProductsViewProps> = ({ items, gender, category
     <div className={classes.productsPage}>
       <header className={classes.productsPage__header}>
         <h1 className={classes.productsPage__header__text}>{gender}</h1>
-        <h1 className={classes.productsPage__header__text}>{category}</h1>
+        <h1 className={`${classes.productsPage__header__text} ${classes.category}`}>{category}</h1>
       </header>
       <main className={classes.productsPage__main}>
         {items.map((item) => {

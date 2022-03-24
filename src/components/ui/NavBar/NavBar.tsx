@@ -27,7 +27,7 @@ const NavBar = () => {
             <li className={`${classes.nav__item} ${classes.nav__search}`}>
               <input
                 placeholder="Serch for items..."
-                className="nav__input"
+                className={classes.nav__input}
                 type="text"
                 id="serch"
                 name="serch"

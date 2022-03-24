@@ -23,7 +23,9 @@ const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({
           <h3 className={classes.productItem__details__text__name}>{name}</h3>
           <h3 className={classes.productItem__details__text__price}>{price} ILS</h3>
         </div>
-        <img className={classes.productItem__heart} src={emptyHeart} alt="favorite" />
+        <img onClick={() => {
+            // will chnage the svg to black and send request
+        }} className={classes.productItem__heart} src={emptyHeart} alt="favorite" />
       </div>
     </div>
   );

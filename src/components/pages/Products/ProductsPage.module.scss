@@ -15,6 +15,7 @@
   &__main {
     width: 80%;
     margin: 2rem auto;
+    max-width: 1500px;
   }
 }
 
@@ -45,16 +46,49 @@
 }
 
 @media (min-width: 800px) {
-  .productsPage__main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
+
+  .productsPage {
+    &__header {
+      flex-direction: row;
+      width: 85%;
+      max-width: 1270px;
+      margin: 0 auto;
+      justify-content: center;
+
+      &__text {
+        //   margin-right: %;
+        width: 100%;
+        font-size: 2rem;
+        
+      }
+    }
+
+    &__main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
   }
 
+  .category {
+      margin-right: 7%;
+  }
 
   .productItem {
+    display: flex;
+    flex-direction: column;
     flex: 0 0 20%; /* explanation below */
-    margin: 10px; 
+    margin: 10px;
+
+    &__img {
+      height: 26vw;
+      max-height: 400px;
+      border-radius: 4px;
+    }
+
+    &__details__text {
+      font-size: 1rem;
+    }
   }
 }

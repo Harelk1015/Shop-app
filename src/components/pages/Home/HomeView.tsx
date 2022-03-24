@@ -18,7 +18,9 @@ const HomeView = () => {
             <img
               onClick={() => {
                 setPantsDialog(!pantsDialog);
-                
+                if (!pantsDialog) {
+                  window.scrollBy({left:0, top:180, behavior:'smooth'});
+                }
               }}
               src={img}
               alt="picture of pants"
@@ -26,13 +28,25 @@ const HomeView = () => {
             {pantsDialog && (
               <dialog open className="dialog">
                 <button className="dialog--btn">
-                  <Link to="woman/pants" className="dialog--btn">
+                  <Link
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
+                    to="productsPage?gender=Woman&category=Pants"
+                    className="dialog--btn"
+                  >
                     Woman
                   </Link>
                 </button>
                 <hr></hr>
                 <button className="dialog--btn">
-                  <Link to="productsPage?gender=male&category=pants" className="dialog--btn">
+                  <Link
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
+                    to="productsPage?gender=Male&category=Pants"
+                    className="dialog--btn"
+                  >
                     Man
                   </Link>
                 </button>
@@ -48,8 +62,10 @@ const HomeView = () => {
             <div className="second__woman">
               <h2
                 onClick={() => {
-                  
                   setWomanDialog(!womanDialog);
+                  if (!womanDialog) {
+window.scrollBy({left:0, top:180, behavior:'smooth'});
+                  }
                 }}
                 className="second__woman__text"
               >
@@ -58,7 +74,9 @@ const HomeView = () => {
               <img
                 onClick={() => {
                   setWomanDialog(!womanDialog);
-                  
+                  if (!womanDialog) {
+window.scrollBy({left:0, top:180, behavior:'smooth'});
+                  }
                 }}
                 src={woman}
                 alt="woman"
@@ -67,19 +85,37 @@ const HomeView = () => {
               {womanDialog && (
                 <dialog open className="dialog">
                   <button className="dialog--btn">
-                    <Link to="woman/shirts" className="dialog--btn">
+                    <Link
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                      }}
+                      to="productsPage?gender=Woman&category=Shirts"
+                      className="dialog--btn"
+                    >
                       Shirts
                     </Link>
                   </button>
                   <hr></hr>
                   <button className="dialog--btn">
-                    <Link to="woman/pants" className="dialog--btn">
+                    <Link
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                      }}
+                      to="productsPage?gender=Woman&category=Pants"
+                      className="dialog--btn"
+                    >
                       Pants
                     </Link>
                   </button>
                   <hr></hr>
                   <button className="dialog--btn">
-                    <Link to="woman/shoes" className="dialog--btn">
+                    <Link
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                      }}
+                      to="productsPage?gender=Woman&category=Shoes"
+                      className="dialog--btn"
+                    >
                       Shoes
                     </Link>
                   </button>
@@ -90,7 +126,9 @@ const HomeView = () => {
               <h2
                 onClick={() => {
                   setManDialog(!manDialog);
-                  
+                  if (!manDialog) {
+window.scrollBy({left:0, top:180, behavior:'smooth'});
+                  }
                 }}
                 className="second__man__text"
               >
@@ -99,7 +137,9 @@ const HomeView = () => {
               <img
                 onClick={() => {
                   setManDialog(!manDialog);
-                  
+                  if (!manDialog) {
+window.scrollBy({left:0, top:180, behavior:'smooth'});
+                  }
                 }}
                 src={man}
                 alt="Man"
@@ -108,19 +148,37 @@ const HomeView = () => {
               {manDialog && (
                 <dialog open className="dialog">
                   <button className="dialog--btn">
-                    <Link to="man/shirts" className="dialog--btn">
+                    <Link
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                      }}
+                      to="productsPage?gender=Man&category=Shirts"
+                      className="dialog--btn"
+                    >
                       Shirts
                     </Link>
                   </button>
                   <hr></hr>
                   <button className="dialog--btn">
-                    <Link to="man/pants" className="dialog--btn">
+                    <Link
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                      }}
+                      to="productsPage?gender=Man&category=Pants"
+                      className="dialog--btn"
+                    >
                       Pants
                     </Link>
                   </button>
                   <hr></hr>
                   <button className="dialog--btn">
-                    <Link to="man/shoes" className="dialog--btn">
+                    <Link
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                      }}
+                      to="productsPage?gender=Man&category=Shoes"
+                      className="dialog--btn"
+                    >
                       Shoes
                     </Link>
                   </button>
