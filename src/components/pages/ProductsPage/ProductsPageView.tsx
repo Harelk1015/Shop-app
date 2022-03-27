@@ -11,8 +11,8 @@ interface ProductsViewProps {
     category: {
       sex: string;
       kind: string;
-      sizes: number[];
     };
+    sizes: number[];
   }[];
   gender: string | null;
   category: string | null;
@@ -35,6 +35,7 @@ const ProductsPageView: React.FC<ProductsViewProps> = ({ items, gender, category
               name={item.name}
               price={item.price}
               imageUrl={item.imageUrl}
+              sizes={item.sizes}
             />
           );
         })}

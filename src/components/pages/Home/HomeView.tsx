@@ -19,7 +19,7 @@ const HomeView = () => {
               onClick={() => {
                 setPantsDialog(!pantsDialog);
                 if (!pantsDialog) {
-                  window.scrollBy({left:0, top:180, behavior:'smooth'});
+                  window.scrollBy({ left: 0, top: 180, behavior: 'smooth' });
                 }
               }}
               src={img}
@@ -64,7 +64,7 @@ const HomeView = () => {
                 onClick={() => {
                   setWomanDialog(!womanDialog);
                   if (!womanDialog) {
-window.scrollBy({left:0, top:180, behavior:'smooth'});
+                    window.scrollBy({ left: 0, top: 180, behavior: 'smooth' });
                   }
                 }}
                 className="second__woman__text"
@@ -75,7 +75,7 @@ window.scrollBy({left:0, top:180, behavior:'smooth'});
                 onClick={() => {
                   setWomanDialog(!womanDialog);
                   if (!womanDialog) {
-window.scrollBy({left:0, top:180, behavior:'smooth'});
+                    window.scrollBy({ left: 0, top: 180, behavior: 'smooth' });
                   }
                 }}
                 src={woman}
@@ -127,7 +127,7 @@ window.scrollBy({left:0, top:180, behavior:'smooth'});
                 onClick={() => {
                   setManDialog(!manDialog);
                   if (!manDialog) {
-window.scrollBy({left:0, top:180, behavior:'smooth'});
+                    window.scrollBy({ left: 0, top: 180, behavior: 'smooth' });
                   }
                 }}
                 className="second__man__text"
@@ -138,7 +138,7 @@ window.scrollBy({left:0, top:180, behavior:'smooth'});
                 onClick={() => {
                   setManDialog(!manDialog);
                   if (!manDialog) {
-window.scrollBy({left:0, top:180, behavior:'smooth'});
+                    window.scrollBy({ left: 0, top: 180, behavior: 'smooth' });
                   }
                 }}
                 src={man}
