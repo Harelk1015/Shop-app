@@ -17,12 +17,14 @@ const ProductPageView: React.FC = () => {
 
   return (
     <div className={classes.productPage}>
+      {/* <div> */}
+
       <img
         className={classes.productPage__img}
         src={product?.imageUrl}
         alt={product?.name}
-      />
-
+        />
+        {/* </div> */}
       <div className={classes.productPage__content}>
         <h1 className={classes.productPage__header}>{product?.name}</h1>
         <div className={classes.productPage__sizesSelection}>

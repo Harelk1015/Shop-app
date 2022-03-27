@@ -21,21 +21,58 @@
       color: black;
       padding: 0.75rem;
       margin-right: 0.5rem;
+      cursor: pointer;
+    }
+    &__label__item:hover {
+      opacity: 85%;
     }
   }
 
   &__clickers {
-      display: flex;
-      margin-bottom: 2rem;
+    display: flex;
+    margin-bottom: 2rem;
     &__cartBtn {
       padding: 1rem 2rem;
       background-color: #c16a6a;
       color: white;
       border: black 2px solid;
       margin-right: 2rem;
+      cursor: pointer;
+    }
+    &__cartBtn:hover {
+      opacity: 80%;
     }
     &__heart {
-        width: 8%;
+      cursor: pointer;
+      width: 2.5rem;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .productPage {
+    margin: 4rem auto;
+    width: 50%;
+    max-width: 1500px;
+    display: flex;
+    justify-content: space-between;
+
+    &__header {
+      margin: 0;
+    }
+
+    &__img {
+      width: 40%;
+      max-width: 400px;
+    }
+
+    &__content {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // padding: 1rem;
+      margin-left: auto;
     }
   }
 }

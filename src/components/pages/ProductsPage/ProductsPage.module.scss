@@ -23,7 +23,8 @@
   margin: 3rem 0;
   color: white;
   &__heart {
-    width: 10%;
+    width: 2.5rem;
+
     margin-top: 0.6rem;
   }
 
@@ -31,19 +32,18 @@
     border-radius: 4px;
     cursor: pointer;
   }
-  
+
   &__details {
     margin: 0.5rem 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
-  
+
   &__details__text {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    
 
     &__name,
     &__price {
@@ -86,6 +86,9 @@
     flex: 0 0 20%; /* explanation below */
     margin: 10px;
 
+    &__heart {
+      width: 2rem;
+    }
     &__img {
       height: 26vw;
       max-height: 400px;

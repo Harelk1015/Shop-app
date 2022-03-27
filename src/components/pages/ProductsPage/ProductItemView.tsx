@@ -23,7 +23,8 @@ const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({
     <div className={classes.productItem}>
       <img
         onClick={() => {
-          navigate(`/ProductPage?_id=${_id}&name=${name}&sizes=${sizes}`);
+          navigate(`/ProductPage?_id=${_id}`);
+          window.scrollTo(0, 0);
         }}
         className={classes.productItem__img}
         src={imageUrl}
@@ -32,7 +33,8 @@ const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({
       <div className={classes.productItem__details}>
         <div
           onClick={() => {
-            navigate(`/ProductPage?_id=${_id}&name=${name}&sizes=${sizes}`);
+            navigate(`/ProductPage?_id=${_id}`);
+            window.scrollTo(0, 0);
           }}
           className={classes.productItem__details__text}
         >
