@@ -1,8 +1,10 @@
-import './Home.scss';
-import HomeView from './HomeView'
+import HomeView from './Home.view';
 
 const Home = () => {
-  return <HomeView />;
+	return <HomeView />;
 };
+
+Home.displayName = Home;
+
 
 export default Home;

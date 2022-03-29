@@ -1,103 +1,102 @@
 .container {
-  width: 90%;
-  max-width: 1500px;
-  margin: 0 auto;
-  position: relative;
+	width: 90%;
+	max-width: 1500px;
+	margin: 0 auto;
+	position: relative;
 }
 
 .header {
-  background: #360a14;
-  padding: 1em 0;
-  text-align: center;
+	background: #360a14;
+	padding: 1em 0;
+	text-align: center;
 }
 
 .nav {
-  width: 100%;
-  position: relative;
+	width: 100%;
+	position: relative;
 }
 
 .nav__list {
-  list-style: none;
-  padding: 0;
+	list-style: none;
+	padding: 0;
 }
 
 .nav__item {
-  padding: 0.3em 0;
+	padding: 0.3em 0;
 }
 
-
 .nav__search {
-  padding: 0.4em 0;
-  width: 100%;
-  // background-color: #360a14;
-  // border: white solid 2px;
+	padding: 0.4em 0;
+	width: 100%;
+	// background-color: #360a14;
+	// border: white solid 2px;
 }
 
 .nav__input {
-  width: 50%;
-  border-radius: 13px;
-  padding: .3em .8em;
-  border: white solid 1px;
-  background-color: #360a14;
-  color: white;
+	width: 50%;
+	border-radius: 13px;
+	padding: 0.3em 0.8em;
+	border: white solid 1px;
+	background-color: #360a14;
+	color: white;
 }
 
 .nav__link {
-  text-decoration: none;
-  color: white;
+	text-decoration: none;
+	color: white;
 }
 
 .nav__link:hover {
-  opacity: 50%;
+	opacity: 50%;
 }
 
 .nav_toggle {
-  cursor: pointer;
-  border: 0;
-  width: 3em;
-  height: 3em;
-  padding: 0em;
-  border-radius: 50%;
-  
-  background: #072a2d;
-  color: white;
-  transition: opacity 250ms ease;
-  
-  position: absolute;
-  left: 0;
+	cursor: pointer;
+	border: 0;
+	width: 3em;
+	height: 3em;
+	padding: 0em;
+	border-radius: 50%;
+
+	background: #072a2d;
+	color: white;
+	transition: opacity 250ms ease;
+
+	position: absolute;
+	left: 0;
 }
 
 .nav_toggle:focus,
 .nav_toggle:hover {
-  opacity: 0.75;
+	opacity: 0.75;
 }
 
 .hamburger {
-  width: 50%;
-  position: relative;
+	width: 50%;
+	position: relative;
 }
 
 .hamburger,
 .hamburger::before,
 .hamburger::after {
-  display: block;
-  margin: 0 auto;
-  height: 3px;
-  background: white;
+	display: block;
+	margin: 0 auto;
+	height: 3px;
+	background: white;
 }
 
 .hamburger::before,
 .hamburger::after {
-  content: '';
-  width: 100%;
+	content: '';
+	width: 100%;
 }
 
 .hamburger::before {
-  transform: translateY(-6px);
+	transform: translateY(-6px);
 }
 
 .hamburger::after {
-  transform: translateY(3px);
+	transform: translateY(3px);
 }
 
 /* made changes here from video
@@ -105,79 +104,79 @@ to make it more accessible.
 
 Works the same :) */
 .nav {
-  visibility: hidden;
-  height: 0;
-  position: absolute;
+	visibility: hidden;
+	height: 0;
+	position: absolute;
 }
 
 .nav__visible {
-  visibility: visible;
-  height: auto;
-  position: relative;
+	visibility: visible;
+	height: auto;
+	position: relative;
 }
 
 .logo {
-  height: 40px;
+	height: 40px;
 }
 
 @media (min-width: 880px) {
-  .nav_toggle {
-    display: none;
-  }
-  
-  .nav {
-    visibility: visible;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: auto;
-    margin-left: 5%;
-    position: relative;
-  }
-  
-  .nav__list__primary {
-    width: 50%;
-  }
-  
-  .nav__list__secondary {
-    //   width: 40%;
-  }
-  
-  .nav__search {
-    padding: 0.4em 0;
-    width: 100%;
-    // background-color: #360a14;
-    // border: white solid 2px;
-  }
-  
-  .nav__input {
-    width: 100%;
-    border-radius: 13px;
-    padding: .3em .8em;
-    border: white solid 1px;
-    background-color: #360a14;
-    color: white;
-  }
-  
-  .nav__list {
-    display: flex;
-    margin: 0;
-  }
-  
-  .nav__item {
-    margin: 0;
-    margin-left: 0.5em;
-  }
+	.nav_toggle {
+		display: none;
+	}
 
-  .nav__item + .nav__item {
-    margin-left: 1em;
-  }
-  
-  .logo {
-    align-self: center;
-  }
-  .row {
-    display: flex;
-    justify-content: space-between;
-  }
+	.nav {
+		visibility: visible;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: auto;
+		margin-left: 5%;
+		position: relative;
+	}
+
+	.nav__list__primary {
+		width: 50%;
+	}
+
+	.nav__list__secondary {
+		//   width: 40%;
+	}
+
+	.nav__search {
+		padding: 0.4em 0;
+		width: 100%;
+		// background-color: #360a14;
+		// border: white solid 2px;
+	}
+
+	.nav__input {
+		width: 100%;
+		border-radius: 13px;
+		padding: 0.3em 0.8em;
+		border: white solid 1px;
+		background-color: #360a14;
+		color: white;
+	}
+
+	.nav__list {
+		display: flex;
+		margin: 0;
+	}
+
+	.nav__item {
+		margin: 0;
+		margin-left: 0.5em;
+	}
+
+	.nav__item + .nav__item {
+		margin-left: 1em;
+	}
+
+	.logo {
+		align-self: center;
+	}
+	.row {
+		display: flex;
+		justify-content: space-between;
+	}
 }

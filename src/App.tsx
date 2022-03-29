@@ -9,25 +9,27 @@ import PageNotFound from './components/pages/404/PageNotFound';
 import Contact from './components/pages/Contact/Contact';
 import ProductsPage from './components/pages/ProductsPage/ProductsPage';
 import ProductPage from './components/pages/ProductPage/ProductPage';
+import Profile from './components/pages/Profile/Profile';
 
-function App() {
-  return (
-    <div>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/productsPage" element={<ProductsPage />} />
-          <Route path="/ProductPage" element={<ProductPage />} />
-          <Route path="/*" element={<PageNotFound />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<BrowserRouter>
+			<NavBar />
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
+					<Route path="/contact" element={<Contact />} />
+					<Route path="/productsPage" element={<ProductsPage />} />
+					<Route path="/ProductPage" element={<ProductPage />} />
+					<Route path="/profile" element={<Profile />} />
+					<Route path="/*" element={<PageNotFound />} />
+				</Routes>
+			<Footer />
+		</BrowserRouter>
+	);
+};
+
+App.displayName = 'App';
 
 export default App;

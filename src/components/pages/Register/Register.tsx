@@ -1,8 +1,11 @@
 import './Register.scss';
-import RegisterView from './RegisterView'
+import RegisterView from './Register.view';
 
 const Register = () => {
-  return <RegisterView />;
+	return <RegisterView />;
 };
+
+Register.displayName = 'Register';
+
 
 export default Register;

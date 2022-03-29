@@ -1,8 +1,9 @@
-import './Contact.scss';
-import ContactView from './ContactView'
+import ContactView from './Contact.view';
 
 const Contact = () => {
-  return <ContactView />;
+	return <ContactView />;
 };
+
+Contact.displayName = 'Contact';
 
 export default Contact;

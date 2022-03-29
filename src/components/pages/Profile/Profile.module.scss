@@ -1,0 +1,65 @@
+.profile {
+	width: 80%;
+	max-width: 600px;
+	margin: 2rem auto;
+	color: white;
+	font-family: 'Share';
+
+	&__header {
+		background-color: #360a14;
+		color: white;
+		padding: 1.5rem;
+
+		&__text {
+			text-align: center;
+		}
+	}
+
+	&__main {
+		background-color: #961d4e;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 1.8rem;
+
+		&__input {
+			width: 80%;
+			border: black 2px solid;
+			background-color: #c4c4c4;
+			opacity: 90%;
+			outline: none;
+		}
+
+		&__password {
+
+			&__text {
+				text-decoration: underline;
+			}
+		}
+
+		&__details {
+			background-color: #360a14;
+		}
+	}
+
+	&__card__header {
+		margin: 0;
+		margin-bottom: 1rem;
+		text-decoration: underline;
+	}
+
+    &__underline {
+        text-decoration: underline;
+    }
+}
+
+.card {
+	background-color: #360a14;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem 1rem;
+	text-align: center;
+	margin-bottom: 2rem;
+}
