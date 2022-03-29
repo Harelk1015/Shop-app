@@ -65,7 +65,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ user, orders }) => {
 					{orders.map((order) => {
 						return (
 							<div key={order._id} className={classes.profile__orders__order}>
-								<p>{order._id}</p> <p>{order.total}</p>
+								<p>{order._id}</p>  <p>{order.total}</p>
 							</div>
 						);
 					})}
