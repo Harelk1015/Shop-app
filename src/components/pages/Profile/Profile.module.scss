@@ -31,7 +31,6 @@
 		}
 
 		&__password {
-
 			&__text {
 				text-decoration: underline;
 			}
@@ -39,6 +38,32 @@
 
 		&__details {
 			background-color: #360a14;
+		}
+
+		&__btn {
+			width: 40%;
+			max-width: 120px;
+			border: black 0.4rem solid;
+			background-color: #c4c4c4;
+			color: black;
+			opacity: 90%;
+            margin-top: .5rem;
+			padding: 0.2rem;
+			cursor: pointer;
+			text-align: center;
+		}
+	}
+	&__favorites {
+		&__img {
+			width: 50%;
+		}
+	}
+	&__orders {
+		&__order {
+			&__link {
+				text-decoration: underline;
+				cursor: pointer;
+			}
 		}
 	}
 
@@ -48,9 +73,9 @@
 		text-decoration: underline;
 	}
 
-    &__underline {
-        text-decoration: underline;
-    }
+	&__underline {
+		text-decoration: underline;
+	}
 }
 
 .card {

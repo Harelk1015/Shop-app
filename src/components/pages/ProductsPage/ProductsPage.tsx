@@ -3,7 +3,25 @@ import React from 'react';
 import ProductsPageView from './ProductsPage.view';
 
 // eslint-disable-next-line import/exports-last
-export const DUMMY_PRODUCTS = [
+
+// eslint-disable-next-line import/exports-last
+export interface Product {
+	_id: number;
+	name: string;
+	price: number;
+	imageUrl: string;
+	category: {
+		sex: string;
+		kind: string;
+	};
+	sizes: number[];
+}
+
+// eslint-disable-next-line import/exports-last
+export type Products = Product[] | [];
+
+// eslint-disable-next-line import/exports-last
+export const DUMMY_PRODUCTS: Products = [
 	{
 		_id: 1,
 		name: 'blue pants',
@@ -123,6 +141,5 @@ const ProductsPage: React.FC = () => {
 };
 
 ProductsPage.displayName = 'ProductsPage';
-
 
 export default ProductsPage;
