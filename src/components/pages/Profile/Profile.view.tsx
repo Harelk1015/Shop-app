@@ -38,9 +38,9 @@ const ProfileView: React.FC<ProfileViewProps> = ({ user, orders }) => {
 	} else {
 		ordersContent = orders.map((order) => {
 			return (
-				<div key={order._id} className={classes.profile__orders__order}>
-					<p className={classes.profile__orders__order__link}>Order ID: {order._id}</p>
-					<p className={classes.profile__orders__order__link}>Order Total{order.total}</p>
+				<div key={order._id} className={classes.profile__main__orders__order}>
+					<p className={classes.profile__main___orders__order__link}>Order ID: {order._id}</p>
+					<p className={classes.profile__main___orders__order__link}>Order Total{order.total}</p>
 					<hr />
 				</div>
 			);
@@ -68,7 +68,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ user, orders }) => {
 				>
 					<p className={classes.profile__orders__order__link}>{favorite.name}</p>
 					<img
-						className={classes.profile__favorites__img}
+						className={classes.profile__main__favorites__img}
 						src={favorite.imageUrl}
 						alt={favorite.name}
 					/>
@@ -77,8 +77,6 @@ const ProfileView: React.FC<ProfileViewProps> = ({ user, orders }) => {
 			);
 		});
 	}
-
-	console.log(favoritesContent);
 
 	console.log(oldPassword);
 	console.log(newPassword);

@@ -1,6 +1,6 @@
 .profile {
 	width: 80%;
-	max-width: 600px;
+	max-width: 1200px;
 	margin: 2rem auto;
 	color: white;
 	font-family: 'Share';
@@ -47,15 +47,15 @@
 			background-color: #c4c4c4;
 			color: black;
 			opacity: 90%;
-            margin-top: .5rem;
+			margin-top: 0.5rem;
 			padding: 0.2rem;
 			cursor: pointer;
 			text-align: center;
 		}
-	}
-	&__favorites {
-		&__img {
-			width: 50%;
+		&__favorites {
+			&__img {
+				width: 50%;
+			}
 		}
 	}
 	&__orders {
@@ -87,4 +87,50 @@
 	padding: 2rem 1rem;
 	text-align: center;
 	margin-bottom: 2rem;
+}
+
+@media (min-width: 800px) {
+	.profile {
+		&__main {
+			flex-wrap: wrap;
+			flex-direction: row;
+			align-items: baseline;
+			justify-content: center;
+			width: 100%;
+
+			&__favorites {
+				display: flex;
+				overflow: scroll;
+				overflow-x: hidden;
+				overflow-y: auto;
+
+				&__img {
+					cursor: pointer;
+					max-width: 200px;
+				}
+			}
+		}
+	}
+}
+
+.card {
+	flex: 0 0 45%; /* explanation below */
+	margin: 10px;
+	height: 300px;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px #360a14;
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #25030b;
+	border-radius: 10px;
 }
