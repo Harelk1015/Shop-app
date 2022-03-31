@@ -14,13 +14,13 @@ const AdminPanelView: React.FC<IProps> = ({ tickets }) => {
 	const [sex, setSex] = useState('');
 	const [category, setCategory] = useState('');
 	const [imageUrl, setImageUrl] = useState('');
-	const [size36, setSize36] = useState();
-	const [size37, setSize37] = useState();
-	const [size38, setSize38] = useState();
-	const [size39, setSize39] = useState();
-	const [size40, setSize40] = useState();
-	const [size41, setSize41] = useState();
-	const [size42, setSize42] = useState();
+	const [size36, setSize36] = useState<number>();
+	const [size37, setSize37] = useState<number>();
+	const [size38, setSize38] = useState<number>();
+	const [size39, setSize39] = useState<number>();
+	const [size40, setSize40] = useState<number>();
+	const [size41, setSize41] = useState<number>();
+	const [size42, setSize42] = useState<number>();
 
 	let sizes = [size36, size37, size38, size39, size40, size41, size42];
 
@@ -41,7 +41,7 @@ const AdminPanelView: React.FC<IProps> = ({ tickets }) => {
 		if (value) {
 			return (
 				<>
-					<label className={classes.label} htmlFor={name}>
+					<label className={classes.label__radio} htmlFor={name}>
 						{label}
 					</label>
 					<input
@@ -105,18 +105,19 @@ const AdminPanelView: React.FC<IProps> = ({ tickets }) => {
 			<div className={`${classes.addProduct} ${classes.card}`}>
 				<h1 className={classes.card__header}>Add Product</h1>
 				<form>
-					{input('Product Name', 'text', 'name', setName)}
-					{input('Price (in $)', 'number', 'price', setPrice)}
-					<h2>Sex</h2>
+					{input('Product Name: ', 'text', 'name', setName)}
+					<br />
+					{input('Price (in $): ', 'number', 'price', setPrice)}
+					<h3 className={classes.addProduct__headers}>Sex</h3>
 					{input('Man', 'radio', 'sex', setSex, 'value')}
 					{input('Woman', 'radio', 'sex', setSex, 'value')}
-					<h2>Category</h2>
+					<h3 className={classes.addProduct__headers}>Category</h3>
 					{input('Shirt', 'radio', 'category', setCategory, 'value')}
 					{input('Pants', 'radio', 'category', setCategory, 'value')}
 					{input('Shoes', 'radio', 'category', setCategory, 'value')}
-					<h2>Image Link</h2>
-					{input('url:', 'text', 'imageUrl', setImageUrl)}
-					<h2>sizes</h2>
+					<h3 className={classes.addProduct__headers}>Image Link</h3>
+					{input('url: ', 'text', 'imageUrl', setImageUrl)}
+					<h3 className={classes.addProduct__headers}>sizes</h3>
 					{input('36', 'radio', '36', setSize36, 'value')}
 					{input('37', 'radio', '37', setSize37, 'value')}
 					{input('38', 'radio', '38', setSize38, 'value')}
@@ -124,8 +125,7 @@ const AdminPanelView: React.FC<IProps> = ({ tickets }) => {
 					{input('40', 'radio', '40', setSize40, 'value')}
 					{input('41', 'radio', '41', setSize41, 'value')}
 					{input('42', 'radio', '42', setSize42, 'value')}
-
-					<button type="button" onClick={getInputs}>
+					<button className={classes.addProduct__btn} type="button" onClick={getInputs}>
 						Submit
 					</button>
 				</form>
