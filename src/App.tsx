@@ -10,6 +10,7 @@ import Contact from './components/pages/Contact/Contact';
 import ProductsPage from './components/pages/ProductsPage/ProductsPage';
 import ProductPage from './components/pages/ProductPage/ProductPage';
 import Profile from './components/pages/Profile/Profile';
+import AdminPanel from './components/pages/Admin/AdminPanel';
 
 const App = () => {
 	return (
@@ -20,9 +21,10 @@ const App = () => {
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/contact" element={<Contact />} />
-					<Route path="/productsPage" element={<ProductsPage />} />
-					<Route path="/ProductPage" element={<ProductPage />} />
+					<Route path="/products-page" element={<ProductsPage />} />
+					<Route path="/product-page" element={<ProductPage />} />
 					<Route path="/profile" element={<Profile />} />
+					<Route path="/admin-panel" element={<AdminPanel />} />
 					<Route path="/*" element={<PageNotFound />} />
 				</Routes>
 			<Footer />

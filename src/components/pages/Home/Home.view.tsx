@@ -15,10 +15,10 @@ const HomeView = () => {
 
 	return (
 		<>
-			<div className={classes.main__dis}>
+			<div className={classes.main}>
 				<div className={classes.main__container}>
-					<h2 className={classes.main__text}>UP TO 30% OFF ON ALL PANTS</h2>
-					<div className={classes.main__img}>
+					<h2 className={classes.main__container__text}>UP TO 30% OFF ON ALL PANTS</h2>
+					<div className={classes.main__container__img}>
 						<img
 							src={img}
 							alt="picture of pants"
@@ -35,7 +35,7 @@ const HomeView = () => {
 							<dialog open className={classes.dialog}>
 								<button className={classes.dialog__btn}>
 									<Link
-										to="productsPage?gender=Woman&category=Pants"
+										to="products-page?gender=Woman&category=Pants"
 										className={classes.dialog__btn}
 										onClick={() => {
 											window.scrollTo(0, 0);
@@ -47,7 +47,7 @@ const HomeView = () => {
 								<hr />
 								<button className={classes.dialog__btn}>
 									<Link
-										to="productsPage?gender=Male&category=Pants"
+										to="products-page?gender=Male&category=Pants"
 										className={classes.dialog__btn}
 										onClick={() => {
 											window.scrollTo(0, 0);
@@ -96,7 +96,7 @@ const HomeView = () => {
 								<dialog open className={classes.dialog}>
 									<button className={classes.dialog__btn}>
 										<Link
-											to="productsPage?gender=Woman&category=Shirts"
+											to="products-page?gender=Woman&category=Shirts"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -108,7 +108,7 @@ const HomeView = () => {
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="productsPage?gender=Woman&category=Pants"
+											to="products-page?gender=Woman&category=Pants"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -120,7 +120,7 @@ const HomeView = () => {
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="productsPage?gender=Woman&category=Shoes"
+											to="products-page?gender=Woman&category=Shoes"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -162,7 +162,7 @@ const HomeView = () => {
 								<dialog open className={classes.dialog}>
 									<button className={classes.dialog__btn}>
 										<Link
-											to="productsPage?gender=Man&category=Shirts"
+											to="products-page?gender=Man&category=Shirts"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -174,7 +174,7 @@ const HomeView = () => {
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="productsPage?gender=Man&category=Pants"
+											to="products-page?gender=Man&category=Pants"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -186,7 +186,7 @@ const HomeView = () => {
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="productsPage?gender=Man&category=Shoes"
+											to="products-page?gender=Man&category=Shoes"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);

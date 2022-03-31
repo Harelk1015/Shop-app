@@ -1,8 +1,8 @@
+/* eslint-disable import/exports-last */
 // eslint-disable-next-line import/no-cycle
 import ProfileView from './Profile.view';
 
 // User
-
 
 interface User {
 	_id: number;
@@ -24,13 +24,10 @@ export interface Ticket {
 	message: string;
 }
 
-// eslint-disable-next-line import/exports-last
 export type Tickets = Ticket[];
 
 // Orders
 
-
-// eslint-disable-next-line import/exports-last
 interface Order {
 	_id: number;
 	ownerId: number;
@@ -38,8 +35,57 @@ interface Order {
 	total: number;
 }
 
-// eslint-disable-next-line import/exports-last
 export type Orders = Order[];
+
+const ticket1: Ticket = {
+	_id: 1,
+	email: 'harelk1015@gmail.com',
+	message: 'ticket from user id 1',
+	ownerId: 1,
+	subject: 'ticket number 1',
+};
+
+const ticket2: Ticket = {
+	_id: 2,
+	email: 'harelk1015@gmail.com',
+	message: 'ticket from user id 1',
+	ownerId: 1,
+	subject: 'ticket number 2',
+};
+
+const ticket3: Ticket = {
+	_id: 3,
+	email: 'harelk1015@gmail.com',
+	message: 'ticket from user id 1',
+	ownerId: 1,
+	subject: 'ticket number 2',
+};
+
+const ticket4: Ticket = {
+	_id: 4,
+	email: 'harelk1015@gmail.com',
+	message: 'ticket from user id 1',
+	ownerId: 1,
+	subject: 'ticket number 2',
+};
+
+const ticket5: Ticket = {
+	_id: 5,
+	email: 'harelk1015@gmail.com',
+	message: 'ticket from user id 1',
+	ownerId: 1,
+	subject: 'ticket number 2',
+};
+
+const ticket6: Ticket = {
+	_id: 5,
+	email: 'harelk1015@gmail.com',
+	message: 'ticket from user id 1',
+	ownerId: 1,
+	subject: 'ticket number 2',
+};
+
+export const tickets: Tickets = [ticket1, ticket2,ticket3,ticket4,ticket5,ticket6];
 
 const Profile = () => {
 	const user: User = {
@@ -50,24 +96,6 @@ const Profile = () => {
 		role: 'user',
 		favoritesId: [1, 2, 3],
 	};
-
-	// const ticket1: Ticket = {
-	// 	_id: 1,
-	// 	email: 'harelk1015@gmail.com',
-	// 	message: 'ticket from user id 1',
-	// 	ownerId: 1,
-	// 	subject: 'ticket number 1',
-	// };
-
-	// const ticket2: Ticket = {
-	// 	_id: 2,
-	// 	email: 'harelk1015@gmail.com',
-	// 	message: 'ticket from user id 1',
-	// 	ownerId: 1,
-	// 	subject: 'ticket number 2',
-	// };
-
-	// const tickets: Tickets = [ticket1, ticket2];
 
 	const orders: Orders = [
 		{ _id: 1, ownerId: 1, productsId: [1, 2], total: 150 },

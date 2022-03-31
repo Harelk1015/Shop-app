@@ -2,36 +2,32 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DUMMY_PRODUCTS } from '../ProductsPage/ProductsPage';
+import { DUMMY_PRODUCTS, Product } from '../ProductsPage/ProductsPage';
 import classes from './Profile.module.scss';
 // eslint-disable-next-line import/no-cycle
 import { Orders } from './Profile';
 
-interface ProfileViewProps {
+interface IProps {
 	user: {
-		_id: number;
-		username: string;
-		email: string;
-		password: string;
-		role: 'admin' | 'user';
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		favoritesId: any[];
+		readonly _id: number;
+		readonly username: string;
+		readonly email: string;
+		readonly password: string;
+		readonly role: 'admin' | 'user';
+		readonly favoritesId?: number[];
 	};
 	// tickets: Tickets;
 	orders: Orders;
 }
 
-const ProfileView: React.FC<ProfileViewProps> = ({ user, orders }) => {
+const ProfileView: React.FC<IProps> = ({ user, orders }) => {
 	const navigate = useNavigate();
 
-	const [oldPassword, setOldPassword] = useState();
-	const [newPassword, setNewPassword] = useState();
+	const [oldPassword, setOldPassword] = useState<string>('');
+	const [newPassword, setNewPassword] = useState<string>('');
 
 	let ordersContent;
 	let favoritesContent;
-
-	console.log(DUMMY_PRODUCTS);
-	console.log(user.favoritesId);
 
 	if (orders.length === 0) {
 		ordersContent = <p>You dont have any orders</p>;
@@ -40,20 +36,25 @@ const ProfileView: React.FC<ProfileViewProps> = ({ user, orders }) => {
 			return (
 				<div key={order._id} className={classes.profile__main__orders__order}>
 					<p className={classes.profile__main___orders__order__link}>Order ID: {order._id}</p>
-					<p className={classes.profile__main___orders__order__link}>Order Total{order.total}</p>
+					<p className={classes.profile__main___orders__order__link}>Order Total: {order.total}$</p>
 					<hr />
 				</div>
 			);
 		});
 	}
 
-	if (user.favoritesId.length === 0) {
+	if (!user.favoritesId) {
 		favoritesContent = <p>You dont have any favorite items</p>;
 	} else {
-		const favorites: any = [];
+		const favorites: Product[] = [];
 
 		user.favoritesId.forEach((id) => {
-			favorites.push(DUMMY_PRODUCTS.find((prod) => prod._id === id));
+			const product = DUMMY_PRODUCTS.find((prod) => prod._id === id);
+
+			if (product) {
+				favorites.push(product);
+			}
+
 		});
 
 		favoritesContent = favorites.map((favorite: any) => {
@@ -62,7 +63,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ user, orders }) => {
 					key={favorite._id}
 					className={classes.profile__favorites}
 					onClick={() => {
-						navigate(`/ProductPage?_id=${favorite._id}`);
+						navigate(`/product-page?_id=${favorite._id}`);
 						window.scrollTo(0, 0);
 					}}
 				>
@@ -102,7 +103,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ user, orders }) => {
 					<input
 						className={classes.profile__main__input}
 						type="password"
-						onChange={(event: any) => {
+						onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
 							setOldPassword(event.target.value);
 						}}
 					/>
@@ -110,7 +111,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ user, orders }) => {
 					<input
 						className={classes.profile__main__input}
 						type="password"
-						onChange={(event: any) => {
+						onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
 							setNewPassword(event.target.value);
 						}}
 					/>

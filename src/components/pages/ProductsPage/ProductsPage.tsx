@@ -1,10 +1,8 @@
+/* eslint-disable import/exports-last */
 import React from 'react';
 
 import ProductsPageView from './ProductsPage.view';
 
-// eslint-disable-next-line import/exports-last
-
-// eslint-disable-next-line import/exports-last
 export interface Product {
 	_id: number;
 	name: string;
@@ -12,15 +10,14 @@ export interface Product {
 	imageUrl: string;
 	category: {
 		sex: string;
-		kind: string;
+		kind: 'pants' | 'shoes' | 'shirts';
 	};
 	sizes: number[];
 }
 
-// eslint-disable-next-line import/exports-last
+
 export type Products = Product[] | [];
 
-// eslint-disable-next-line import/exports-last
 export const DUMMY_PRODUCTS: Products = [
 	{
 		_id: 1,

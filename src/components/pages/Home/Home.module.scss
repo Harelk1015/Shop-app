@@ -1,38 +1,40 @@
-.main__dis {
+.main {
 	background-color: #961d4e;
 	text-align: center;
 	justify-content: center;
 	align-items: center;
 	margin: 2em 0;
-	// width: 100%;
-}
 
-.main__container {
-	width: 70%;
-	max-width: 900px;
-	margin: 0 auto;
+	&__container {
+		width: 70%;
+		max-width: 900px;
+		margin: 0 auto;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	justify-content: space-between;
-	padding: 2em 0;
-}
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		padding: 2em 0;
 
-.main__text {
-	margin: 0;
-	font-size: 40px;
-	color: white;
-	margin-bottom: 1em;
-}
+		&__text {
+			margin: 0;
+			font-size: 30px;
+			color: white;
+			margin-bottom: 1em;
+			width: 50%;
+			display: flex;
+		}
 
-.main__img {
-	cursor: pointer;
-}
+		&__img {
+			cursor: pointer;
+			width: 50%;
+			min-width: 200px;
+		}
 
-dialog::backdrop {
-	background-color: black;
+		&__dialog::backdrop {
+			background-color: black;
+		}
+	}
 }
 
 .second {
@@ -47,7 +49,6 @@ dialog::backdrop {
 	color: white;
 	padding: 1em 0;
 	background-color: #aa4fa1;
-	//   padding: 2em;
 }
 
 .header {
@@ -84,6 +85,7 @@ dialog::backdrop {
 	.main__container {
 		flex-direction: row;
 		gap: 4em;
+		align-items: flex-start;
 	}
 
 	.main__text {
@@ -94,6 +96,7 @@ dialog::backdrop {
 		width: 100%;
 		padding: 0;
 		margin: 0;
+		
 	}
 
 	.second__container {
@@ -103,8 +106,6 @@ dialog::backdrop {
 
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
 		justify-content: space-between;
 		padding: 2em 0;
 
