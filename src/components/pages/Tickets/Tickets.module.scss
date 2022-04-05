@@ -1,0 +1,20 @@
+.app {
+	font-family: Arial, Helvetica, sans-serif;
+	color: white;
+	width: 80%;
+	margin: 2rem auto;
+	background-color: #961d4e;
+	padding: 2rem;
+    font-size: .8rem;
+}
+
+.line {
+	margin-bottom: 2rem;
+}
+
+@media (min-width: 880px) {
+	.app {
+		margin: 5rem auto;
+        max-width: 900px;
+	}
+}

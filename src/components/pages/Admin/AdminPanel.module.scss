@@ -1,3 +1,7 @@
+.app {
+	font-family: 'Arial';
+}
+
 .tickets {
 	&__body {
 		background-color: white;
@@ -11,7 +15,9 @@
 			font-size: 0.75rem;
 
 			&__item {
-				padding: 0.5rem 0;
+				cursor: pointer;
+				// padding: 0.5rem 0;
+				margin: 1rem 0;
 				list-style: none;
 			}
 		}
@@ -23,19 +29,50 @@
 
 	&__headers {
 		text-decoration: underline;
-		margin: .4rem 0;
+		margin: 0.4rem 0;
 	}
 
 	&__btn {
 		display: block;
-		margin-top: .5rem;
-		padding: .4rem .8rem;
+		margin-top: 0.5rem;
+		padding: 0.4rem 0.8rem;
 		background-color: white;
 		border: black solid 2px;
-		
+		cursor: pointer;
+	}
+
+	&__btn:hover {
+		background-color: #c4c4c4;
 	}
 }
 
+.editProduct {
+	&__search {
+		width: 200px;
+		margin-bottom: 1rem;
+		padding-left: 0.5rem;
+		background-color: white;
+		border: solid black 2px;
+		border-radius: 10px;
+	}
+	&__body {
+		background-color: rgb(245, 244, 241);
+		border-radius: 5px;
+		padding: 2rem;
+
+		&__btn {
+			display: block;
+			margin-top: 0.5rem;
+			padding: 0.4rem 0.8rem;
+			background-color: white;
+			border: black solid 2px;
+			cursor: pointer;
+		}
+		&__btn:hover {
+			background-color: #c4c4c4;
+		}
+	}
+}
 // app-wide
 
 .card {
@@ -44,6 +81,7 @@
 	max-width: 1200px;
 	padding: 2rem;
 	margin: 1rem auto;
+	border-radius: 8px;
 
 	&__header {
 		color: white;
@@ -52,11 +90,28 @@
 }
 
 .input {
-	margin: .4rem 0;
-	margin-right: .4rem;
+	margin: 0.4rem 0;
+	margin-right: 0.4rem;
+	border: black 0.25rem solid;
+	background-color: #c4c4c4;
+	opacity: 90%;
 }
 
+input:focus {
+	outline: none;
+	opacity: 100%;
+}
 
 .label__radio {
-	margin-right: .2rem;
+	margin-right: 0.2rem;
+}
+
+@media (min-width: 1000px) {
+	.app {
+		display: flex;
+		max-width: 1200px;
+		width: 90%;
+		margin: 3rem auto;
+		gap: 2rem;
+	}
 }

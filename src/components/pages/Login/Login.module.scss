@@ -41,7 +41,7 @@
 			}
 		}
 
-		&--btn {
+		&__btn {
 			width: 40%;
 			margin: 0.75rem auto;
 			border: black 0.4rem solid;
@@ -53,18 +53,25 @@
 			text-align: center;
 		}
 
-		&--btn:hover {
+		&__btn:hover {
 			opacity: 100%;
 		}
 
-		&--switch {
+		&__switch {
 			text-decoration: none;
 			color: white;
 			text-align: center;
 			margin-top: 1rem;
 		}
-		&--switch:hover {
+		&__switch:hover {
 			opacity: 80%;
 		}
+	}
+	&__error {
+		text-align: center;
+		color: rgb(217, 15, 15);
+		background-color: #29060e;
+		border: black 2px solid;
+		padding: 1rem 0;
 	}
 }

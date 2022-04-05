@@ -85,7 +85,15 @@ const ticket6: Ticket = {
 	subject: 'ticket number 2',
 };
 
-export const tickets: Tickets = [ticket1, ticket2,ticket3,ticket4,ticket5,ticket6];
+const ticket7: Ticket = {
+	_id: 7,
+	email: 'asd@gmail.com',
+	ownerId: 2,
+	subject: 'Noder Neder',
+	message: 'אמא של יוני ממש זונה ויש לה תור ארוך לשירותי מין שלה , אני כבר מקום 30 בקיו ואני מקווה שיום אחד אמא שלו תקבל אותי ואני אשאיר לה טיפ מכובד',
+};
+
+export const tickets: Tickets = [ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7];
 
 const Profile = () => {
 	const user: User = {
