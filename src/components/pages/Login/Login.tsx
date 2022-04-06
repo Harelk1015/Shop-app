@@ -27,7 +27,7 @@ const Login = () => {
 
 		axios
 			.post(
-				'http://localhost:3030/auth/login',
+				'https://harel-shop-backend.herokuapp.com/auth/login',
 				{
 					email: emailState,
 					password: passwordState,
