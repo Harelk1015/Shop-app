@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
 import classes from './Login.module.scss';
 
 interface IProps {
@@ -9,6 +10,7 @@ interface IProps {
 	readonly errorMessage: string;
 	readonly emailChangeHandler: (value: string) => void;
 	readonly passwordChangeHandler: (value: string) => void;
+	readonly loading: boolean;
 }
 
 const LoginView: React.FC<IProps> = ({
@@ -16,6 +18,7 @@ const LoginView: React.FC<IProps> = ({
 	errorMessage,
 	emailChangeHandler,
 	passwordChangeHandler,
+	loading,
 }) => {
 	return (
 		<div className={classes.login}>
@@ -39,9 +42,13 @@ const LoginView: React.FC<IProps> = ({
 						}}
 					/>
 					{errorMessage && <p className={classes.login__error}>{errorMessage}</p>}
-					<button type="button" className={classes.login__form__btn} onClick={submitHandler}>
-						Submit
-					</button>
+					{loading ? (
+						<LoadingSpinner />
+					) : (
+						<button type="button" className={classes.login__form__btn} onClick={submitHandler}>
+							Submit
+						</button>
+					)}
 					<Link className={classes.login__form__switch} to="/register">
 						Switch to Register
 					</Link>

@@ -44,6 +44,7 @@
 .nav__link {
 	text-decoration: none;
 	color: white;
+	cursor: pointer;
 }
 
 .nav__link:hover {
@@ -130,7 +131,7 @@ Works the same :) */
 		align-items: center;
 		justify-content: space-between;
 		height: auto;
-		margin-left: 5%;
+		margin-left: 2rem;
 		position: relative;
 	}
 

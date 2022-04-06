@@ -1,98 +1,33 @@
-import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-
-import logoSvg from './snapsvg-seeklogo.com.svg';
-
-import classes from './NavBar.module.scss';
+import { useNavigate } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../../../state/reducers/actionCreator';
+import { ReducersState } from '../../../state/reducers';
+import { User } from '../../pages/Profile/Profile';
+import NavBarView from './NavBar.view';
 
 const NavBar = () => {
-	const [isActive, setActive] = useState<boolean>(false);
-	const pageWidth = window.innerWidth;
+	const [isActive, setIsActive] = useState<boolean>(false);
+	const navigate = useNavigate();
+
+	const dispacth = useDispatch();
+	const { logout } = bindActionCreators(actionCreators, dispacth);
+
+	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
 
 	const ToggleClass = () => {
-		setActive(!isActive);
+		setIsActive(!isActive);
 	};
 
-	return (
-		<header className={classes.header}>
-			<div className={`${classes.container} ${classes.row}`}>
-				<button className={classes.nav_toggle} onClick={ToggleClass}>
-					<span className={classes.hamburger} />
-				</button>
-				<Link to="/" className={classes.logo}>
-					<img className={classes.logo} src={logoSvg} alt="logo" />
-				</Link>
-				{/* <nav className={`nav${isActive ? 'nav--visible' : ''}`}> */}
-				<nav className={`${classes.nav} ${isActive ? classes.nav__visible : ''}`}>
-					<ul className={`${classes.nav__list} ${classes.nav__list__primary}`}>
-						<li className={`${classes.nav__item} ${classes.nav__search}`}>
-							<input
-								placeholder="Serch for items..."
-								className={classes.nav__input}
-								type="text"
-								id="serch"
-								name="serch"
-							/>
-						</li>
-					</ul>
-					<ul className={`${classes.nav__list} ${classes.nav__list__secondary}`}>
-						<li className={classes.nav__item}>
-							<Link
-								to="/profile"
-								className={classes.nav__link}
-								onClick={() => {
-									if (pageWidth < 880) {
-										ToggleClass();
-									}
-								}}
-							>
-								Profile
-							</Link>
-						</li>
-						<li className={classes.nav__item}>
-							<Link
-								to="/contact"
-								className={classes.nav__link}
-								onClick={() => {
-									if (pageWidth < 880) {
-										ToggleClass();
-									}
-								}}
-							>
-								Contact
-							</Link>
-						</li>
-						<li className={classes.nav__item}>
-							<Link
-								to="/login"
-								className={classes.nav__link}
-								onClick={() => {
-									if (pageWidth < 880) {
-										ToggleClass();
-									}
-								}}
-							>
-								Login
-							</Link>
-						</li>
-						<li className={classes.nav__item}>
-							<Link
-								to="/register"
-								className={classes.nav__link}
-								onClick={() => {
-									if (pageWidth < 880) {
-										ToggleClass();
-									}
-								}}
-							>
-								Register
-							</Link>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-	);
+	const onLogout = () => {
+		localStorage.removeItem('accessToken');
+		localStorage.removeItem('refreshToken');
+		logout();
+		navigate('/');
+	};
+
+	return <NavBarView ToggleClass={ToggleClass} isActive={isActive} auth={auth} onLogout={onLogout} />;
 };
 
 NavBar.displayName = 'NavBar';

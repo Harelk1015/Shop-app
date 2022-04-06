@@ -1,16 +1,20 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/exports-last */
 // eslint-disable-next-line import/no-cycle
+import { useSelector } from 'react-redux';
+import { ReducersState } from '../../../state/reducers';
 import ProfileView from './Profile.view';
 
 // User
 
-interface User {
-	_id: number;
-	username: string;
+export interface User {
+	readonly username: string;
 	email: string;
 	password: string;
 	role: 'admin' | 'user';
-	favoritesId: number[];
+	favorites: number[];
+	tokens: { token: string; _id: string }[];
+	_id: number;
 }
 
 // Tickets
@@ -90,20 +94,16 @@ const ticket7: Ticket = {
 	email: 'asd@gmail.com',
 	ownerId: 2,
 	subject: 'Noder Neder',
-	message: 'אמא של יוני ממש זונה ויש לה תור ארוך לשירותי מין שלה , אני כבר מקום 30 בקיו ואני מקווה שיום אחד אמא שלו תקבל אותי ואני אשאיר לה טיפ מכובד',
+	message:
+		'אמא של יוני ממש זונה ויש לה תור ארוך לשירותי מין שלה , אני כבר מקום 30 בקיו ואני מקווה שיום אחד אמא שלו תקבל אותי ואני אשאיר לה טיפ מכובד',
 };
 
 export const tickets: Tickets = [ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7];
 
 const Profile = () => {
-	const user: User = {
-		_id: 1,
-		username: 'harelk1015',
-		email: 'harelk1015@gmail.com',
-		password: '123123',
-		role: 'user',
-		favoritesId: [1, 2, 3],
-	};
+	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
+
+	const user = auth.user;
 
 	const orders: Orders = [
 		{ _id: 1, ownerId: 1, productsId: [1, 2], total: 150 },

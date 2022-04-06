@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
 import classes from './Register.module.scss';
 
 interface IProps {
@@ -9,6 +10,7 @@ interface IProps {
 	readonly password: string;
 	readonly passwordConfirm: string;
 	readonly errorMessage: string;
+	readonly loading: boolean;
 	readonly usernameChangeHandler: (value: string) => void;
 	readonly emailChangeHandler: (value: string) => void;
 	readonly passwordChangeHandler: (value: string) => void;
@@ -26,6 +28,7 @@ const RegisterView: React.FC<IProps> = ({
 	emailChangeHandler,
 	passwordChangeHandler,
 	passwordConfirmChangeHandler,
+	loading,
 }) => {
 	return (
 		<div className={classes.register}>
@@ -69,9 +72,13 @@ const RegisterView: React.FC<IProps> = ({
 						}}
 					/>
 					{errorMessage && <p className={classes.register__error}>{errorMessage}</p>}
-					<button className={classes.register__form__btn} onClick={submitHandler}>
-						Submit
-					</button>
+					{loading ? (
+						<LoadingSpinner />
+					) : (
+						<button className={classes.register__form__btn} onClick={submitHandler}>
+							Submit
+						</button>
+					)}
 					<Link className={classes.register__form__switch} to="/login">
 						Switch to login
 					</Link>
