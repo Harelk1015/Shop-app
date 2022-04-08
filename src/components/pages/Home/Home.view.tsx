@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import img from '../../../assets/pants.jpeg';
+import img from '../../../assets/Pants.jpeg';
 import woman from '../../../assets/woman.jpeg';
 import man from '../../../assets/man.jpeg';
 
@@ -11,31 +11,31 @@ import classes from './Home.module.scss';
 const HomeView = () => {
 	const [manDialog, setManDialog] = useState(false);
 	const [womanDialog, setWomanDialog] = useState(false);
-	const [pantsDialog, setPantsDialog] = useState(false);
+	const [PantsDialog, setPantsDialog] = useState(false);
 
 	return (
 		<>
 			<div className={classes.main}>
 				<div className={classes.main__container}>
-					<h2 className={classes.main__container__text}>UP TO 30% OFF ON ALL PANTS</h2>
+					<h2 className={classes.main__container__text}>UP TO 30% OFF ON ALL Pants</h2>
 					<div className={classes.main__container__img}>
 						<img
 							src={img}
-							alt="picture of pants"
+							alt="picture of Pants"
 							onClick={() => {
-								setPantsDialog(!pantsDialog);
+								setPantsDialog(!PantsDialog);
 								// eslint-disable-next-line no-trailing-spaces
 
-								if (!pantsDialog) {
+								if (!PantsDialog) {
 									window.scrollBy({ left: 0, top: 180, behavior: 'smooth' });
 								}
 							}}
 						/>
-						{pantsDialog && (
+						{PantsDialog && (
 							<dialog open className={classes.dialog}>
 								<button className={classes.dialog__btn}>
 									<Link
-										to="products-page?gender=Woman&category=Pants"
+										to="products-page?sex=Woman&kind=Pants"
 										className={classes.dialog__btn}
 										onClick={() => {
 											window.scrollTo(0, 0);
@@ -47,7 +47,7 @@ const HomeView = () => {
 								<hr />
 								<button className={classes.dialog__btn}>
 									<Link
-										to="products-page?gender=Male&category=Pants"
+										to="products-page?sex=Male&kind=Pants"
 										className={classes.dialog__btn}
 										onClick={() => {
 											window.scrollTo(0, 0);
@@ -96,7 +96,7 @@ const HomeView = () => {
 								<dialog open className={classes.dialog}>
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?gender=Woman&category=Shirts"
+											to="products-page?sex=Woman&kind=Shirts"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -108,7 +108,7 @@ const HomeView = () => {
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?gender=Woman&category=Pants"
+											to="products-page?sex=Woman&kind=Pants"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -120,7 +120,7 @@ const HomeView = () => {
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?gender=Woman&category=Shoes"
+											to="products-page?sex=Woman&kind=Shoes"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -162,7 +162,7 @@ const HomeView = () => {
 								<dialog open className={classes.dialog}>
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?gender=Man&category=Shirts"
+											to="products-page?sex=Man&kind=Shirts"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -174,7 +174,7 @@ const HomeView = () => {
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?gender=Man&category=Pants"
+											to="products-page?sex=Man&kind=Pants"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -186,7 +186,7 @@ const HomeView = () => {
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?gender=Man&category=Shoes"
+											to="products-page?sex=Man&kind=Shoes"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);

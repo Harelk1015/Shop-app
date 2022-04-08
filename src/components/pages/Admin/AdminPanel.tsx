@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { tickets } from '../Profile/Profile';
 import AdminPanelView from './AdminPanel.view';
 
 const AdminPanel = () => {
 	const [name, setName] = useState('');
-	const [price, setPrice] = useState('');
+	const [price, setPrice] = useState<number>(0);
 	const [sex, setSex] = useState('');
-	const [category, setCategory] = useState('');
+	const [kind, setKind] = useState('');
 	const [imageUrl, setImageUrl] = useState('');
 	const [size36, setSize36] = useState<number>(Number);
 	const [size37, setSize37] = useState<number>(Number);
@@ -23,30 +24,33 @@ const AdminPanel = () => {
 	const [prodPrice, setProdPrice] = useState<number>(Number);
 	const [prodSizes, setProdSizes] = useState<[]>([]);
 
+	const navigate = useNavigate();
+
 	let sizes = [size36, size37, size38, size39, size40, size41, size42];
 
 	const getInputs = () => {
 		sizes = sizes.filter(Boolean);
 
 		axios
-			.post('https://harel-shop-backend.herokuapp.com/products/addProduct', {
+			.post('https://harel-shop-backend.herokuapp.com/products/add-product', {
 				name,
 				price,
 				sex,
-				category,
+				category: { sex, kind },
 				imageUrl,
 				sizes,
 			})
 			.then((res: any) => {
-				console.log(res);
+				const _id = res.data.message._id;
+
+				navigate(`/product-page?_id=${_id}`);
 
 				if (res.data.accessToken) {
 					localStorage.setItem('accessToken', res.data.accessToken);
 				}
 			})
 			.catch((err) => {
-				// errorMessageChangeHandler(err.response.data.message);
-				console.log(err.response.data.message);
+				console.log(err?.response?.data?.message);
 			});
 	};
 
@@ -56,7 +60,7 @@ const AdminPanel = () => {
 			name={name}
 			price={price}
 			sex={sex}
-			category={category}
+			kind={kind}
 			imageUrl={imageUrl}
 			size36={size36}
 			size37={size37}
@@ -72,7 +76,7 @@ const AdminPanel = () => {
 			setName={setName}
 			setPrice={setPrice}
 			setSex={setSex}
-			setCategory={setCategory}
+			setKind={setKind}
 			setImageUrl={setImageUrl}
 			setSize36={setSize36}
 			setSize37={setSize37}

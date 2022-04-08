@@ -1,5 +1,6 @@
 /* eslint-disable import/exports-last */
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 import ProductsPageView from './ProductsPage.view';
 
@@ -8,120 +9,119 @@ export interface Product {
 	name: string;
 	price: number;
 	imageUrl: string;
-	category: {
+	kind: {
 		sex: string;
-		kind: 'pants' | 'shoes' | 'shirts';
+		kind: 'Pants' | 'Shoes' | 'Shirts';
 	};
 	sizes: number[];
 }
-
 
 export type Products = Product[] | [];
 
 export const DUMMY_PRODUCTS: Products = [
 	{
 		_id: 1,
-		name: 'blue pants',
+		name: 'blue Pants',
 		price: 29.99,
 		imageUrl:
 			'https://cdn.shopify.com/s/files/1/2185/2813/products/W5561R_03482_b1_s1_a1_1_m18_750x.jpg?v=1622752753',
-		category: {
+		kind: {
 			sex: 'man',
-			kind: 'pants',
+			kind: 'Pants',
 		},
 		sizes: [41, 42, 43],
 	},
 	{
 		_id: 2,
-		name: 'black pants',
+		name: 'black Pants',
 		price: 29.99,
 		imageUrl: 'https://litb-cgis.rightinthebox.com/images/x/202008/iqhm1597303836855.jpg',
-		category: {
+		kind: {
 			sex: 'man',
-			kind: 'pants',
+			kind: 'Pants',
 		},
 		sizes: [41, 42, 43],
 	},
 	{
 		_id: 3,
-		name: 'purple pants',
+		name: 'purple Pants',
 		price: 29.99,
 		imageUrl: 'https://litb-cgis.rightinthebox.com/images/x/202011/atmmpd1604983076568.jpg',
-		category: {
+		kind: {
 			sex: 'man',
-			kind: 'pants',
+			kind: 'Pants',
 		},
 		sizes: [41, 42, 43],
 	},
 	{
 		_id: 4,
-		name: 'purple pants',
+		name: 'purple Pants',
 		price: 29.99,
 		imageUrl:
 			'https://www.delta.co.il/pub/media/catalog/product/cache/68cb7419c5fbe5ff1cd1d2abdd94fb1c/l/d/LDK1921_LM06A_2-1626887989454690.jpg',
-		category: {
+		kind: {
 			sex: 'man',
-			kind: 'pants',
+			kind: 'Pants',
 		},
 		sizes: [41, 42, 43],
 	},
 	{
 		_id: 5,
-		name: 'purple pants',
+		name: 'purple Pants',
 		price: 29.99,
 		imageUrl:
 			'https://cdn.shopify.com/s/files/1/2185/2813/products/W5561R_03482_b1_s1_a1_1_m18_750x.jpg?v=1622752753',
-		category: {
+		kind: {
 			sex: 'man',
-			kind: 'pants',
+			kind: 'Pants',
 		},
 		sizes: [41, 42, 43],
 	},
 	{
 		_id: 6,
-		name: 'purple pants',
+		name: 'purple Pants',
 		price: 29.99,
 		imageUrl:
 			'https://cdn.shopify.com/s/files/1/2185/2813/products/W5561R_03482_b1_s1_a1_1_m18_750x.jpg?v=1622752753',
-		category: {
+		kind: {
 			sex: 'man',
-			kind: 'pants',
+			kind: 'Pants',
 		},
 		sizes: [41, 42, 43],
 	},
 	{
 		_id: 7,
-		name: 'purple pants',
+		name: 'purple Pants',
 		price: 29.99,
 		imageUrl:
 			'https://cdn.shopify.com/s/files/1/2185/2813/products/W5561R_03482_b1_s1_a1_1_m18_750x.jpg?v=1622752753',
-		category: {
+		kind: {
 			sex: 'man',
-			kind: 'pants',
+			kind: 'Pants',
 		},
 		sizes: [41, 42, 43],
 	},
 	{
 		_id: 8,
-		name: 'purple pants',
+		name: 'purple Pants',
 		price: 29.99,
 		imageUrl:
 			'https://cdn.shopify.com/s/files/1/2185/2813/products/W5561R_03482_b1_s1_a1_1_m18_750x.jpg?v=1622752753',
-		category: {
+		kind: {
 			sex: 'man',
-			kind: 'pants',
+			kind: 'Pants',
 		},
 		sizes: [41, 42, 43],
 	},
 	{
 		_id: 9,
-		name: 'purple pants',
+		name: 'purple Pants',
 		price: 29.99,
 		imageUrl:
 			'https://cdn.shopify.com/s/files/1/2185/2813/products/W5561R_03482_b1_s1_a1_1_m18_750x.jpg?v=1622752753',
-		category: {
+		kind: {
 			sex: 'man',
-			kind: 'pants',
+			kind: 'Pants',
 		},
 		sizes: [41, 42, 43],
 	},
@@ -129,12 +129,26 @@ export const DUMMY_PRODUCTS: Products = [
 
 const ProductsPage: React.FC = () => {
 	const params = new URLSearchParams(window.location.search);
-	const gender = params.get('gender');
-	const category = params.get('category');
+	const sex = params.get('sex');
+	const kind = params.get('kind');
 
-	// Fetch - GET (use gender and category to get the right list and pass to pageView)
+	console.log(sex, kind);
 
-	return <ProductsPageView items={DUMMY_PRODUCTS} gender={gender} category={category} />;
+	const [products, setProducts] = useState<Product[]>();
+
+	useEffect(() => {
+		axios
+			.post('https://harel-shop-backend.herokuapp.com/products/get-products', {
+				sex,
+				kind,
+			})
+			.then((res) => {
+				setProducts(res.data.products);
+			})
+			.catch((err) => console.log(err));
+	}, []);
+
+	return <ProductsPageView items={products} sex={sex} kind={kind} />;
 };
 
 ProductsPage.displayName = 'ProductsPage';

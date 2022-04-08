@@ -59,6 +59,7 @@
 		max-width: 1500px;
 		display: flex;
 		justify-content: space-between;
+		gap: 1rem;
 
 		&__header {
 			margin: 0;
@@ -67,6 +68,7 @@
 		&__img {
 			width: 40%;
 			max-width: 400px;
+			min-width: 236px;
 		}
 
 		&__content {

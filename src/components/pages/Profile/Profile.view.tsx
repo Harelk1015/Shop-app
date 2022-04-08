@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DUMMY_PRODUCTS, Product } from '../ProductsPage/ProductsPage';
+import { Product } from '../ProductsPage/ProductsPage';
 import classes from './Profile.module.scss';
 // eslint-disable-next-line import/no-cycle
 import { Orders } from './Profile';
@@ -48,13 +48,11 @@ const ProfileView: React.FC<IProps> = ({ user, orders }) => {
 	} else {
 		const favorites: Product[] = [];
 
-		user.favoritesId.forEach((id) => {
-			const product = DUMMY_PRODUCTS.find((prod) => prod._id === id);
-
-			if (product) {
-				favorites.push(product);
-			}
-
+		user.favoritesId.forEach(() => {
+			// const product = DUMMY_PRODUCTS.find((prod) => prod._id === id);
+			// if (product) {
+			// 	favorites.push(product);
+			// }
 		});
 
 		favoritesContent = favorites.map((favorite: any) => {

@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 import emptyHeart from '../../../assets/empty-heart.svg';
-
-import { DUMMY_PRODUCTS } from '../ProductsPage/ProductsPage';
+import { Product } from '../ProductsPage/ProductsPage';
 import classes from './ProductPage.module.scss';
 
 interface ProductPageViewProps {
 	readonly onClick?: () => void;
+	product: Product | undefined;
 }
 
-const ProductPageView: React.FC<ProductPageViewProps> = () => {
-	const params = new URLSearchParams(window.location.search);
-	const _id = params.get('_id');
+const ProductPageView: React.FC<ProductPageViewProps> = ({ product }) => {
 	const [choosenSize, setChoosenSize] = useState();
 
 	console.log(choosenSize);
-
-	const product = DUMMY_PRODUCTS.find((product) => {
-		return product._id.toString() === _id;
-	});
 
 	// should fetch all the product props from server insted of the find method above
 

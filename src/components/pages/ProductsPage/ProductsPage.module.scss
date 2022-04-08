@@ -30,6 +30,7 @@
 	}
 
 	&__img {
+		width: 100%;
 		border-radius: 4px;
 		cursor: pointer;
 	}
@@ -53,7 +54,7 @@
 	}
 }
 
-@media (min-width: 800px) {
+@media (min-width: 880px) {
 	.productsPage {
 		&__header {
 			flex-direction: row;
@@ -63,7 +64,6 @@
 			justify-content: center;
 
 			&__text {
-				//   margin-right: %;
 				width: 100%;
 				font-size: 2rem;
 			}
@@ -91,7 +91,7 @@
 			width: 2rem;
 		}
 		&__img {
-			height: 26vw;
+			height: 27vw;
 			max-height: 400px;
 		}
 

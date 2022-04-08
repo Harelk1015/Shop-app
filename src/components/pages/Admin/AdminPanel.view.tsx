@@ -8,9 +8,9 @@ import classes from './AdminPanel.module.scss';
 interface IProps {
 	tickets: Tickets;
 	name: string;
-	price: string;
+	price: number;
 	sex: string;
-	category: string;
+	kind: string;
 	imageUrl: string;
 	size36: number;
 	size37: number;
@@ -24,9 +24,9 @@ interface IProps {
 	prodPrice: number;
 	prodSizes: [];
 	setName: React.Dispatch<React.SetStateAction<string>>;
-	setPrice: React.Dispatch<React.SetStateAction<string>>;
+	setPrice: React.Dispatch<React.SetStateAction<number>>;
 	setSex: React.Dispatch<React.SetStateAction<string>>;
-	setCategory: React.Dispatch<React.SetStateAction<string>>;
+	setKind: React.Dispatch<React.SetStateAction<string>>;
 	setImageUrl: React.Dispatch<React.SetStateAction<string>>;
 	setSize36: React.Dispatch<React.SetStateAction<number>>;
 	setSize37: React.Dispatch<React.SetStateAction<number>>;
@@ -51,7 +51,7 @@ const AdminPanelView: React.FC<IProps> = ({
 	setName,
 	setPrice,
 	setSex,
-	setCategory,
+	setKind,
 	setImageUrl,
 	setSize36,
 	setSize37,
@@ -166,10 +166,10 @@ const AdminPanelView: React.FC<IProps> = ({
 					<h3 className={classes.addProduct__headers}>Sex</h3>
 					{input('Man', 'radio', 'sex', setSex, 'radio')}
 					{input('Woman', 'radio', 'sex', setSex, 'radio')}
-					<h3 className={classes.addProduct__headers}>Category</h3>
-					{input('Shirt', 'radio', 'category', setCategory, 'radio')}
-					{input('Pants', 'radio', 'category', setCategory, 'radio')}
-					{input('Shoes', 'radio', 'category', setCategory, 'radio')}
+					<h3 className={classes.addProduct__headers}>kind</h3>
+					{input('Shirts', 'radio', 'kind', setKind, 'radio')}
+					{input('Pants', 'radio', 'kind', setKind, 'radio')}
+					{input('Shoes', 'radio', 'kind', setKind, 'radio')}
 					<h3 className={classes.addProduct__headers}>Image Link</h3>
 					{input('url: ', 'text', 'imageUrl', setImageUrl)}
 					<h3 className={classes.addProduct__headers}>sizes</h3>

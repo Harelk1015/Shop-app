@@ -43,7 +43,7 @@ const Login = () => {
 			})
 			.catch((err) => {
 				setLoading(false);
-				errorMessageChangeHandler(err.response.data.message);
+				errorMessageChangeHandler(err?.response?.data?.message);
 			});
 	};
 
