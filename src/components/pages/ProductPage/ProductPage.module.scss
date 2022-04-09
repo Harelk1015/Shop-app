@@ -1,5 +1,8 @@
 .productPage {
 	color: white;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 
 	&__content {
 		width: 90%;
@@ -52,13 +55,14 @@
 	}
 }
 
-@media (min-width: 800px) {
+@media (min-width: 880px) {
 	.productPage {
 		margin: 4rem auto;
 		min-height: 20;
 		width: 50%;
 		max-width: 1500px;
 		display: flex;
+		flex-direction: row;
 		justify-content: space-between;
 		gap: 1rem;
 
@@ -85,4 +89,8 @@
 	.push {
 		min-height: 70vh;
 	}
+}
+
+.push {
+	width: 100%;
 }
