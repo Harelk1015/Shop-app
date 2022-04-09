@@ -21,7 +21,7 @@ const HomeView = () => {
 					<div className={classes.main__container__img}>
 						<img
 							src={img}
-							alt="picture of Pants"
+							alt="picture of Pats"
 							onClick={() => {
 								setPantsDialog(!PantsDialog);
 								// eslint-disable-next-line no-trailing-spaces
