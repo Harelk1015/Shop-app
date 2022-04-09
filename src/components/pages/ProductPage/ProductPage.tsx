@@ -10,7 +10,7 @@ const ProductPage: React.FC = () => {
 
 	useEffect(() => {
 		axios
-			.post('https://harel-shop-backend.herokuapp.com/products/get-product', {
+			.post('http://localhost:3030/products/get-product', {
 				_id,
 			})
 			.then((res) => {

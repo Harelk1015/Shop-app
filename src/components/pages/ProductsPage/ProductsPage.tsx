@@ -138,7 +138,7 @@ const ProductsPage: React.FC = () => {
 
 	useEffect(() => {
 		axios
-			.post('https://harel-shop-backend.herokuapp.com/products/get-products', {
+			.post('http://localhost:3030/products/get-products', {
 				sex,
 				kind,
 			})

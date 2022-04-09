@@ -1,4 +1,4 @@
-footer {
+.footer {
 	background: #360a14;
 	color: white;
 	font-size: 13px;
@@ -27,21 +27,23 @@ footer {
 }
 
 .nav {
-
-	
 	&__link {
 		text-decoration: none;
 		color: white;
 	}
 
 	&__copyrights {
-
 		text-align: center;
 		margin: 0;
 	}
 }
 
 @media (min-width: 880px) {
+	.footer {
+		position: sticky;
+		top: 100%;
+	}
+
 	.links {
 		flex-direction: row;
 	}

@@ -3,7 +3,7 @@ import classes from './Footer.module.scss';
 
 const Footer = () => {
 	return (
-		<footer>
+		<footer className={classes.footer}> 
 			<div className={classes.links}>
 				<div className={`${classes.links__left} ${classes.center}`}>
 					<ul className={classes.list}>

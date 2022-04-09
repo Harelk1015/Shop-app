@@ -21,38 +21,44 @@ const LoginView: React.FC<IProps> = ({
 	loading,
 }) => {
 	return (
-		<div className={classes.login}>
-			<h1 className={classes.login__header}>Login</h1>
-			<div className={classes.login__form}>
-				<form>
-					<label htmlFor="username">Email</label>
-					<input
-						type="email"
-						name="email"
-						onChange={(event) => {
-							emailChangeHandler(event.target.value);
-						}}
-					/>
-					<label htmlFor="password">Password</label>
-					<input
-						type="password"
-						name="password"
-						onChange={(event) => {
-							passwordChangeHandler(event.target.value);
-						}}
-					/>
-					{errorMessage && <p className={classes.login__error}>{errorMessage}</p>}
-					{loading ? (
-						<LoadingSpinner />
-					) : (
-						<button type="button" className={classes.login__form__btn} onClick={submitHandler}>
-							Submit
-						</button>
-					)}
-					<Link className={classes.login__form__switch} to="/register">
-						Switch to Register
-					</Link>
-				</form>
+		<div className={classes.push}>
+			<div className={classes.login}>
+				<h1 className={classes.login__header}>Login</h1>
+				<div className={classes.login__form}>
+					<form>
+						<label htmlFor="username">Email</label>
+						<input
+							type="email"
+							name="email"
+							onChange={(event) => {
+								emailChangeHandler(event.target.value);
+							}}
+						/>
+						<label htmlFor="password">Password</label>
+						<input
+							type="password"
+							name="password"
+							onChange={(event) => {
+								passwordChangeHandler(event.target.value);
+							}}
+						/>
+						{errorMessage && <p className={classes.login__error}>{errorMessage}</p>}
+						{loading ? (
+							<LoadingSpinner />
+						) : (
+							<button
+								type="button"
+								className={classes.login__form__btn}
+								onClick={submitHandler}
+							>
+								Submit
+							</button>
+						)}
+						<Link className={classes.login__form__switch} to="/register">
+							Switch to Register
+						</Link>
+					</form>
+				</div>
 			</div>
 		</div>
 	);
