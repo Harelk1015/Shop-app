@@ -1,4 +1,5 @@
 .productPage {
+	min-height: 62.5vh;
 	color: white;
 
 	&__content {
@@ -66,9 +67,9 @@
 		}
 
 		&__img {
-			width: 40%;
-			max-width: 400px;
-			min-width: 236px;
+			width: 30%;
+			// max-width: 400px;
+			// min-width: 236px;
 		}
 
 		&__content {
