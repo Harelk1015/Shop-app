@@ -32,7 +32,7 @@ const AdminPanel = () => {
 		sizes = sizes.filter(Boolean);
 
 		axios
-			.post('http://localhost:3030/products/add-product', {
+			.post('https://harel-shop-backend.herokuapp.com/products/add-product', {
 				name,
 				price,
 				sex,

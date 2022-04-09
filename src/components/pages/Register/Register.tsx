@@ -24,7 +24,7 @@ const Register = () => {
 		setLoading(true);
 
 		axios
-			.post('http://localhost:3030/auth/register', {
+			.post('https://harel-shop-backend.herokuapp.com/auth/register', {
 				email: emailState,
 				password: passwordState,
 				passwordConfirmation: passwordConfirmState,
