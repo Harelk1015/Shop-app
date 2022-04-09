@@ -1,5 +1,4 @@
 .productPage {
-	min-height: 62.5vh;
 	color: white;
 
 	&__content {
@@ -56,6 +55,7 @@
 @media (min-width: 800px) {
 	.productPage {
 		margin: 4rem auto;
+		min-height: 20;
 		width: 50%;
 		max-width: 1500px;
 		display: flex;
@@ -67,7 +67,7 @@
 		}
 
 		&__img {
-			width: 30%;
+			// width: 0%;
 			// max-width: 400px;
 			// min-width: 236px;
 		}
@@ -80,5 +80,9 @@
 			// padding: 1rem;
 			margin-left: auto;
 		}
+	}
+
+	.push {
+		min-height: 70vh;
 	}
 }
