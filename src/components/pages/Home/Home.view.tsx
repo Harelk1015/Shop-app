@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import img from '../../../assets/Pants.jpeg';
+import img from '../../../assets/pants.jpeg';
 import woman from '../../../assets/woman.jpeg';
 import man from '../../../assets/man.jpeg';
 
