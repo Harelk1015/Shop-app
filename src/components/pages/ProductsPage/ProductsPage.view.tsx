@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductItemView from '../../ui/Products/ProductItem.view';
+import ProductItem from '../../ui/Products/ProductItem';
 import type { Product } from './ProductsPage';
 
 import classes from './ProductsPage.module.scss';
@@ -8,24 +8,12 @@ interface ProductsViewProps {
 	items: Product[] | undefined;
 	sex: string | null;
 	kind: string | null;
+	userFavoritesId: string[] | undefined;
 }
 
 // eslint-disable-next-line react/destructuring-assignment
-const ProductsPageView: React.FC<ProductsViewProps> = ({ items, sex, kind }) => {
+const ProductsPageView: React.FC<ProductsViewProps> = ({ items, sex, kind, userFavoritesId }) => {
 	// eslint-disable-next-line no-trailing-spaces
-
-	items?.map((item) => {
-		return (
-			<ProductItemView
-				key={item._id}
-				_id={item._id}
-				name={item.name}
-				price={item.price}
-				imageUrl={item.imageUrl}
-				sizes={item.sizes}
-			/>
-		);
-	});
 
 	return (
 		<div className={classes.productsPage}>
@@ -36,13 +24,13 @@ const ProductsPageView: React.FC<ProductsViewProps> = ({ items, sex, kind }) => 
 			<main className={classes.productsPage__main}>
 				{items?.map((item) => {
 					return (
-						<ProductItemView
+						<ProductItem
 							key={item._id}
 							_id={item._id}
 							name={item.name}
 							price={item.price}
 							imageUrl={item.imageUrl}
-							sizes={item.sizes}
+							userFavoritesId={userFavoritesId}
 						/>
 					);
 				})}

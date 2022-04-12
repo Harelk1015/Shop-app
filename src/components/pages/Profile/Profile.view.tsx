@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Product } from '../ProductsPage/ProductsPage';
 import classes from './Profile.module.scss';
 // eslint-disable-next-line import/no-cycle
 import { Orders } from './Profile';
@@ -14,13 +13,14 @@ interface IProps {
 		readonly email: string;
 		readonly password: string;
 		readonly role: 'admin' | 'user';
-		readonly favoritesId?: number[];
+		readonly favorites?: number[];
 	};
+	readonly userFavorites: { _id: string; imageUrl: string; name: string }[];
 	// tickets: Tickets;
 	orders: Orders;
 }
 
-const ProfileView: React.FC<IProps> = ({ user, orders }) => {
+const ProfileView: React.FC<IProps> = ({ user, orders, userFavorites }) => {
 	const navigate = useNavigate();
 
 	const [oldPassword, setOldPassword] = useState<string>('');
@@ -43,19 +43,10 @@ const ProfileView: React.FC<IProps> = ({ user, orders }) => {
 		});
 	}
 
-	if (!user.favoritesId) {
+	if (!user.favorites) {
 		favoritesContent = <p>You dont have any favorite items</p>;
 	} else {
-		const favorites: Product[] = [];
-
-		user.favoritesId.forEach(() => {
-			// const product = DUMMY_PRODUCTS.find((prod) => prod._id === id);
-			// if (product) {
-			// 	favorites.push(product);
-			// }
-		});
-
-		favoritesContent = favorites.map((favorite: any) => {
+		favoritesContent = userFavorites.map((favorite: any) => {
 			return (
 				<div
 					key={favorite._id}

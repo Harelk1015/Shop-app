@@ -1,19 +1,34 @@
 /* eslint-disable react/destructuring-assignment */
-import * as React from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { ReducersState } from '../../../state/reducers';
+
+import { addFavorite, removeFavorite } from '../../../utils/favorite';
+import { User } from '../../pages/Profile/Profile';
 
 import classes from '../../pages/ProductsPage/ProductsPage.module.scss';
 import emptyHeart from '../../../assets/empty-heart.svg';
+import fullHeart from '../../../assets/full-heart.svg';
 
 interface ProductItemViewProps {
-	_id: number;
+	_id: string;
 	name: string;
 	price: number;
 	imageUrl: string;
-	sizes: number[];
+	isFavorited: boolean;
+	setIsFavorited: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({ _id, name, price, imageUrl }) => {
+const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({
+	_id,
+	name,
+	price,
+	imageUrl,
+	isFavorited,
+	setIsFavorited,
+}) => {
+	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
 	const navigate = useNavigate();
 
 	return (
@@ -41,14 +56,31 @@ const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({ _id, n
 						ILS
 					</h3>
 				</div>
-				<img
-					className={classes.productItem__heart}
-					src={emptyHeart}
-					alt="favorite"
-					onClick={() => {
-						// will chnage the svg to black and send request
-					}}
-				/>
+				{auth.isAuth ? (
+					isFavorited ? (
+						<img
+							className={classes.productItem__heart}
+							src={fullHeart}
+							alt="favorite"
+							onClick={() => {
+								removeFavorite(_id);
+								setIsFavorited(!isFavorited);
+							}}
+						/>
+					) : (
+						<img
+							className={classes.productItem__heart}
+							src={emptyHeart}
+							alt="favorite"
+							onClick={() => {
+								addFavorite(_id);
+								setIsFavorited(!isFavorited);
+							}}
+						/>
+					)
+				) : (
+					<p />
+				)}
 			</div>
 		</div>
 	);

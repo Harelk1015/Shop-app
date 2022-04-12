@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
 import emptyHeart from '../../../assets/empty-heart.svg';
+import fullHeart from '../../../assets/full-heart.svg';
 import { Product } from '../ProductsPage/ProductsPage';
+import { User } from '../Profile/Profile';
 import classes from './ProductPage.module.scss';
 
 interface ProductPageViewProps {
 	readonly onClick?: () => void;
 	product: Product | undefined;
+	isFavorited: boolean;
+	setIsFavorited: React.Dispatch<React.SetStateAction<boolean>>;
+	addFavorite: (productId: string) => void;
+	removeFavorite: (productId: string) => void;
+	auth: {
+		user: User;
+		isAuth: boolean;
+	};
 }
 
-const ProductPageView: React.FC<ProductPageViewProps> = ({ product }) => {
+const ProductPageView: React.FC<ProductPageViewProps> = ({
+	product,
+	isFavorited,
+	addFavorite,
+	removeFavorite,
+	setIsFavorited,
+	auth,
+}) => {
 	const [choosenSize, setChoosenSize] = useState();
 
 	console.log(choosenSize);
-
-	// should fetch all the product props from server insted of the find method above
 
 	return (
 		<div className={classes.push}>
@@ -55,14 +70,31 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({ product }) => {
 						<button type="button" className={classes.productPage__clickers__cartBtn}>
 							Add to cart
 						</button>
-						<img
-							className={classes.productPage__clickers__heart}
-							src={emptyHeart}
-							alt="favorite"
-							onClick={() => {
-								// will chnage the svg to black and send request
-							}}
-						/>
+						{auth.isAuth ? (
+							isFavorited ? (
+								<img
+									className={classes.productPage__clickers__heart}
+									src={fullHeart}
+									alt="favorite"
+									onClick={() => {
+										removeFavorite(product!._id);
+										setIsFavorited(!isFavorited);
+									}}
+								/>
+							) : (
+								<img
+									className={classes.productPage__clickers__heart}
+									src={emptyHeart}
+									alt="favorite"
+									onClick={() => {
+										addFavorite(product!._id);
+										setIsFavorited(!isFavorited);
+									}}
+								/>
+							)
+						) : (
+							<p />
+						)}
 					</div>
 				</div>
 			</div>

@@ -1,8 +1,14 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/exports-last */
 // eslint-disable-next-line import/no-cycle
-import { useSelector } from 'react-redux';
+
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { ReducersState } from '../../../state/reducers';
+import * as actionCreators from '../../../state/reducers/actionCreator';
 import ProfileView from './Profile.view';
 
 // User
@@ -101,16 +107,34 @@ const ticket7: Ticket = {
 export const tickets: Tickets = [ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7];
 
 const Profile = () => {
+	const dispacth = useDispatch();
+
 	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
+	const { login } = bindActionCreators(actionCreators, dispacth);
 
 	const user = auth.user;
+
+	const [userFavorites, setUserFavorites] = useState([]);
+
+	useEffect(() => {
+		if (localStorage.getItem('accessToken')) {
+			axios.get('http://localhost:3030/auth/autologin').then((res) => {
+				login(res.data.user);
+			});
+		}
+
+		axios
+			.post('http://localhost:3030/user/get-favorites')
+			.then((res) => setUserFavorites(res.data.userFavorites))
+			.catch((err) => console.log(err.message));
+	}, [auth.isAuth]);
 
 	const orders: Orders = [
 		{ _id: 1, ownerId: 1, productsId: [1, 2], total: 150 },
 		{ _id: 2, ownerId: 1, productsId: [3, 4], total: 200 },
 	];
 
-	return <ProfileView user={user} orders={orders} />;
+	return <ProfileView user={user} userFavorites={userFavorites} orders={orders} />;
 };
 
 Profile.displayName = 'Profile';
