@@ -1,8 +1,17 @@
 import { Dispatch } from 'redux';
-import { User } from '../../components/pages/Profile/Profile';
 import IAction, { ActionTypes } from './actionsTypes';
 
-export const login = (user: User) => {
+interface ILoginUser {
+	readonly username: string;
+	email: string;
+	password: string;
+	role: 'admin' | 'user';
+	favorites: number[];
+	tokens: { token: string; _id: string }[];
+	_id: number;
+}
+
+export const login = (user: ILoginUser) => {
 	return (dispath: Dispatch<IAction>) => {
 		dispath({
 			type: ActionTypes.LOGIN,
