@@ -24,7 +24,7 @@ const ProductPage: React.FC = () => {
 
 	useEffect(() => {
 		axios
-			.post('http://localhost:3030/products/get-product', {
+			.post('https://harel-shop-backend.herokuapp.com/products/get-product', {
 				_id,
 			})
 			.then((res) => {
@@ -35,7 +35,7 @@ const ProductPage: React.FC = () => {
 
 		if (localStorage.getItem('accessToken')) {
 			axios
-				.post('http://localhost:3030/user/get-favorites')
+				.post('https://harel-shop-backend.herokuapp.com/user/get-favorites')
 				.then((res) => {
 					res.data.userFavorites.forEach((favorite: IFavorite) => {
 						if (!isFavorited) {

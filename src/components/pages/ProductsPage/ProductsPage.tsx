@@ -30,7 +30,7 @@ const ProductsPage: React.FC = () => {
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
 			axios
-				.post('http://localhost:3030/user/get-favorites')
+				.post('https://harel-shop-backend.herokuapp.com/user/get-favorites')
 				.then((res) => {
 					setUserFavorites(res.data.userFavorites);
 				})
@@ -40,7 +40,7 @@ const ProductsPage: React.FC = () => {
 		}
 
 		axios
-			.post('http://localhost:3030/products/get-products', {
+			.post('https://harel-shop-backend.herokuapp.com/products/get-products', {
 				sex,
 				kind,
 			})
