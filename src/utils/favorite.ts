@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const addFavorite = (productId: string) => {
 	axios
-		.post('http://localhost:3030/user/add-favorite', {
+		.post('https://harel-shop-backend.herokuapp.com/user/add-favorite', {
 			productId,
 		})
 		.then((res) => console.log(res))
@@ -11,7 +11,7 @@ export const addFavorite = (productId: string) => {
 
 export const removeFavorite = (productId: string) => {
 	axios
-		.post('http://localhost:3030/user/remove-favorite', {
+		.post('https://harel-shop-backend.herokuapp.com/user/remove-favorite', {
 			productId,
 		})
 		.then((res) => console.log(res))

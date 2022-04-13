@@ -35,7 +35,7 @@ const AdminPanel = () => {
 		sizes = sizes.filter(Boolean);
 
 		axios
-			.post('http://localhost:3030/products/add-product', {
+			.post('https://harel-shop-backend.herokuapp.com/products/add-product', {
 				name,
 				price,
 				sex,
@@ -58,7 +58,7 @@ const AdminPanel = () => {
 			setProdId(event.target.value);
 			setSearchLoading(true);
 			axios
-				.post('http://localhost:3030/products/get-product', { _id: event.target.value.toString() })
+				.post('https://harel-shop-backend.herokuapp.com/products/get-product', { _id: event.target.value.toString() })
 				.then((res) => {
 					console.log(res.data.product);
 					setProdName(res.data.product.name);
@@ -88,7 +88,7 @@ const AdminPanel = () => {
 		console.log('after', sizes);
 
 		axios
-			.post('http://localhost:3030/products/edit-product', {
+			.post('https://harel-shop-backend.herokuapp.com/products/edit-product', {
 				_id: prodId,
 				prodName,
 				prodPrice,
