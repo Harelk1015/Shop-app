@@ -118,13 +118,13 @@ const Profile = () => {
 
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
-			axios.get(process.env.BACKEND_URL + '/auth/autologin').then((res) => {
+			axios.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin').then((res) => {
 				login(res.data.user);
 			});
 		}
 
 		axios
-			.post(process.env.BACKEND_URL + '/user/get-favorites')
+			.post(process.env.REACT_APP_BACKEND_URL + '/user/get-favorites')
 			.then((res) => setUserFavorites(res.data.userFavorites))
 			.catch((err) => console.log(err.message));
 	}, [auth.isAuth]);

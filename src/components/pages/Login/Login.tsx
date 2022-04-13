@@ -27,7 +27,7 @@ const Login = () => {
 
 		axios
 			.post(
-				process.env.BACKEND_URL + '/auth/login',
+				process.env.REACT_APP_BACKEND_URL + '/auth/login',
 				{
 					email: emailState,
 					password: passwordState,

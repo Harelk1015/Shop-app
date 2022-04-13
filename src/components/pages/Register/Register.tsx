@@ -24,7 +24,7 @@ const Register = () => {
 		setLoading(true);
 
 		axios
-			.post(process.env.BACKEND_URL + '/auth/register', {
+			.post(process.env.REACT_APP_BACKEND_URL + '/auth/register', {
 				email: emailState,
 				password: passwordState,
 				passwordConfirmation: passwordConfirmState,

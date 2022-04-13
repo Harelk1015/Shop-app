@@ -30,7 +30,7 @@ const ProductsPage: React.FC = () => {
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
 			axios
-				.post(process.env.BACKEND_URL + '/user/get-favorites')
+				.post(process.env.REACT_APP_BACKEND_URL + '/user/get-favorites')
 				.then((res) => {
 					setUserFavorites(res.data.userFavorites);
 				})
@@ -40,7 +40,7 @@ const ProductsPage: React.FC = () => {
 		}
 
 		axios
-			.post(process.env.BACKEND_URL + '/products/get-products', {
+			.post(process.env.REACT_APP_BACKEND_URL + '/products/get-products', {
 				sex,
 				kind,
 			})

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const addFavorite = (productId: string) => {
 	axios
-		.post(process.env.BACKEND_URL + '/user/add-favorite', {
+		.post(process.env.REACT_APP_BACKEND_URL + '/user/add-favorite', {
 			productId,
 		})
 		.then((res) => console.log(res))
@@ -11,7 +11,7 @@ export const addFavorite = (productId: string) => {
 
 export const removeFavorite = (productId: string) => {
 	axios
-		.post(process.env.BACKEND_URL + '/user/remove-favorite', {
+		.post(process.env.REACT_APP_BACKEND_URL + '/user/remove-favorite', {
 			productId,
 		})
 		.then((res) => console.log(res))
