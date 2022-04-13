@@ -118,13 +118,13 @@ const Profile = () => {
 
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
-			axios.get('https://harel-shop-backend.herokuapp.com/auth/autologin').then((res) => {
+			axios.get(process.env.BACKEND_URL + '/auth/autologin').then((res) => {
 				login(res.data.user);
 			});
 		}
 
 		axios
-			.post('https://harel-shop-backend.herokuapp.com/user/get-favorites')
+			.post(process.env.BACKEND_URL + '/user/get-favorites')
 			.then((res) => setUserFavorites(res.data.userFavorites))
 			.catch((err) => console.log(err.message));
 	}, [auth.isAuth]);

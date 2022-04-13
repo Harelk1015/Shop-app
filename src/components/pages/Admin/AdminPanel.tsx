@@ -19,7 +19,7 @@ const AdminPanel = () => {
 	const [size40, setSize40] = useState<number>(Number);
 	const [size41, setSize41] = useState<number>(Number);
 	const [size42, setSize42] = useState<number>(Number);
-	
+
 	const [searchLoading, setSearchLoading] = useState<boolean>();
 	const [serach, setSearch] = useState('');
 	const [prodName, setProdName] = useState('');
@@ -35,7 +35,7 @@ const AdminPanel = () => {
 		sizes = sizes.filter(Boolean);
 
 		axios
-			.post('https://harel-shop-backend.herokuapp.com/products/add-product', {
+			.post(process.env.BACKEND_URL + '/products/add-product', {
 				name,
 				price,
 				sex,
@@ -58,7 +58,9 @@ const AdminPanel = () => {
 			setProdId(event.target.value);
 			setSearchLoading(true);
 			axios
-				.post('https://harel-shop-backend.herokuapp.com/products/get-product', { _id: event.target.value.toString() })
+				.post(process.env.BACKEND_URL + '/products/get-product', {
+					_id: event.target.value.toString(),
+				})
 				.then((res) => {
 					console.log(res.data.product);
 					setProdName(res.data.product.name);
@@ -88,7 +90,7 @@ const AdminPanel = () => {
 		console.log('after', sizes);
 
 		axios
-			.post('https://harel-shop-backend.herokuapp.com/products/edit-product', {
+			.post(process.env.BACKEND_URL + '/products/edit-product', {
 				_id: prodId,
 				prodName,
 				prodPrice,

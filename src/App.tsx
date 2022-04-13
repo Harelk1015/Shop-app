@@ -27,7 +27,7 @@ const App = () => {
 
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
-			axios.get('https://harel-shop-backend.herokuapp.com/auth/autologin').then((res) => {
+			axios.get(process.env.BACKEND_URL + '/auth/autologin').then((res) => {
 				login(res.data.user);
 			});
 		}
