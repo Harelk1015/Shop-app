@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { tickets } from '../Profile/Profile';
+import { IReactEvent } from '../../../utils/types';
 import AdminPanelView from './AdminPanel.view';
 
 const AdminPanel = () => {
@@ -18,21 +19,23 @@ const AdminPanel = () => {
 	const [size40, setSize40] = useState<number>(Number);
 	const [size41, setSize41] = useState<number>(Number);
 	const [size42, setSize42] = useState<number>(Number);
-
+	
+	const [searchLoading, setSearchLoading] = useState<boolean>();
 	const [serach, setSearch] = useState('');
 	const [prodName, setProdName] = useState('');
 	const [prodPrice, setProdPrice] = useState<number>(Number);
-	const [prodSizes, setProdSizes] = useState<[]>([]);
+	const [prodSizes, setProdSizes] = useState<string>('');
+	const [prodId, setProdId] = useState('');
 
 	const navigate = useNavigate();
 
 	let sizes = [size36, size37, size38, size39, size40, size41, size42];
 
-	const getInputs = () => {
+	const addProductHandler = () => {
 		sizes = sizes.filter(Boolean);
 
 		axios
-			.post('https://harel-shop-backend.herokuapp.com/products/add-product', {
+			.post('http://localhost:3030/products/add-product', {
 				name,
 				price,
 				sex,
@@ -44,13 +47,60 @@ const AdminPanel = () => {
 				const _id = res.data.message._id;
 
 				navigate(`/product-page?_id=${_id}`);
-
-				if (res.data.accessToken) {
-					localStorage.setItem('accessToken', res.data.accessToken);
-				}
 			})
 			.catch((err) => {
 				console.log(err?.response?.data?.message);
+			});
+	};
+
+	const editProductChangeHandler = (event: IReactEvent) => {
+		if (event.target.value.length > 22) {
+			setProdId(event.target.value);
+			setSearchLoading(true);
+			axios
+				.post('http://localhost:3030/products/get-product', { _id: event.target.value.toString() })
+				.then((res) => {
+					console.log(res.data.product);
+					setProdName(res.data.product.name);
+					setProdPrice(res.data.product.price);
+					setProdSizes(res.data.product.sizes);
+					setSearchLoading(false);
+				})
+				.catch(() => {
+					setProdName('');
+					setProdPrice(0);
+					setProdSizes('');
+					setSearchLoading(false);
+				});
+		}
+	};
+
+	const editProductHandler = () => {
+		console.log('before', prodSizes);
+		let sizes;
+
+		if (typeof prodSizes !== 'object') {
+			sizes = prodSizes.split(',');
+		} else {
+			sizes = prodSizes;
+		}
+
+		console.log('after', sizes);
+
+		axios
+			.post('http://localhost:3030/products/edit-product', {
+				_id: prodId,
+				prodName,
+				prodPrice,
+				prodSizes: sizes,
+			})
+			.then((res: any) => {
+				const _id = res.data._id;
+
+				navigate(`/product-page?_id=${_id}`);
+			})
+			.catch((err) => {
+				console.log(err);
 			});
 	};
 
@@ -89,8 +139,11 @@ const AdminPanel = () => {
 			setProdName={setProdName}
 			setProdPrice={setProdPrice}
 			setProdSizes={setProdSizes}
-			getInputs={getInputs}
+			addProductHandler={addProductHandler}
+			editProductHandler={editProductHandler}
+			editProductChangeHandler={editProductChangeHandler}
 			sizes={sizes}
+			searchLoading={searchLoading}
 		/>
 	);
 };

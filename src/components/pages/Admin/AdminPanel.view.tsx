@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
 import { Tickets } from '../Profile/Profile';
 import classes from './AdminPanel.module.scss';
 
@@ -22,7 +23,7 @@ interface IProps {
 	search: string;
 	prodName: string;
 	prodPrice: number;
-	prodSizes: [];
+	prodSizes: string;
 	setName: React.Dispatch<React.SetStateAction<string>>;
 	setPrice: React.Dispatch<React.SetStateAction<number>>;
 	setSex: React.Dispatch<React.SetStateAction<string>>;
@@ -38,9 +39,12 @@ interface IProps {
 	setSearch: React.Dispatch<React.SetStateAction<string>>;
 	setProdName: React.Dispatch<React.SetStateAction<string>>;
 	setProdPrice: React.Dispatch<React.SetStateAction<number>>;
-	setProdSizes: React.Dispatch<React.SetStateAction<[]>>;
-	getInputs: () => void;
+	setProdSizes: React.Dispatch<React.SetStateAction<string>>;
+	editProductChangeHandler: (event: any) => void;
+	addProductHandler: () => void;
+	editProductHandler: () => void;
 	sizes: number[];
+	searchLoading: boolean | undefined;
 }
 
 const AdminPanelView: React.FC<IProps> = ({
@@ -60,11 +64,13 @@ const AdminPanelView: React.FC<IProps> = ({
 	setSize40,
 	setSize41,
 	setSize42,
-	setSearch,
 	setProdName,
 	setProdPrice,
 	setProdSizes,
-	getInputs,
+	addProductHandler,
+	editProductChangeHandler,
+	editProductHandler,
+	searchLoading,
 }) => {
 	const navigate = useNavigate();
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -180,7 +186,7 @@ const AdminPanelView: React.FC<IProps> = ({
 					{input('40', 'radio', '40', setSize40, 'radio')}
 					{input('41', 'radio', '41', setSize41, 'radio')}
 					{input('42', 'radio', '42', setSize42, 'radio')}
-					<button className={classes.addProduct__btn} type="button" onClick={getInputs}>
+					<button className={classes.addProduct__btn} type="button" onClick={addProductHandler}>
 						Submit
 					</button>
 				</form>
@@ -190,11 +196,12 @@ const AdminPanelView: React.FC<IProps> = ({
 				<input
 					type="text"
 					className={classes.editProduct__search}
-					placeholder="Search by name"
+					placeholder="Search by ID"
 					onChange={(event) => {
-						setSearch(event.target.value);
+						editProductChangeHandler(event);
 					}}
 				/>
+				{searchLoading && <LoadingSpinner />}
 				<div className={classes.editProduct__body}>
 					{input('Product Name: ', 'text', 'name', setProdName, 'edit', prodName)}
 					<br />
@@ -202,8 +209,16 @@ const AdminPanelView: React.FC<IProps> = ({
 					<br />
 					{input('Product Sizes: ', 'text', 'sizes', setProdSizes, 'edit', prodSizes)}
 					<br />
-					{prodName && <p>Product ID : {prodName}</p>}
-					{prodName && <button className={classes.editProduct__body__btn}>Update</button>}
+					{prodName && (
+						<button
+							className={classes.editProduct__body__btn}
+							onClick={() => {
+								editProductHandler();
+							}}
+						>
+							Update
+						</button>
+					)}
 				</div>
 			</div>
 		</div>

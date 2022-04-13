@@ -88,13 +88,18 @@
 		flex: 0 0 20%; /* explanation below */
 		margin: 10px;
 
+
 		&__heart {
 			width: 2rem;
 		}
 		&__img {
-			height: 29vw;
-			width: 270px;
-			max-height: 400px;
+			// height: 29vw;
+			// width: 20px;
+			max-height: 450px;
+			max-width: 400px;
+			// &__push {
+			// 	min-height: 450px;
+			// }
 		}
 
 		&__details__text {

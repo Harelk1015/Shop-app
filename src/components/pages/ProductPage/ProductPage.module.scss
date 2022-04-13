@@ -3,6 +3,9 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	&__price {
+		font-size: 1.5rem;
+	}
 
 	&__content {
 		width: 90%;
@@ -69,6 +72,7 @@
 		&__header {
 			margin: 0;
 		}
+		
 
 		&__img {
 			width: 50%;
@@ -84,6 +88,10 @@
 			justify-content: space-between;
 			// padding: 1rem;
 			margin-left: auto;
+		}
+
+		&__clickers {
+			margin: 0;
 		}
 	}
 
