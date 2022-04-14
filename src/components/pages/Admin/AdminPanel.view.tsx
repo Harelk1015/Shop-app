@@ -45,6 +45,7 @@ interface IProps {
 	editProductHandler: () => void;
 	sizes: number[];
 	searchLoading: boolean | undefined;
+	removeProductHandler: () => Promise<void>;
 }
 
 const AdminPanelView: React.FC<IProps> = ({
@@ -71,6 +72,7 @@ const AdminPanelView: React.FC<IProps> = ({
 	editProductChangeHandler,
 	editProductHandler,
 	searchLoading,
+	removeProductHandler,
 }) => {
 	const navigate = useNavigate();
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -210,14 +212,25 @@ const AdminPanelView: React.FC<IProps> = ({
 					{input('Product Sizes: ', 'text', 'sizes', setProdSizes, 'edit', prodSizes)}
 					<br />
 					{prodName && (
-						<button
-							className={classes.editProduct__body__btn}
-							onClick={() => {
-								editProductHandler();
-							}}
-						>
-							Update
-						</button>
+						<>
+							<button
+								className={classes.editProduct__body__btn}
+								onClick={() => {
+									editProductHandler();
+								}}
+							>
+								Update
+							</button>
+
+							<button
+								className={classes.editProduct__body__delete__btn}
+								onClick={() => {
+									removeProductHandler();
+								}}
+							>
+								Delete
+							</button>
+						</>
 					)}
 				</div>
 			</div>

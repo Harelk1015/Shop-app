@@ -28,6 +28,7 @@
 			background-color: #c4c4c4;
 			opacity: 90%;
 			outline: none;
+			margin-bottom: 0.5rem;
 		}
 
 		&__password {
@@ -47,11 +48,34 @@
 			background-color: #c4c4c4;
 			color: black;
 			opacity: 90%;
-			margin-top: 0.5rem;
+			margin-top: 0.2rem;
 			padding: 0.2rem;
 			cursor: pointer;
 			text-align: center;
 		}
+
+		
+
+		&__change__error {
+			margin: 0%;
+			margin-bottom: 0.3rem;
+			text-align: center;
+			color: rgb(217, 15, 15);
+			background-color: #29060e;
+			border: black 2px solid;
+			padding: 1rem 1rem;
+		}
+
+		&__change__good {
+			margin: 0%;
+			margin-bottom: 0.3rem;
+			text-align: center;
+			color: rgb(87, 195, 121);
+			background-color: #29060e;
+			border: black 2px solid;
+			padding: 1rem 1rem;
+		}
+
 		&__favorites {
 			&__img {
 				width: 50%;
@@ -69,7 +93,7 @@
 
 	&__card__header {
 		margin: 0;
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
 		text-decoration: underline;
 	}
 
@@ -116,7 +140,7 @@
 .card {
 	flex: 0 0 45%; /* explanation below */
 	margin: 10px;
-	height: 300px;
+	height: 330px;
 }
 
 ::-webkit-scrollbar {

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
 import classes from './Profile.module.scss';
 // eslint-disable-next-line import/no-cycle
 import { Orders } from './Profile';
@@ -18,13 +19,26 @@ interface IProps {
 	readonly userFavorites: { _id: string; imageUrl: string; name: string }[];
 	// tickets: Tickets;
 	orders: Orders;
+	setOldPassword: React.Dispatch<React.SetStateAction<string>>;
+	setNewPassword: React.Dispatch<React.SetStateAction<string>>;
+	changePasswordHandler: () => Promise<void>;
+	errorMessage: string;
+	goodMessage: string;
+	loading: boolean;
 }
 
-const ProfileView: React.FC<IProps> = ({ user, orders, userFavorites }) => {
+const ProfileView: React.FC<IProps> = ({
+	user,
+	orders,
+	userFavorites,
+	setNewPassword,
+	setOldPassword,
+	changePasswordHandler,
+	errorMessage,
+	goodMessage,
+	loading,
+}) => {
 	const navigate = useNavigate();
-
-	const [oldPassword, setOldPassword] = useState<string>('');
-	const [newPassword, setNewPassword] = useState<string>('');
 
 	let ordersContent;
 	let favoritesContent;
@@ -68,9 +82,6 @@ const ProfileView: React.FC<IProps> = ({ user, orders, userFavorites }) => {
 		});
 	}
 
-	console.log(oldPassword);
-	console.log(newPassword);
-
 	return (
 		<div className={classes.profile}>
 			<div className={classes.profile__header}>
@@ -104,9 +115,26 @@ const ProfileView: React.FC<IProps> = ({ user, orders, userFavorites }) => {
 							setNewPassword(event.target.value);
 						}}
 					/>
-					<button className={classes.profile__main__btn} type="button">
-						Submit
-					</button>
+
+					{goodMessage && !loading && (
+						<p className={classes.profile__main__change__good}>{goodMessage}</p>
+					)}
+					{errorMessage && !loading && (
+						<p className={classes.profile__main__change__error}>{errorMessage}</p>
+					)}
+					{loading ? (
+						<LoadingSpinner />
+					) : (
+						<button
+							className={classes.profile__main__btn}
+							type="button"
+							onClick={() => {
+								changePasswordHandler();
+							}}
+						>
+							Submit
+						</button>
+					)}
 				</div>
 				<div className={`${classes.profile__main__orders} ${classes.card}`}>
 					<h2 className={`${classes.profile__card__header}`}>My Orders</h2>

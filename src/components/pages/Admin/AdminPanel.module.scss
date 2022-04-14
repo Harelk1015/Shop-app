@@ -72,6 +72,20 @@
 		&__btn:hover {
 			background-color: #c4c4c4;
 		}
+
+		&__delete__btn {
+			display: block;
+			margin-top: 0.5rem;
+			padding: 0.4rem 0.8rem;
+			background-color: rgb(179, 31, 31);
+			border: black solid 2px;
+			cursor: pointer;
+			color: white;
+		}
+
+		&__delete__btn:hover {
+			background-color: #880d0d;
+		}
 	}
 }
 // app-wide

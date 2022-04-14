@@ -74,6 +74,11 @@ const AdminPanel = () => {
 					setProdSizes('');
 					setSearchLoading(false);
 				});
+		} else {
+			setProdName('');
+			setProdPrice(0);
+			setProdSizes('');
+			setSearchLoading(false);
 		}
 	};
 
@@ -104,6 +109,16 @@ const AdminPanel = () => {
 			.catch((err) => {
 				console.log(err);
 			});
+	};
+
+	const removeProductHandler = async () => {
+		try {
+			await axios.post(process.env.REACT_APP_BACKEND_URL + '/products/remove-product', {
+				_id: serach,
+			});
+		} catch (err: any) {
+			console.log(err.data.message);
+		}
 	};
 
 	return (
@@ -146,6 +161,7 @@ const AdminPanel = () => {
 			editProductChangeHandler={editProductChangeHandler}
 			sizes={sizes}
 			searchLoading={searchLoading}
+			removeProductHandler={removeProductHandler}
 		/>
 	);
 };

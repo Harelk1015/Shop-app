@@ -39,7 +39,9 @@ const ProductPage: React.FC = () => {
 				.then((res) => {
 					res.data.userFavorites.forEach((favorite: IFavorite) => {
 						if (!isFavorited) {
-							setIsFavorited(_id === favorite._id);
+							if (_id === favorite._id) {
+								setIsFavorited(true);
+							}
 						}
 					});
 				})
