@@ -72,11 +72,14 @@
 		&__header {
 			margin: 0;
 		}
-		
 
 		&__img {
 			width: 50%;
-			max-width: 500px;
+			max-width: 400px;
+
+			&__view {
+				width: 100%;
+			}
 			// max-width: 400px;
 			// min-width: 236px;
 		}

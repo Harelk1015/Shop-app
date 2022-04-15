@@ -33,7 +33,9 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 
 	return (
 		<div className={classes.productPage}>
-			<img className={classes.productPage__img} src={product?.imageUrl} alt={product?.name} />
+			<div className={classes.productPage__img}>
+				<img className={classes.productPage__img__view} src={product?.imageUrl} alt={product?.name} />
+			</div>
 			<div className={classes.productPage__content}>
 				<h1 className={classes.productPage__header}>{product?.name}</h1>
 				<h1 className={classes.productPage__price}>{product?.price} ILS</h1>
