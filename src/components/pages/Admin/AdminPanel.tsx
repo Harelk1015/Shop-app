@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { tickets } from '../Profile/Profile';
+import { Ticket } from '../Profile/Profile';
 import { IReactEvent } from '../../../utils/types';
 import AdminPanelView from './AdminPanel.view';
 
@@ -21,15 +21,32 @@ const AdminPanel = () => {
 	const [size42, setSize42] = useState<number>(Number);
 
 	const [searchLoading, setSearchLoading] = useState<boolean>();
+	const [editLoading, setEditLoading] = useState<boolean>(false);
+	const [editMessage, setEditMessage] = useState<string>('');
+	const [editErrMessage, setEditErrMessage] = useState<string>('');
 	const [serach, setSearch] = useState('');
 	const [prodName, setProdName] = useState('');
 	const [prodPrice, setProdPrice] = useState<number>(Number);
 	const [prodSizes, setProdSizes] = useState<string>('');
 	const [prodId, setProdId] = useState('');
 
+	const [tickets, setTickets] = useState<Ticket[]>([]);
+
 	const navigate = useNavigate();
 
 	let sizes = [size36, size37, size38, size39, size40, size41, size42];
+
+	useEffect(() => {
+		axios
+			.get(process.env.REACT_APP_BACKEND_URL + '/ticket/get-tickets')
+			.then((res) => {
+				console.log(res.data.tickets);
+				setTickets(res.data.tickets);
+			})
+			.catch((err) => {
+				console.log(err.response.data.message);
+			});
+	}, []);
 
 	const addProductHandler = () => {
 		sizes = sizes.filter(Boolean);
@@ -83,7 +100,7 @@ const AdminPanel = () => {
 	};
 
 	const editProductHandler = () => {
-		console.log('before', prodSizes);
+		setEditLoading(true);
 		let sizes;
 
 		if (typeof prodSizes !== 'object') {
@@ -91,8 +108,6 @@ const AdminPanel = () => {
 		} else {
 			sizes = prodSizes;
 		}
-
-		console.log('after', sizes);
 
 		axios
 			.post(process.env.REACT_APP_BACKEND_URL + '/products/edit-product', {
@@ -102,22 +117,37 @@ const AdminPanel = () => {
 				prodSizes: sizes,
 			})
 			.then((res: any) => {
+				setEditLoading(false);
 				const _id = res.data._id;
 
 				navigate(`/product-page?_id=${_id}`);
 			})
 			.catch((err) => {
-				console.log(err);
+				setEditLoading(false);
+				setEditMessage('');
+				setEditErrMessage(err.response.data.message);
 			});
 	};
 
-	const removeProductHandler = async () => {
+	const deleteProductHandler = async () => {
+		setEditLoading(true);
+
 		try {
-			await axios.post(process.env.REACT_APP_BACKEND_URL + '/products/remove-product', {
-				_id: serach,
+			const res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/products/delete-product', {
+				_id: prodId,
 			});
+
+			if (!res) {
+				return;
+			}
+
+			setEditLoading(false);
+			setEditErrMessage('');
+			setEditMessage(res.data.message);
 		} catch (err: any) {
-			console.log(err.data.message);
+			setEditLoading(false);
+			setEditMessage('');
+			setEditErrMessage(err.response.data.message);
 		}
 	};
 
@@ -161,7 +191,10 @@ const AdminPanel = () => {
 			editProductChangeHandler={editProductChangeHandler}
 			sizes={sizes}
 			searchLoading={searchLoading}
-			removeProductHandler={removeProductHandler}
+			deleteProductHandler={deleteProductHandler}
+			editLoading={editLoading}
+			editMessage={editMessage}
+			editErrMessage={editErrMessage}
 		/>
 	);
 };

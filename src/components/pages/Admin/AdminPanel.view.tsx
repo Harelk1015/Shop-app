@@ -45,7 +45,10 @@ interface IProps {
 	editProductHandler: () => void;
 	sizes: number[];
 	searchLoading: boolean | undefined;
-	removeProductHandler: () => Promise<void>;
+	deleteProductHandler: () => Promise<void>;
+	editLoading: boolean;
+	editMessage: string;
+	editErrMessage: string;
 }
 
 const AdminPanelView: React.FC<IProps> = ({
@@ -72,7 +75,10 @@ const AdminPanelView: React.FC<IProps> = ({
 	editProductChangeHandler,
 	editProductHandler,
 	searchLoading,
-	removeProductHandler,
+	deleteProductHandler,
+	editLoading,
+	editMessage,
+	editErrMessage,
 }) => {
 	const navigate = useNavigate();
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -213,23 +219,37 @@ const AdminPanelView: React.FC<IProps> = ({
 					<br />
 					{prodName && (
 						<>
-							<button
-								className={classes.editProduct__body__btn}
-								onClick={() => {
-									editProductHandler();
-								}}
-							>
-								Update
-							</button>
-
-							<button
-								className={classes.editProduct__body__delete__btn}
-								onClick={() => {
-									removeProductHandler();
-								}}
-							>
-								Delete
-							</button>
+							{editLoading ? (
+								<LoadingSpinner />
+							) : (
+								<>
+									{editErrMessage && (
+										<p className={classes.editProduct__body__errorMessage}>
+											{editErrMessage}
+										</p>
+									)}
+									{editMessage && (
+										<p className={classes.editProduct__body__message}>{editMessage}</p>
+									)}
+									<button
+										className={classes.editProduct__body__btn}
+										onClick={() => {
+											editProductHandler();
+										}}
+									>
+										Update
+									</button>
+									<button
+										className={classes.editProduct__body__delete__btn}
+										onClick={() => {
+											deleteProductHandler();
+										}}
+									>
+										Delete
+									</button>
+								</>
+							)}
+							{/* {editLoading ? <LoadingSpinner /> : ''} */}
 						</>
 					)}
 				</div>

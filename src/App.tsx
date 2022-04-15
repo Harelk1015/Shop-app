@@ -50,38 +50,38 @@ const App = () => {
 
 	return (
 		<BrowserRouter>
-			<NavBar />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/products-page" element={<ProductsPage />} />
-				<Route path="/product-page" element={<ProductPage />} />
-
-				{!auth.isAuth ? (
-					<>
-						<Route path="/login" element={<Login />} />
-						<Route path="/register" element={<Register />} />
-					</>
-				) : (
+				<NavBar />
+				<Routes>
 					<Route path="/" element={<Home />} />
-				)}
+					<Route path="/products-page" element={<ProductsPage />} />
+					<Route path="/product-page" element={<ProductPage />} />
 
-				{auth.isAuth && (
-					<>
-						<Route path="/contact" element={<Contact />} />
-						<Route path="/profile" element={<Profile />} />
-					</>
-				)}
+					{!auth.isAuth ? (
+						<>
+							<Route path="/login" element={<Login />} />
+							<Route path="/register" element={<Register />} />
+						</>
+					) : (
+						<Route path="/" element={<Home />} />
+					)}
 
-				{auth.user?.role === 'admin' && (
-					<>
-						<Route path="/admin-panel" element={<AdminPanel />} />
-						<Route path="/ticket-page" element={<Tickets />} />
-					</>
-				)}
+					{auth.isAuth && (
+						<>
+							<Route path="/contact" element={<Contact />} />
+							<Route path="/profile" element={<Profile />} />
+						</>
+					)}
 
-				<Route path="/*" element={<PageNotFound />} />
-			</Routes>
-			<Footer />
+					{auth.user?.role === 'admin' && (
+						<>
+							<Route path="/admin-panel" element={<AdminPanel />} />
+							<Route path="/ticket-page" element={<Tickets />} />
+						</>
+					)}
+
+					<Route path="/*" element={<PageNotFound />} />
+				</Routes>
+				<Footer />
 		</BrowserRouter>
 	);
 };

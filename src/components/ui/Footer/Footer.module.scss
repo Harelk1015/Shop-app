@@ -3,6 +3,8 @@
 	color: white;
 	font-size: 13px;
 	padding: 1em 0;
+	margin-top: auto;
+
 }
 
 .links {
@@ -39,11 +41,6 @@
 }
 
 @media (min-width: 880px) {
-	.footer {
-		position: sticky;
-		top: 100%;
-	}
-
 	.links {
 		flex-direction: row;
 	}
