@@ -1,5 +1,5 @@
 .main {
-	background-color: #961d4e;
+	background-color: rgb(120, 72, 64);
 	text-align: center;
 	justify-content: center;
 	align-items: center;
@@ -38,7 +38,7 @@
 }
 
 .second {
-	background-color: #aa4fa1;
+	background-color: #c9a88f;
 	margin: 2em 0;
 }
 
@@ -48,7 +48,7 @@
 	align-items: center;
 	color: white;
 	padding: 1em 0;
-	background-color: #aa4fa1;
+	background-color: #c9a88f;
 }
 
 .header {
@@ -66,15 +66,15 @@
 }
 
 .dialog {
-	background-color: black;
+	background-color: rgb(220, 216, 186);
 	position: static;
 	margin-top: 2%;
 	cursor: auto;
 }
 
 .dialog__btn {
-	background-color: black;
-	color: white;
+	background-color: rgb(220, 216, 186);
+	color: black;
 	border: none;
 	font-family: 'Roboto Slab', serif;
 	cursor: pointer;
