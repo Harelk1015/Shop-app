@@ -22,6 +22,14 @@ export interface User {
 	favorites: number[];
 	tokens: { token: string; _id: string }[];
 	_id: number;
+	cart: {
+		_id: string;
+		name: string;
+		price: string;
+		size: string;
+		Quantity: string;
+		imageUrl: string;
+	}[];
 }
 
 // Tickets

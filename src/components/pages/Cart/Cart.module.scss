@@ -1,0 +1,21 @@
+.main {
+}
+
+.header {
+	border: 2px solid black;
+	padding: 1rem;
+}
+
+.body {
+	border: 2px solid blue;
+	padding: 1rem;
+
+	&__card {
+		border: 2px solid black;
+	}
+}
+
+.total {
+	border: 2px solid red;
+	padding: 1rem;
+}

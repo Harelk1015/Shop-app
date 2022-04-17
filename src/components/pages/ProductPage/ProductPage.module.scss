@@ -12,6 +12,16 @@
 		margin: 0 auto;
 	}
 
+	&__img {
+		display: flex;
+		justify-content: center;
+
+		&__view {
+			min-width: 60%;
+			max-width: 90%;
+		}
+	}
+
 	&__sizesSelection {
 		margin-bottom: 2rem;
 		&__form {
@@ -28,12 +38,14 @@
 			padding: 0.75rem;
 			margin-right: 0.5rem;
 			cursor: pointer;
+			transition: 0.2s cubic-bezier(0.3, 0.02, 0.71, 1.11);
+
+			&__active {
+				background-color: rgb(223, 190, 71);
+			}
 		}
 		&__label__item:hover {
 			opacity: 85%;
-		}
-		&__label__item:checked {
-			background-color: red;
 		}
 	}
 
@@ -47,6 +59,10 @@
 			border: black 2px solid;
 			margin-right: 2rem;
 			cursor: pointer;
+
+			&__disabled {
+				cursor: not-allowed;
+			}
 		}
 		&__cartBtn:hover {
 			opacity: 80%;
@@ -96,9 +112,16 @@
 			margin: 0;
 		}
 	}
-
 }
 
 .push {
 	width: 100%;
+}
+
+.test {
+	position: fixed;
+	background-color: white;
+	border: solid black 3px;
+	top: 50%;
+	left: 50%;
 }

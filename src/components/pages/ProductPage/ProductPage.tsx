@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
@@ -16,11 +17,13 @@ interface IFavorite {
 
 const ProductPage: React.FC = () => {
 	const params = new URLSearchParams(window.location.search);
-
 	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
-	const [isFavorited, setIsFavorited] = useState(false);
 	const _id = params.get('_id');
+
+	const [isFavorited, setIsFavorited] = useState(false);
 	const [product, setProduct] = useState<Product>();
+	const [openModal, setOpenModal] = useState(false);
+	const [choosenSize, setChoosenSize] = useState<number>(0);
 
 	useEffect(() => {
 		axios
@@ -49,6 +52,29 @@ const ProductPage: React.FC = () => {
 		}
 	}, []);
 
+	const addToCartHandler = async () => {
+		if (!product) {
+			return;
+		}
+
+		try {
+			const res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/cart', {
+				_id,
+				name: product.name,
+				price: product.price,
+				size: choosenSize,
+				quantity: 1,
+				imageUrl: product.imageUrl,
+			});
+
+			console.log(res.data);
+		} catch (err: any) {
+			console.log(err.response.data.message);
+
+			return;
+		}
+	};
+
 	return (
 		<ProductPageView
 			product={product}
@@ -57,6 +83,11 @@ const ProductPage: React.FC = () => {
 			addFavorite={addFavorite}
 			removeFavorite={removeFavorite}
 			auth={auth}
+			openModal={openModal}
+			setOpenModal={setOpenModal}
+			addToCartHandler={addToCartHandler}
+			choosenSize={choosenSize}
+			setChoosenSize={setChoosenSize}
 		/>
 	);
 };

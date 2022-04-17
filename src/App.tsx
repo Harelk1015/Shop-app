@@ -18,6 +18,7 @@ import ProductPage from './components/pages/ProductPage/ProductPage';
 import Profile, { User } from './components/pages/Profile/Profile';
 import AdminPanel from './components/pages/Admin/AdminPanel';
 import Tickets from './components/pages/Tickets/Tickets';
+import Cart from './components/pages/Cart/Cart';
 
 const App = () => {
 	const dispacth = useDispatch();
@@ -50,38 +51,43 @@ const App = () => {
 
 	return (
 		<BrowserRouter>
-				<NavBar />
-				<Routes>
+			<NavBar />
+			<Routes>
+				{/* Routes for all users */}
+				<Route path="/" element={<Home />} />
+				<Route path="/products-page" element={<ProductsPage />} />
+				<Route path="/product-page" element={<ProductPage />} />
+
+				{/* Routes for unauthenticated users */}
+				{!auth.isAuth ? (
+					<>
+						<Route path="/login" element={<Login />} />
+						<Route path="/register" element={<Register />} />
+					</>
+				) : (
 					<Route path="/" element={<Home />} />
-					<Route path="/products-page" element={<ProductsPage />} />
-					<Route path="/product-page" element={<ProductPage />} />
+				)}
 
-					{!auth.isAuth ? (
-						<>
-							<Route path="/login" element={<Login />} />
-							<Route path="/register" element={<Register />} />
-						</>
-					) : (
-						<Route path="/" element={<Home />} />
-					)}
+				{/* Routes for Authenticated users */}
+				{auth.isAuth && (
+					<>
+						<Route path="/contact" element={<Contact />} />
+						<Route path="/profile" element={<Profile />} />
+						<Route path="/cart" element={<Cart />} />
+					</>
+				)}
 
-					{auth.isAuth && (
-						<>
-							<Route path="/contact" element={<Contact />} />
-							<Route path="/profile" element={<Profile />} />
-						</>
-					)}
+				{/* Routes for Admins */}
+				{auth.user?.role === 'admin' && (
+					<>
+						<Route path="/admin-panel" element={<AdminPanel />} />
+						<Route path="/ticket-page" element={<Tickets />} />
+					</>
+				)}
 
-					{auth.user?.role === 'admin' && (
-						<>
-							<Route path="/admin-panel" element={<AdminPanel />} />
-							<Route path="/ticket-page" element={<Tickets />} />
-						</>
-					)}
-
-					<Route path="/*" element={<PageNotFound />} />
-				</Routes>
-				<Footer />
+				<Route path="/*" element={<PageNotFound />} />
+			</Routes>
+			<Footer />
 		</BrowserRouter>
 	);
 };

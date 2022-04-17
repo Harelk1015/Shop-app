@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
+import React from 'react';
 import emptyHeart from '../../../assets/empty-heart.svg';
 import fullHeart from '../../../assets/full-heart.svg';
+import AddedToCart from '../../ui/AddedToCartModal/AddedToCartModal';
 import { Product } from '../ProductsPage/ProductsPage';
 import { User } from '../Profile/Profile';
 import classes from './ProductPage.module.scss';
@@ -17,6 +18,11 @@ interface ProductPageViewProps {
 		user: User;
 		isAuth: boolean;
 	};
+	openModal: boolean;
+	setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+	choosenSize: number;
+	setChoosenSize: React.Dispatch<React.SetStateAction<number>>;
+	addToCartHandler: () => void;
 }
 
 const ProductPageView: React.FC<ProductPageViewProps> = ({
@@ -26,81 +32,118 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 	removeFavorite,
 	setIsFavorited,
 	auth,
+	openModal,
+	setOpenModal,
+	choosenSize,
+	setChoosenSize,
+	addToCartHandler,
 }) => {
-	const [choosenSize, setChoosenSize] = useState();
-
-	console.log(choosenSize);
+	if (!product) {
+		return <h1>no product found</h1>;
+	}
 
 	return (
-		<div className={classes.productPage}>
-			<div className={classes.productPage__img}>
-				<img className={classes.productPage__img__view} src={product?.imageUrl} alt={product?.name} />
-			</div>
-			<div className={classes.productPage__content}>
-				<h1 className={classes.productPage__header}>{product?.name}</h1>
-				<h1 className={classes.productPage__price}>{product?.price} ILS</h1>
-				<div className={classes.productPage__sizesSelection}>
-					<h2 className={classes.productPage__sizesSelection__header}>Size:</h2>
-					<form className={classes.productPage__sizesSelection__form}>
-						{product?.sizes.map((size) => {
-							return (
-								<div className={classes.productPage__sizesSelection__div} key={size}>
-									<input
-										type="radio"
-										name="size"
-										id={size.toString()}
-										className={classes.productPage__sizesSelection__btn}
-										value={size}
-										onClick={(event: React.MouseEvent<HTMLElement>) => {
-											// eslint-disable-next-line @typescript-eslint/no-explicit-any
-											setChoosenSize((event.target as any).value);
-										}}
-									/>
-									<label
-										className={classes.productPage__sizesSelection__label}
-										htmlFor={size.toString()}
-									>
-										<div className={classes.productPage__sizesSelection__label__item}>
-											{size}
-										</div>
-									</label>
-								</div>
-							);
-						})}
-					</form>
+		<>
+			<div className={classes.productPage}>
+				<div className={classes.productPage__img}>
+					<img
+						className={classes.productPage__img__view}
+						src={product.imageUrl}
+						alt={product.name}
+					/>
 				</div>
-				<div className={classes.productPage__clickers}>
-					<button type="button" className={classes.productPage__clickers__cartBtn}>
-						Add to cart
-					</button>
-					{auth.isAuth ? (
-						isFavorited ? (
-							<img
-								className={classes.productPage__clickers__heart}
-								src={fullHeart}
-								alt="favorite"
-								onClick={() => {
-									removeFavorite(product!._id);
-									setIsFavorited(!isFavorited);
-								}}
-							/>
+				<div className={classes.productPage__content}>
+					<h1 className={classes.productPage__header}>{product?.name}</h1>
+					<h1 className={classes.productPage__price}>{product?.price} ILS</h1>
+					<div className={classes.productPage__sizesSelection}>
+						<h2 className={classes.productPage__sizesSelection__header}>Size:</h2>
+						<form className={classes.productPage__sizesSelection__form}>
+							{product?.sizes.map((size) => {
+								return (
+									<div className={classes.productPage__sizesSelection__div} key={size}>
+										<input
+											type="radio"
+											name="size"
+											id={size.toString()}
+											className={classes.productPage__sizesSelection__btn}
+											value={size}
+											onClick={(event: React.MouseEvent<HTMLElement>) => {
+												// eslint-disable-next-line @typescript-eslint/no-explicit-any
+												setChoosenSize((event.target as any).value);
+											}}
+										/>
+										<label
+											className={classes.productPage__sizesSelection__label}
+											htmlFor={size.toString()}
+										>
+											<div
+												className={`${
+													classes.productPage__sizesSelection__label__item
+												} ${
+													choosenSize === size
+														? classes.productPage__sizesSelection__label__item__active
+														: ''
+												}`}
+											>
+												{size}
+											</div>
+										</label>
+									</div>
+								);
+							})}
+						</form>
+					</div>
+					<div className={classes.productPage__clickers}>
+						<button
+							type="button"
+							className={`${classes.productPage__clickers__cartBtn} ${
+								!choosenSize && classes.productPage__clickers__cartBtn__disabled
+							}`}
+							disabled={!choosenSize}
+							onClick={() => {
+								addToCartHandler();
+								setOpenModal(true);
+							}}
+						>
+							Add to cart
+						</button>
+						{auth.isAuth ? (
+							isFavorited ? (
+								<img
+									className={classes.productPage__clickers__heart}
+									src={fullHeart}
+									alt="favorite"
+									onClick={() => {
+										removeFavorite(product!._id);
+										setIsFavorited(!isFavorited);
+									}}
+								/>
+							) : (
+								<img
+									className={classes.productPage__clickers__heart}
+									src={emptyHeart}
+									alt="favorite"
+									onClick={() => {
+										addFavorite(product!._id);
+										setIsFavorited(!isFavorited);
+									}}
+								/>
+							)
 						) : (
-							<img
-								className={classes.productPage__clickers__heart}
-								src={emptyHeart}
-								alt="favorite"
-								onClick={() => {
-									addFavorite(product!._id);
-									setIsFavorited(!isFavorited);
-								}}
-							/>
-						)
-					) : (
-						<p />
-					)}
+							<p />
+						)}
+					</div>
 				</div>
 			</div>
-		</div>
+			{openModal && (
+				<AddedToCart
+					name={product.name}
+					price={product.price}
+					size={choosenSize}
+					setOpenModal={setOpenModal}
+				/>
+			)}
+		</>
 	);
 };
 
