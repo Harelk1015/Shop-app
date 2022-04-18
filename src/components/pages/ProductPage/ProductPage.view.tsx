@@ -42,6 +42,7 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 	setChoosenSize,
 	choosenSize,
 }) => {
+
 	if (!product) {
 		return <h1>no product found</h1>;
 	}
