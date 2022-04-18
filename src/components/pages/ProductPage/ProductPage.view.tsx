@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import emptyHeart from '../../../assets/empty-heart.svg';
@@ -20,9 +21,11 @@ interface ProductPageViewProps {
 	};
 	openModal: boolean;
 	setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+	addToCartHandler: () => Promise<void>;
 	choosenSize: number;
 	setChoosenSize: React.Dispatch<React.SetStateAction<number>>;
-	addToCartHandler: () => void;
+	choosedId: string;
+	setChoosenId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const ProductPageView: React.FC<ProductPageViewProps> = ({
@@ -34,9 +37,10 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 	auth,
 	openModal,
 	setOpenModal,
-	choosenSize,
-	setChoosenSize,
 	addToCartHandler,
+	setChoosenId,
+	setChoosenSize,
+	choosenSize,
 }) => {
 	if (!product) {
 		return <h1>no product found</h1>;
@@ -60,32 +64,32 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 						<form className={classes.productPage__sizesSelection__form}>
 							{product?.sizes.map((size) => {
 								return (
-									<div className={classes.productPage__sizesSelection__div} key={size}>
+									<div className={classes.productPage__sizesSelection__div} key={size._id}>
 										<input
 											type="radio"
 											name="size"
-											id={size.toString()}
+											id={size.size.toString()}
 											className={classes.productPage__sizesSelection__btn}
-											value={size}
+											value={size.size}
 											onClick={(event: React.MouseEvent<HTMLElement>) => {
-												// eslint-disable-next-line @typescript-eslint/no-explicit-any
 												setChoosenSize((event.target as any).value);
+												setChoosenId(size._id);
 											}}
 										/>
 										<label
 											className={classes.productPage__sizesSelection__label}
-											htmlFor={size.toString()}
+											htmlFor={size.size.toString()}
 										>
 											<div
 												className={`${
 													classes.productPage__sizesSelection__label__item
 												} ${
-													choosenSize === size
+													choosenSize === size.size
 														? classes.productPage__sizesSelection__label__item__active
 														: ''
 												}`}
 											>
-												{size}
+												{size.size}
 											</div>
 										</label>
 									</div>
@@ -102,7 +106,6 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 							disabled={!choosenSize}
 							onClick={() => {
 								addToCartHandler();
-								setOpenModal(true);
 							}}
 						>
 							Add to cart

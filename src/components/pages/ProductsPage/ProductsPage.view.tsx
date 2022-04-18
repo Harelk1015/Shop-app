@@ -15,6 +15,8 @@ interface ProductsViewProps {
 const ProductsPageView: React.FC<ProductsViewProps> = ({ items, sex, kind, userFavoritesId }) => {
 	// eslint-disable-next-line no-trailing-spaces
 
+	console.log(items);
+
 	return (
 		<div className={classes.productsPage}>
 			<header className={classes.productsPage__header}>

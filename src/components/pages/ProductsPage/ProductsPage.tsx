@@ -13,7 +13,7 @@ export interface Product {
 		sex: string;
 		kind: 'Pants' | 'Shoes' | 'Shirts';
 	};
-	sizes: number[];
+	sizes: { size: number; _id: string }[];
 	isFavorited?: boolean;
 }
 

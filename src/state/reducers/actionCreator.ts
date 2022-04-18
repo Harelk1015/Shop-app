@@ -9,6 +9,14 @@ interface ILoginUser {
 	favorites: number[];
 	tokens: { token: string; _id: string }[];
 	_id: number;
+	cart: {
+		_id: string;
+		name: string;
+		price: string;
+		size: string;
+		quantity: string;
+		imageUrl: string;
+	};
 }
 
 export const login = (user: ILoginUser) => {

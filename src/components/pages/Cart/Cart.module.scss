@@ -1,21 +1,90 @@
 .main {
+	width: 90%;
+	margin: 0 auto;
+	max-width: 1350px;
 }
 
 .header {
-	border: 2px solid black;
-	padding: 1rem;
+	background-color: rgb(187, 127, 115);
+	padding: 0.5rem 1.5rem;
+	margin: 1rem 0;
 }
 
 .body {
-	border: 2px solid blue;
-	padding: 1rem;
+	padding: 2rem;
+	background-color: rgb(187, 127, 115);
 
 	&__card {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
 		border: 2px solid black;
+		margin-bottom: 2rem;
+		padding: 0.5rem;
+
+		&__img {
+			width: 45%;
+			align-self: center;
+			max-width: 400px;
+		}
+
+		&__text {
+			width: 40%;
+			margin: 0;
+			font-size: 0.55rem;
+
+			align-self: center;
+
+			&__view {
+				margin: 0;
+			}
+		}
+
+		&__x {
+			width: 10%;
+			display: flex;
+			margin: 0;
+			justify-content: flex-end;
+		}
 	}
 }
 
 .total {
-	border: 2px solid red;
+	background-color: rgb(187, 127, 115);
+	margin: 1rem 0;
 	padding: 1rem;
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__checkout {
+		&__btn {
+			background-color: #018849;
+			border: none;
+			display: flex;
+			width: 90%;
+			margin: 0 auto;
+			padding: 1rem;
+			justify-content: center;
+			color: white;
+			font-family: 'Share', cursive;
+			font-size: 2rem;
+		}
+	}
+}
+
+@media (min-width: 880px) {
+	.main {
+	}
+
+	.body {
+		&__card {
+			&__text {
+				font-size: 1rem;
+			}
+		}
+	}
 }

@@ -50,6 +50,7 @@ const AdminPanel = () => {
 
 	const addProductHandler = () => {
 		sizes = sizes.filter(Boolean);
+		console.log(sizes);
 
 		axios
 			.post(process.env.REACT_APP_BACKEND_URL + '/products/add-product', {

@@ -24,6 +24,7 @@ const ProductPage: React.FC = () => {
 	const [product, setProduct] = useState<Product>();
 	const [openModal, setOpenModal] = useState(false);
 	const [choosenSize, setChoosenSize] = useState<number>(0);
+	const [choosenId, setChoosenId] = useState<string>('');
 
 	useEffect(() => {
 		axios
@@ -31,7 +32,6 @@ const ProductPage: React.FC = () => {
 				_id,
 			})
 			.then((res) => {
-				// console.log(res.data);
 				setProduct(res.data.product);
 			})
 			.catch();
@@ -59,7 +59,7 @@ const ProductPage: React.FC = () => {
 
 		try {
 			const res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/cart', {
-				_id,
+				_id: choosenId,
 				name: product.name,
 				price: product.price,
 				size: choosenSize,
@@ -68,6 +68,7 @@ const ProductPage: React.FC = () => {
 			});
 
 			console.log(res.data);
+			setOpenModal(true);
 		} catch (err: any) {
 			console.log(err.response.data.message);
 
@@ -88,6 +89,8 @@ const ProductPage: React.FC = () => {
 			addToCartHandler={addToCartHandler}
 			choosenSize={choosenSize}
 			setChoosenSize={setChoosenSize}
+			choosedId={choosenId}
+			setChoosenId={setChoosenId}
 		/>
 	);
 };
