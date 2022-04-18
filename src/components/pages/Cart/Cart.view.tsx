@@ -28,7 +28,7 @@ const CartView: React.FC<ICartView> = ({ user, cartItemHandler }) => {
 					</div>
 					<div className={classes.body__card__text}>
 						<h2 className={classes.body__card__text__view}>{product.name}</h2>
-						<h2>{product.price}$</h2>
+						<h2>{product.price} $</h2>
 						<h2>{product.size}</h2>
 						<div className={classes.body__card__text__quantitySelection}>
 							<label htmlFor="quantity">quantity: </label>
@@ -57,7 +57,7 @@ const CartView: React.FC<ICartView> = ({ user, cartItemHandler }) => {
 			<div className={classes.total}>
 				<div className={classes.total__header}>
 					<h1>Total:</h1>
-					<h1>123$</h1>
+					<h1>123 $</h1>
 				</div>
 				<hr />
 				<div className={classes.total__body}>
