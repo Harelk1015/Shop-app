@@ -23,7 +23,7 @@ interface IProps {
 	search: string;
 	prodName: string;
 	prodPrice: number;
-	prodSizes: string;
+	prodSizes: string | [] | undefined;
 	setName: React.Dispatch<React.SetStateAction<string>>;
 	setPrice: React.Dispatch<React.SetStateAction<number>>;
 	setSex: React.Dispatch<React.SetStateAction<string>>;
@@ -39,7 +39,7 @@ interface IProps {
 	setSearch: React.Dispatch<React.SetStateAction<string>>;
 	setProdName: React.Dispatch<React.SetStateAction<string>>;
 	setProdPrice: React.Dispatch<React.SetStateAction<number>>;
-	setProdSizes: React.Dispatch<React.SetStateAction<string>>;
+	setProdSizes: React.Dispatch<React.SetStateAction<string | [] | undefined>>;
 	editProductChangeHandler: (event: any) => void;
 	addProductHandler: () => void;
 	editProductHandler: () => void;

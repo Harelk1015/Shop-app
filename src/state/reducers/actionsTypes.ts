@@ -3,6 +3,8 @@
 export enum ActionTypes {
 	LOGIN = 'LOGIN',
 	LOGOUT = 'LOGOUT',
+	ADDITEM = 'ADDITEM',
+	SETCART = 'SETCART',
 }
 
 interface LoginAction {
@@ -31,6 +33,16 @@ interface LogoutAction {
 	payload: null;
 }
 
-type IAction = LoginAction | LogoutAction;
+interface AddToCartAction {
+	type: ActionTypes.ADDITEM;
+	payload: null;
+}
+
+interface SetCartAction {
+	type: ActionTypes.SETCART;
+	payload: number;
+}
+
+type IAction = LoginAction | LogoutAction | AddToCartAction | SetCartAction;
 
 export default IAction;

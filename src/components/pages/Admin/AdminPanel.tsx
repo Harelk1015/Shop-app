@@ -27,7 +27,7 @@ const AdminPanel = () => {
 	const [serach, setSearch] = useState('');
 	const [prodName, setProdName] = useState('');
 	const [prodPrice, setProdPrice] = useState<number>(Number);
-	const [prodSizes, setProdSizes] = useState<string>('');
+	const [prodSizes, setProdSizes] = useState<[] | string>();
 	const [prodId, setProdId] = useState('');
 
 	const [tickets, setTickets] = useState<Ticket[]>([]);
@@ -80,42 +80,54 @@ const AdminPanel = () => {
 					_id: event.target.value.toString(),
 				})
 				.then((res) => {
+					const sizes = res.data.product.sizes.map((size: { size: string }) => {
+						return size.size;
+					});
+
+					console.log(sizes);
+
 					console.log(res.data.product);
 					setProdName(res.data.product.name);
 					setProdPrice(res.data.product.price);
-					setProdSizes(res.data.product.sizes);
+					setProdSizes(sizes);
 					setSearchLoading(false);
 				})
 				.catch(() => {
 					setProdName('');
 					setProdPrice(0);
-					setProdSizes('');
+					setProdSizes([]);
 					setSearchLoading(false);
 				});
 		} else {
 			setProdName('');
 			setProdPrice(0);
-			setProdSizes('');
+			setProdSizes([]);
 			setSearchLoading(false);
 		}
+
+		console.log(prodSizes);
 	};
 
 	const editProductHandler = () => {
-		setEditLoading(true);
-		let sizes;
+		// setEditLoading(true);
+		console.log(prodSizes);
 
-		if (typeof prodSizes !== 'object') {
-			sizes = prodSizes.split(',');
+		let tempSizes;
+
+		if (typeof prodSizes !== 'object' && prodSizes !== null) {
+			tempSizes = prodSizes!.split(',');
 		} else {
-			sizes = prodSizes;
+			tempSizes = prodSizes;
 		}
+
+		console.log(tempSizes);
 
 		axios
 			.post(process.env.REACT_APP_BACKEND_URL + '/products/edit-product', {
 				_id: prodId,
 				prodName,
 				prodPrice,
-				prodSizes: sizes,
+				prodSizes: tempSizes,
 			})
 			.then((res: any) => {
 				setEditLoading(false);

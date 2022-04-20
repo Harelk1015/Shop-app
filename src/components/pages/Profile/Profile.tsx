@@ -23,6 +23,7 @@ export interface User {
 	tokens: { token: string; _id: string }[];
 	_id: number;
 	cart: {
+		parentId: number;
 		_id: string;
 		name: string;
 		price: string;

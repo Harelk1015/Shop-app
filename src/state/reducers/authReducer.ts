@@ -24,4 +24,19 @@ export const authReducer = (state = initialState, action: IAction) => {
 	}
 };
 
-export default authReducer;
+export const cartReducer = (state = { cartLength: 0 }, action: IAction) => {
+	switch (action.type) {
+		case ActionTypes.ADDITEM:
+			return {
+				...state,
+				cartLength: state.cartLength + 1,
+			};
+		case ActionTypes.SETCART:
+			return {
+				...state,
+				cartLength: action.payload,
+			};
+		default:
+			return state;
+	}
+};

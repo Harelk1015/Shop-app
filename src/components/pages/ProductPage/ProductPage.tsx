@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { ReducersState } from '../../../state/reducers';
+import * as actionCreators from '../../../state/reducers/actionCreator';
 
 import { Product } from '../ProductsPage/ProductsPage';
 import { addFavorite, removeFavorite } from '../../../utils/favorite';
@@ -19,6 +21,8 @@ const ProductPage: React.FC = () => {
 	const params = new URLSearchParams(window.location.search);
 	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
 	const _id = params.get('_id');
+	const dispacth = useDispatch();
+	const { addCartItem } = bindActionCreators(actionCreators, dispacth);
 
 	const [isFavorited, setIsFavorited] = useState(false);
 	const [product, setProduct] = useState<Product>();
@@ -59,6 +63,7 @@ const ProductPage: React.FC = () => {
 
 		try {
 			const res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/cart', {
+				parentId: _id,
 				_id: choosenId,
 				name: product.name,
 				price: product.price,
@@ -68,6 +73,7 @@ const ProductPage: React.FC = () => {
 			});
 
 			console.log(res.data);
+			addCartItem();
 			setOpenModal(true);
 		} catch (err: any) {
 			console.log(err.response.data.message);

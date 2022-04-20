@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import IAction, { ActionTypes } from './actionsTypes';
 
-interface ILoginUser {
+export interface ILoginUser {
 	readonly username: string;
 	email: string;
 	password: string;
@@ -33,6 +33,24 @@ export const logout = () => {
 		dispath({
 			type: ActionTypes.LOGOUT,
 			payload: null,
+		});
+	};
+};
+
+export const addCartItem = () => {
+	return (dispath: Dispatch<IAction>) => {
+		dispath({
+			type: ActionTypes.ADDITEM,
+			payload: null,
+		});
+	};
+};
+
+export const setCartItem = (length: number) => {
+	return (dispath: Dispatch<IAction>) => {
+		dispath({
+			type: ActionTypes.SETCART,
+			payload: length,
 		});
 	};
 };

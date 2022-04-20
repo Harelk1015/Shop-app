@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import classes from './AddedToCartModal.module.scss';
 
 interface IAddedToCartModal {
@@ -11,7 +11,7 @@ interface IAddedToCartModal {
 }
 
 const AddedToCartModal: React.FC<IAddedToCartModal> = ({ name, size, price, setOpenModal }) => {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	return (
 		<>
@@ -42,7 +42,7 @@ const AddedToCartModal: React.FC<IAddedToCartModal> = ({ name, size, price, setO
 					<button
 						className={classes.footer__btn}
 						onClick={() => {
-							navigate('/cart');
+							window.location.replace('/cart');
 						}}
 					>
 						Go to cart

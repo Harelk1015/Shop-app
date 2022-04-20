@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { User } from '../../pages/Profile/Profile';
+import cartSvg from '../../../assets/cart.png';
 import logoSvg from './snapsvg-seeklogo.com.svg';
 import classes from './NavBar.module.scss';
 
@@ -11,10 +12,13 @@ interface IProps {
 		user: User;
 		isAuth: boolean;
 	};
+	cart: {
+		cartLength: number;
+	};
 	onLogout: () => void;
 }
 
-const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout }) => {
+const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout, cart }) => {
 	const pageWidth = window.innerWidth;
 
 	return (
@@ -26,7 +30,6 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout })
 				<Link to="/" className={classes.logo}>
 					<img className={classes.logo} src={logoSvg} alt="logo" />
 				</Link>
-				{/* <nav className={`nav${isActive ? 'nav--visible' : ''}`}> */}
 				<nav className={`${classes.nav} ${isActive ? classes.nav__visible : ''}`}>
 					<ul className={`${classes.nav__list} ${classes.nav__list__primary}`}>
 						<li className={`${classes.nav__item} ${classes.nav__search}`}>
@@ -42,6 +45,11 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout })
 					<ul className={`${classes.nav__list} ${classes.nav__list__secondary}`}>
 						{auth.isAuth && (
 							<>
+								<span className={classes.nav__cart__number}>{cart.cartLength}</span>
+								<a href="/cart" className={classes.nav__item}>
+									<img src={cartSvg} className={classes.nav__cart} />
+								</a>
+
 								<li className={classes.nav__item}>
 									<Link
 										to="/profile"
@@ -68,21 +76,21 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout })
 										Contact
 									</Link>
 								</li>
-										{auth.user?.role === 'admin' && (
-											<li className={classes.nav__item}>
-												<Link
-													to="/admin-panel"
-													className={classes.nav__link}
-													onClick={() => {
-														if (pageWidth < 880) {
-															ToggleClass();
-														}
-													}}
-												>
-													Admin Panel
-												</Link>
-											</li>
-										)}
+								{auth.user?.role === 'admin' && (
+									<li className={classes.nav__item}>
+										<Link
+											to="/admin-panel"
+											className={classes.nav__link}
+											onClick={() => {
+												if (pageWidth < 880) {
+													ToggleClass();
+												}
+											}}
+										>
+											Admin Panel
+										</Link>
+									</li>
+								)}
 								<li className={classes.nav__item}>
 									<span
 										className={classes.nav__link}

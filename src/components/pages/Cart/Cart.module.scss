@@ -1,51 +1,57 @@
 .main {
 	width: 90%;
-	margin: 0 auto;
+	margin: 1rem auto;
 	max-width: 1350px;
 }
 
-.header {
-	background-color: rgb(187, 127, 115);
-	padding: 0.2rem 1.5rem;
-	margin: 1rem 0;
-}
+.left {
+	&__header {
+		background-color: rgb(187, 127, 115);
+		padding: 0.2rem 1.5rem;
+		margin-bottom: 1rem;
+	}
 
-.body {
-	padding: 2rem;
-	background-color: rgb(187, 127, 115);
+	&__body {
+		padding: 1rem;
+		background-color: rgb(187, 127, 115);
 
-	&__card {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-
-		border: 2px solid black;
-		margin-bottom: 2rem;
-		padding: 0.5rem;
-
-		&__img {
-			width: 45%;
-			align-self: center;
-			max-width: 400px;
-		}
-
-		&__text {
-			width: 40%;
-			margin: 0;
-			font-size: 0.55rem;
-
-			align-self: center;
-
-			&__view {
-				margin: 0;
-			}
-		}
-
-		&__x {
-			width: 10%;
+		&__card {
 			display: flex;
-			margin: 0;
-			justify-content: flex-end;
+			flex-direction: row;
+			justify-content: space-between;
+
+			border: 2px solid black;
+			margin-bottom: 2rem;
+			padding: 0.5rem;
+
+			&__img {
+				width: 45%;
+				display: flex;
+				align-self: center;
+				justify-content: center;
+				max-width: 400px;
+				cursor: pointer;
+			}
+
+			&__text {
+				width: 45%;
+				margin: 0;
+				font-size: 0.65rem;
+
+				align-self: center;
+
+				&__view {
+					margin: 0;
+				}
+			}
+
+			&__x {
+				// width: 10%;
+				display: flex;
+				margin: 0;
+				justify-content: flex-end;
+				cursor: pointer;
+			}
 		}
 	}
 }
@@ -72,19 +78,70 @@
 			color: white;
 			font-family: 'Share', cursive;
 			font-size: 2rem;
+			cursor: pointer;
+		}
+
+		&__btn:hover {
+			background-color: #055832;
 		}
 	}
 }
 
 @media (min-width: 880px) {
 	.main {
+		display: flex;
+		justify-content: space-between;
 	}
 
-	.body {
-		&__card {
-			&__text {
-				font-size: 1rem;
+	.left {
+		width: 65%;
+		&__body {
+			&__card {
+				&__text {
+					font-size: 1rem;
+				}
 			}
 		}
+	}
+
+	.total {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		margin-top: 0;
+		width: 30%;
+		height: 400px;
+
+		&__hr {
+			width: 100%;
+		}
+	}
+}
+
+.modalBackground {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(22, 21, 21, 0.356);
+}
+
+.loader {
+	border: 16px solid #cdcaca; /* Light grey */
+	border-top: 16px solid #3498db; /* Blue */
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	animation: spin 2s linear infinite;
+	align-self: center;
+	position: fixed;
+	top: 40%;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
 	}
 }

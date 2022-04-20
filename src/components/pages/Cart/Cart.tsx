@@ -1,4 +1,7 @@
-import { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable no-self-assign */
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ReducersState } from '../../../state/reducers';
 import { User } from '../Profile/Profile';
@@ -7,11 +10,51 @@ import CartView from './Cart.view';
 const Cart = () => {
 	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
 	const [quantity, setQuantity] = useState<number>();
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [cartTotal, setCartTotal] = useState(0);
 
-	const cartItemHandler = (quantity: number, id: string) => {
-		console.log(quantity, id);
-		setQuantity(quantity);
+	const cartItemHandler = async (quantity: number, id: string) => {
+		setIsLoading(true);
+
+		try {
+			const res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/cart/set-cart', {
+				prodId: id,
+				quantity,
+			});
+
+			setIsLoading(false);
+			console.log(res);
+			window.location.reload();
+		} catch (err) {
+			setIsLoading(false);
+		}
 	};
+
+	const cartRemoveItem = async (id: string) => {
+		setIsLoading(true);
+
+		try {
+			await axios.post(process.env.REACT_APP_BACKEND_URL + '/cart/remove-cart-item', {
+				_id: id,
+			});
+
+			setIsLoading(false);
+			window.location.reload();
+		} catch (err) {
+			console.log(err);
+			setIsLoading(false);
+		}
+	};
+
+	useEffect(() => {
+		auth.user.cart.map((item) => {
+			const itemTotalPrice = parseInt(item.quantity) * parseInt(item.price);
+
+			setCartTotal((prev) => {
+				return prev + itemTotalPrice;
+			});
+		});
+	}, []);
 
 	return (
 		<CartView
@@ -19,6 +62,10 @@ const Cart = () => {
 			quantity={quantity}
 			setQuantity={setQuantity}
 			cartItemHandler={cartItemHandler}
+			isLoading={isLoading}
+			setIsLoading={setIsLoading}
+			cartRemoveItem={cartRemoveItem}
+			cartTotal={cartTotal}
 		/>
 	);
 };

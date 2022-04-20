@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
 import classes from './Profile.module.scss';
 // eslint-disable-next-line import/no-cycle
@@ -38,8 +38,6 @@ const ProfileView: React.FC<IProps> = ({
 	goodMessage,
 	loading,
 }) => {
-	const navigate = useNavigate();
-
 	let ordersContent;
 	let favoritesContent;
 
@@ -62,22 +60,22 @@ const ProfileView: React.FC<IProps> = ({
 	} else {
 		favoritesContent = userFavorites.map((favorite: any) => {
 			return (
-				<div
+				<Link
+					to={`/product-page?_id=${favorite._id}`}
 					key={favorite._id}
-					className={classes.profile__favorites}
+					className={classes.profile__main__favorites__view}
 					onClick={() => {
-						navigate(`/product-page?_id=${favorite._id}`);
 						window.scrollTo(0, 0);
 					}}
 				>
-					<p className={classes.profile__orders__order__link}>{favorite.name}</p>
+					<p className={classes.profile__main__favorites__link}>{favorite.name}</p>
 					<img
 						className={classes.profile__main__favorites__img}
 						src={favorite.imageUrl}
 						alt={favorite.name}
 					/>
 					<hr />
-				</div>
+				</Link>
 			);
 		});
 	}
