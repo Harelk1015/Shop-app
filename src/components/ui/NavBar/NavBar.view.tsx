@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { User } from '../../pages/Profile/Profile';
-import cartPng from './cartimage.png';
+// import cartPng from './cartimage.png';
 import logoSvg from './snapsvg-seeklogo.com.svg';
 import classes from './NavBar.module.scss';
 
@@ -47,7 +47,7 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout, c
 							<>
 								<span className={classes.nav__cart__number}>{cart.cartLength}</span>
 								<a href="/cart" className={classes.nav__item}>
-									<img src={cartPng} className={classes.nav__cart} />
+									{/* <img src={cartPng} className={classes.nav__cart} /> */}
 								</a>
 
 								<li className={classes.nav__item}>
