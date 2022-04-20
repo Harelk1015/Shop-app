@@ -73,14 +73,13 @@
 			border: black 2px solid;
 			padding: 1rem 1rem;
 		}
-		
+
 		&__favorites {
-			&__img {
-				width: 50%;
-			}
 			&__view {
 				color: white;
-				text-decoration: n;
+			}
+			&__img {
+				width: 50%;
 			}
 		}
 	}
