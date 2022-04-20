@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { User } from '../../pages/Profile/Profile';
-import cartSvg from '../../../assets/cart.png';
+import cartSvg from '../../../assets/cartImage.png';
 import logoSvg from './snapsvg-seeklogo.com.svg';
 import classes from './NavBar.module.scss';
 
