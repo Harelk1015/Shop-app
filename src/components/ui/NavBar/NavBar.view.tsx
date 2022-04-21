@@ -74,6 +74,7 @@ const NavBarView: React.FC<IProps> = ({
 								className={classes.nav__input}
 								type="text"
 								id="serch"
+								autoComplete="none"
 								name="serch"
 								onChange={(event) => {
 									searchBarChangeHandler(event);
