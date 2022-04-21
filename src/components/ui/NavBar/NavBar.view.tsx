@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { User } from '../../pages/Profile/Profile';
-import cartPng from './cartimage.png';
+import cartPng from '../../../assets/cart.png';
+import { Product } from '../../pages/ProductsPage/ProductsPage';
 import logoSvg from './snapsvg-seeklogo.com.svg';
 import classes from './NavBar.module.scss';
 
 interface IProps {
-	ToggleClass: () => void;
+	ToggleNavMenu: () => void;
 	isActive: boolean;
 	auth: {
 		user: User;
@@ -16,15 +17,50 @@ interface IProps {
 		cartLength: number;
 	};
 	onLogout: () => void;
+	searchBarChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	navSearchProducts: Product[];
+	setNavSearchProducts: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
-const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout, cart }) => {
+const NavBarView: React.FC<IProps> = ({
+	ToggleNavMenu,
+	isActive,
+	auth,
+	onLogout,
+	cart,
+	searchBarChangeHandler,
+	navSearchProducts,
+	setNavSearchProducts,
+}) => {
+	const navigate = useNavigate();
+
 	const pageWidth = window.innerWidth;
+	let navSearchContent;
+
+	if (navSearchProducts.length >= 1) {
+		navSearchContent = navSearchProducts.map((product: Product) => {
+			return (
+				<li
+					key={product._id}
+					className={classes.nav__search__box__result}
+					onClick={() => {
+						navigate(`/product-page?_id=${product._id}`);
+						setNavSearchProducts([]);
+						ToggleNavMenu();
+					}}
+				>
+					{product.name}
+				</li>
+			);
+		});
+	} else {
+		navSearchContent = '';
+	}
 
 	return (
 		<header className={classes.header}>
 			<div className={`${classes.container} ${classes.row}`}>
-				<button className={classes.nav_toggle} onClick={ToggleClass}>
+				<button className={classes.nav_toggle} onClick={ToggleNavMenu}>
 					<span className={classes.hamburger} />
 				</button>
 				<Link to="/" className={classes.logo}>
@@ -39,7 +75,19 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout, c
 								type="text"
 								id="serch"
 								name="serch"
+								onChange={(event) => {
+									searchBarChangeHandler(event);
+								}}
+								onFocus={(event) => {
+									searchBarChangeHandler(event);
+								}}
+								onBlur={() => {
+									setTimeout(() => {
+										setNavSearchProducts([]);
+									}, 150);
+								}}
 							/>
+							<ul className={classes.nav__search__box}>{navSearchContent}</ul>
 						</li>
 					</ul>
 					<ul className={`${classes.nav__list} ${classes.nav__list__secondary}`}>
@@ -56,7 +104,7 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout, c
 										className={classes.nav__link}
 										onClick={() => {
 											if (pageWidth < 880) {
-												ToggleClass();
+												ToggleNavMenu();
 											}
 										}}
 									>
@@ -69,7 +117,7 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout, c
 										className={classes.nav__link}
 										onClick={() => {
 											if (pageWidth < 880) {
-												ToggleClass();
+												ToggleNavMenu();
 											}
 										}}
 									>
@@ -83,7 +131,7 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout, c
 											className={classes.nav__link}
 											onClick={() => {
 												if (pageWidth < 880) {
-													ToggleClass();
+													ToggleNavMenu();
 												}
 											}}
 										>
@@ -98,7 +146,7 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout, c
 											onLogout();
 
 											if (pageWidth < 880) {
-												ToggleClass();
+												ToggleNavMenu();
 											}
 										}}
 									>
@@ -114,7 +162,7 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout, c
 									className={classes.nav__link}
 									onClick={() => {
 										if (pageWidth < 880) {
-											ToggleClass();
+											ToggleNavMenu();
 										}
 									}}
 								>
@@ -129,7 +177,7 @@ const NavBarView: React.FC<IProps> = ({ ToggleClass, isActive, auth, onLogout, c
 									className={classes.nav__link}
 									onClick={() => {
 										if (pageWidth < 880) {
-											ToggleClass();
+											ToggleNavMenu();
 										}
 									}}
 								>

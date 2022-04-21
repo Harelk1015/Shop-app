@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { useSearchParams } from 'react-router-dom';
 import { ReducersState } from '../../../state/reducers';
 import * as actionCreators from '../../../state/reducers/actionCreator';
 
@@ -18,11 +19,15 @@ interface IFavorite {
 }
 
 const ProductPage: React.FC = () => {
-	const params = new URLSearchParams(window.location.search);
-	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
-	const _id = params.get('_id');
 	const dispacth = useDispatch();
+	const params = new URLSearchParams(window.location.search);
+
 	const { addCartItem } = bindActionCreators(actionCreators, dispacth);
+	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
+
+	const _id = params.get('_id');
+
+	const [searchParams] = useSearchParams();
 
 	const [isFavorited, setIsFavorited] = useState(false);
 	const [product, setProduct] = useState<Product>();
@@ -54,7 +59,7 @@ const ProductPage: React.FC = () => {
 				})
 				.catch((err) => console.log(err.response.data.message));
 		}
-	}, []);
+	}, [searchParams]);
 
 	const addToCartHandler = async () => {
 		if (!product) {

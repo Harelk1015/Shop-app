@@ -25,7 +25,6 @@
 			align-self: flex-start;
 			border-radius: 100%;
 			padding: 0.5px 6px;
-
 		}
 	}
 }
@@ -42,13 +41,37 @@
 .nav__search {
 	padding: 0.4em 0;
 	width: 100%;
-	// background-color: #360a14;
-	// border: white solid 2px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+
+	&__box {
+		position: absolute;
+		background-color: wheat;
+		width: 48%;
+		margin: 1.7rem auto;
+
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+
+		&__result {
+			width: 100%;
+			list-style: none;
+			cursor: pointer;
+			color: black;
+
+		}
+		&__result:hover {
+			opacity: 70%;
+		}
+	}
 }
 
 .nav__input {
 	width: 50%;
-	border-radius: 13px;
+	border-radius: 9px;
 	padding: 0.3em 0.8em;
 	border: white solid 1px;
 	background-color: #360a14;
@@ -175,7 +198,6 @@ Works the same :) */
 
 	.nav__input {
 		width: 100%;
-		border-radius: 13px;
 		padding: 0.3em 0.8em;
 		border: white solid 1px;
 		background-color: #360a14;
