@@ -25,7 +25,6 @@ const App = () => {
 
 	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
 	const { login } = bindActionCreators(actionCreators, dispacth);
-	// const { setCartItem } = bindActionCreators(actionCreators, dispacth);
 
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {

@@ -4,6 +4,7 @@ import React from 'react';
 import emptyHeart from '../../../assets/empty-heart.svg';
 import fullHeart from '../../../assets/full-heart.svg';
 import AddedToCart from '../../ui/AddedToCartModal/AddedToCartModal';
+import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
 import { Product } from '../ProductsPage/ProductsPage';
 import { User } from '../Profile/Profile';
 import classes from './ProductPage.module.scss';
@@ -42,9 +43,13 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 	setChoosenSize,
 	choosenSize,
 }) => {
-
 	if (!product) {
-		return <h1>no product found</h1>;
+		return (
+			<>
+				<br />;
+				<LoadingSpinner />;
+			</>
+		);
 	}
 
 	return (
