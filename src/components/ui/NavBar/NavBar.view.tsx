@@ -70,7 +70,7 @@ const NavBarView: React.FC<IProps> = ({
 					<ul className={`${classes.nav__list} ${classes.nav__list__primary}`}>
 						<li className={`${classes.nav__item} ${classes.nav__search}`}>
 							<input
-								placeholder="Serch for items..."
+								placeholder="Serch items..."
 								className={classes.nav__input}
 								type="text"
 								id="serch"
