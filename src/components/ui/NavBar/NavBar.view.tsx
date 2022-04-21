@@ -72,7 +72,7 @@ const NavBarView: React.FC<IProps> = ({
 							<input
 								placeholder="Serch items..."
 								className={classes.nav__input}
-								type="text"
+								type="none"
 								id="serch"
 								autoComplete="none"
 								name="serch"
