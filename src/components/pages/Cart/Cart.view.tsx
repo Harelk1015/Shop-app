@@ -1,24 +1,27 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/prop-types */
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+
+import { User } from '../../../utils/types';
+
 import Select from '../../ui/Select/Select';
-import { User } from '../Profile/Profile';
+
 import classes from './Cart.module.scss';
 
 interface ICartView {
-	user: User;
-	quantity: number | undefined;
-	setQuantity: React.Dispatch<React.SetStateAction<number | undefined>>;
-	cartItemHandler: (quantity: number, id: string) => void;
-	isLoading: boolean;
-	setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-	cartRemoveItem: (id: string) => Promise<void>;
-	cartTotal: number;
+	readonly user: User;
+	readonly quantity: number | undefined;
+	readonly isLoading: boolean;
+	readonly cartTotal: number;
+	readonly setQuantity: React.Dispatch<React.SetStateAction<number | undefined>>;
+	readonly cartItemHandler: (quantity: number, id: string) => void;
+	readonly setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+	readonly cartRemoveItem: (id: string) => Promise<void>;
 }
 
 const CartView: React.FC<ICartView> = ({ user, cartItemHandler, isLoading, cartRemoveItem, cartTotal }) => {
-	let bodyContent: ReactNode;
+	let bodyContent;
 
 	if (user.cart) {
 		bodyContent = user.cart.map((product) => {

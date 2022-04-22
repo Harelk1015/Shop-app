@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductItemView from './ProductItem.view';
 
-// import { addFavorite, removeFavorite } from '../../../utils/favorite';
-
 interface ProductItemProps {
 	_id: string;
 	name: string;
@@ -18,7 +16,6 @@ const ProductItem: React.FunctionComponent<ProductItemProps> = ({
 	price,
 	imageUrl,
 	userFavoritesId,
-	// userFavorites,
 }) => {
 	const [isFavorited, setIsFavorited] = useState<boolean>(false);
 

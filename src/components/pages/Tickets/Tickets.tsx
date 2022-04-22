@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Ticket } from '../Profile/Profile';
+
+import { Ticket } from '../../../utils/types';
+
 import TicketsView from './Tickets.view';
 
 const Tickets = () => {

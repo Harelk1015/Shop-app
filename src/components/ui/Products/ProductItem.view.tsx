@@ -5,19 +5,20 @@ import { useSelector } from 'react-redux';
 import { ReducersState } from '../../../state/reducers';
 
 import { addFavorite, removeFavorite } from '../../../utils/favorite';
-import { User } from '../../pages/Profile/Profile';
+
+import { User } from '../../../utils/types';
 
 import classes from '../../pages/ProductsPage/ProductsPage.module.scss';
 import emptyHeart from '../../../assets/empty-heart.svg';
 import fullHeart from '../../../assets/full-heart.svg';
 
 interface ProductItemViewProps {
-	_id: string;
-	name: string;
-	price: number;
-	imageUrl: string;
-	isFavorited: boolean;
-	setIsFavorited: React.Dispatch<React.SetStateAction<boolean>>;
+	readonly _id: string;
+	readonly name: string;
+	readonly price: number;
+	readonly imageUrl: string;
+	readonly isFavorited: boolean;
+	readonly setIsFavorited: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({

@@ -1,24 +1,24 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
+
 import classes from './Login.module.scss';
 
 interface IProps {
-	readonly submitHandler: (e: React.FormEvent) => void;
-	readonly email: string;
-	readonly password: string;
 	readonly errorMessage: string;
+	readonly loading: boolean;
+	readonly submitHandler: (e: React.FormEvent) => void;
 	readonly emailChangeHandler: (value: string) => void;
 	readonly passwordChangeHandler: (value: string) => void;
-	readonly loading: boolean;
 }
 
 const LoginView: React.FC<IProps> = ({
-	submitHandler,
 	errorMessage,
+	loading,
+	submitHandler,
 	emailChangeHandler,
 	passwordChangeHandler,
-	loading,
 }) => {
 	return (
 		<div className={classes.push}>

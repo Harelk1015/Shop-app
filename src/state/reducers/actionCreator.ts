@@ -3,13 +3,13 @@ import IAction, { ActionTypes } from './actionsTypes';
 
 export interface ILoginUser {
 	readonly username: string;
-	email: string;
-	password: string;
-	role: 'admin' | 'user';
-	favorites: number[];
-	tokens: { token: string; _id: string }[];
-	_id: number;
-	cart: {
+	readonly email: string;
+	readonly password: string;
+	readonly role: 'admin' | 'user';
+	readonly favorites: number[];
+	readonly tokens: { token: string; _id: string }[];
+	readonly _id: number;
+	readonly cart: {
 		_id: string;
 		name: string;
 		price: string;

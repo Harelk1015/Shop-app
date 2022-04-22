@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
+import { Product, User } from '../../../utils/types';
 import * as actionCreators from '../../../state/reducers/actionCreator';
 import { ReducersState } from '../../../state/reducers';
-import { User } from '../../pages/Profile/Profile';
-import { Product } from '../../pages/ProductsPage/ProductsPage';
+
 import NavBarView from './NavBar.view';
 
 const NavBar = () => {

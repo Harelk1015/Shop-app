@@ -2,12 +2,18 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Order } from '../../../utils/types';
+
 import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
+
 import classes from './Profile.module.scss';
-// eslint-disable-next-line import/no-cycle
-import { Orders } from './Profile';
 
 interface IProps {
+	readonly userFavorites: { _id: string; imageUrl: string; name: string }[];
+	readonly orders: Order[];
+	readonly errorMessage: string;
+	readonly goodMessage: string;
+	readonly loading: boolean;
 	user: {
 		readonly _id: number;
 		readonly username: string;
@@ -16,27 +22,21 @@ interface IProps {
 		readonly role: 'admin' | 'user';
 		readonly favorites?: number[];
 	};
-	readonly userFavorites: { _id: string; imageUrl: string; name: string }[];
-	// tickets: Tickets;
-	orders: Orders;
-	setOldPassword: React.Dispatch<React.SetStateAction<string>>;
-	setNewPassword: React.Dispatch<React.SetStateAction<string>>;
-	changePasswordHandler: () => Promise<void>;
-	errorMessage: string;
-	goodMessage: string;
-	loading: boolean;
+	readonly setOldPassword: React.Dispatch<React.SetStateAction<string>>;
+	readonly setNewPassword: React.Dispatch<React.SetStateAction<string>>;
+	readonly changePasswordHandler: () => Promise<void>;
 }
 
 const ProfileView: React.FC<IProps> = ({
 	user,
 	orders,
 	userFavorites,
-	setNewPassword,
-	setOldPassword,
-	changePasswordHandler,
 	errorMessage,
 	goodMessage,
 	loading,
+	setNewPassword,
+	setOldPassword,
+	changePasswordHandler,
 }) => {
 	let ordersContent;
 	let favoritesContent;

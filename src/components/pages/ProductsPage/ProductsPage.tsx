@@ -1,26 +1,12 @@
-/* eslint-disable import/exports-last */
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Product } from '../../../utils/types';
 
 import ProductsPageView from './ProductsPage.view';
 
-export interface Product {
-	_id: string;
-	name: string;
-	price: number;
-	imageUrl: string;
-	kind: {
-		sex: string;
-		kind: 'Pants' | 'Shoes' | 'Shirts';
-	};
-	sizes: { size: number; _id: string }[];
-	isFavorited?: boolean;
-}
-
-export type Products = Product[] | [];
-
 const ProductsPage: React.FC = () => {
 	const params = new URLSearchParams(window.location.search);
+
 	const [products, setProducts] = useState<Product[]>();
 	const [userFavorites, setUserFavorites] = useState<{ _id: string; name: string; imageUrl: string }[]>();
 
@@ -52,7 +38,6 @@ const ProductsPage: React.FC = () => {
 			});
 	}, []);
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let userFavoritesId: string[] | undefined = [];
 
 	userFavoritesId = userFavorites?.map((favorite) => {

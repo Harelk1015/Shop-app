@@ -1,10 +1,10 @@
 import React from 'react';
-import { Ticket } from '../Profile/Profile';
+import { Ticket } from '../../../utils/types';
 import classes from './Tickets.module.scss';
 
 interface IProps {
-	ticket: Ticket | undefined;
-	errMessage: string;
+	readonly ticket: Ticket | undefined;
+	readonly errMessage: string;
 }
 
 const TicketsView: React.FC<IProps> = ({ ticket, errMessage }) => {

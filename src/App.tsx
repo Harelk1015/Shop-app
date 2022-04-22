@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.scss';
-import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+
 import { ReducersState } from './state/reducers';
 import * as actionCreators from './state/reducers/actionCreator';
+
+import { User } from './utils/types';
+
 import Home from './components/pages/Home/Home';
 import Login from './components/pages/Login/Login';
 import Register from './components/pages/Register/Register';
@@ -15,10 +18,12 @@ import PageNotFound from './components/pages/404/PageNotFound';
 import Contact from './components/pages/Contact/Contact';
 import ProductsPage from './components/pages/ProductsPage/ProductsPage';
 import ProductPage from './components/pages/ProductPage/ProductPage';
-import Profile, { User } from './components/pages/Profile/Profile';
+import Profile from './components/pages/Profile/Profile';
 import AdminPanel from './components/pages/Admin/AdminPanel';
 import Tickets from './components/pages/Tickets/Tickets';
 import Cart from './components/pages/Cart/Cart';
+
+import './App.scss';
 
 const App = () => {
 	const dispacth = useDispatch();

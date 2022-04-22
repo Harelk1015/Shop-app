@@ -2,53 +2,55 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Ticket } from '../../../utils/types';
+
 import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
-import { Tickets } from '../Profile/Profile';
+
 import classes from './AdminPanel.module.scss';
 
 interface IProps {
-	tickets: Tickets;
-	name: string;
-	price: number;
-	sex: string;
-	kind: string;
-	imageUrl: string;
-	size36: number;
-	size37: number;
-	size38: number;
-	size39: number;
-	size40: number;
-	size41: number;
-	size42: number;
-	search: string;
-	prodName: string;
-	prodPrice: number;
-	prodSizes: string | [] | undefined;
-	setName: React.Dispatch<React.SetStateAction<string>>;
-	setPrice: React.Dispatch<React.SetStateAction<number>>;
-	setSex: React.Dispatch<React.SetStateAction<string>>;
-	setKind: React.Dispatch<React.SetStateAction<string>>;
-	setImageUrl: React.Dispatch<React.SetStateAction<string>>;
-	setSize36: React.Dispatch<React.SetStateAction<number>>;
-	setSize37: React.Dispatch<React.SetStateAction<number>>;
-	setSize38: React.Dispatch<React.SetStateAction<number>>;
-	setSize39: React.Dispatch<React.SetStateAction<number>>;
-	setSize40: React.Dispatch<React.SetStateAction<number>>;
-	setSize41: React.Dispatch<React.SetStateAction<number>>;
-	setSize42: React.Dispatch<React.SetStateAction<number>>;
-	setSearch: React.Dispatch<React.SetStateAction<string>>;
-	setProdName: React.Dispatch<React.SetStateAction<string>>;
-	setProdPrice: React.Dispatch<React.SetStateAction<number>>;
-	setProdSizes: React.Dispatch<React.SetStateAction<string | [] | undefined>>;
-	editProductChangeHandler: (event: any) => void;
-	addProductHandler: () => void;
-	editProductHandler: () => void;
-	sizes: number[];
-	searchLoading: boolean | undefined;
-	deleteProductHandler: () => Promise<void>;
-	editLoading: boolean;
-	editMessage: string;
-	editErrMessage: string;
+	readonly tickets: Ticket[];
+	readonly name: string;
+	readonly price: number;
+	readonly sex: string;
+	readonly kind: string;
+	readonly imageUrl: string;
+	readonly size36: number;
+	readonly size37: number;
+	readonly size38: number;
+	readonly size39: number;
+	readonly size40: number;
+	readonly size41: number;
+	readonly size42: number;
+	readonly search: string;
+	readonly prodName: string;
+	readonly prodPrice: number | undefined;
+	readonly prodSizes: string | [] | undefined;
+	readonly sizes: number[];
+	readonly searchLoading: boolean | undefined;
+	readonly editLoading: boolean;
+	readonly editMessage: string;
+	readonly editErrMessage: string;
+	readonly setName: React.Dispatch<React.SetStateAction<string>>;
+	readonly setPrice: React.Dispatch<React.SetStateAction<number>>;
+	readonly setSex: React.Dispatch<React.SetStateAction<string>>;
+	readonly setKind: React.Dispatch<React.SetStateAction<string>>;
+	readonly setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+	readonly setSize36: React.Dispatch<React.SetStateAction<number>>;
+	readonly setSize37: React.Dispatch<React.SetStateAction<number>>;
+	readonly setSize38: React.Dispatch<React.SetStateAction<number>>;
+	readonly setSize39: React.Dispatch<React.SetStateAction<number>>;
+	readonly setSize40: React.Dispatch<React.SetStateAction<number>>;
+	readonly setSize41: React.Dispatch<React.SetStateAction<number>>;
+	readonly setSize42: React.Dispatch<React.SetStateAction<number>>;
+	readonly setSearch: React.Dispatch<React.SetStateAction<string>>;
+	readonly setProdName: React.Dispatch<React.SetStateAction<string>>;
+	readonly setProdPrice: React.Dispatch<React.SetStateAction<number | undefined>>;
+	readonly setProdSizes: React.Dispatch<React.SetStateAction<string | [] | undefined>>;
+	readonly editProductChangeHandler: (event: any) => void;
+	readonly addProductHandler: () => void;
+	readonly editProductHandler: () => void;
+	readonly deleteProductHandler: () => Promise<void>;
 }
 
 const AdminPanelView: React.FC<IProps> = ({
@@ -81,7 +83,6 @@ const AdminPanelView: React.FC<IProps> = ({
 	editErrMessage,
 }) => {
 	const navigate = useNavigate();
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 	const ticketContent = tickets.map((ticket) => {
 		return (

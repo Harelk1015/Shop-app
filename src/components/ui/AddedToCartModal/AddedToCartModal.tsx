@@ -1,18 +1,16 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-// import { useNavigate } from 'react-router-dom';
+
 import classes from './AddedToCartModal.module.scss';
 
 interface IAddedToCartModal {
-	name: string;
-	size: number;
-	price: number;
-	setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+	readonly name: string;
+	readonly size: number;
+	readonly price: number;
+	readonly setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AddedToCartModal: React.FC<IAddedToCartModal> = ({ name, size, price, setOpenModal }) => {
-	// const navigate = useNavigate();
-
 	return (
 		<>
 			<div

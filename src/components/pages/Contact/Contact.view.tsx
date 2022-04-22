@@ -3,14 +3,14 @@ import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
 import classes from './Contact.module.scss';
 
 interface IContactViewProps {
-	setSubjectState: React.Dispatch<React.SetStateAction<string>>;
-	setEmailState: React.Dispatch<React.SetStateAction<string>>;
-	setMessageState: React.Dispatch<React.SetStateAction<string>>;
-	contactSubmitHandler: (event: React.FormEvent) => void;
+	readonly setSubjectState: React.Dispatch<React.SetStateAction<string>>;
+	readonly setEmailState: React.Dispatch<React.SetStateAction<string>>;
+	readonly setMessageState: React.Dispatch<React.SetStateAction<string>>;
+	readonly contactSubmitHandler: (event: React.FormEvent) => void;
 
-	isLoading: boolean;
-	submitMessage: string;
-	submitErrMessage: string;
+	readonly isLoading: boolean;
+	readonly submitMessage: string;
+	readonly submitErrMessage: string;
 }
 
 const ContactView: React.FC<IContactViewProps> = ({

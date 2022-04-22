@@ -1,47 +1,49 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
+
+import { Product, User } from '../../../utils/types';
+
+import AddedToCart from '../../ui/AddedToCartModal/AddedToCartModal';
 import emptyHeart from '../../../assets/empty-heart.svg';
 import fullHeart from '../../../assets/full-heart.svg';
-import AddedToCart from '../../ui/AddedToCartModal/AddedToCartModal';
 import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
-import { Product } from '../ProductsPage/ProductsPage';
-import { User } from '../Profile/Profile';
+
 import classes from './ProductPage.module.scss';
 
 interface ProductPageViewProps {
-	readonly onClick?: () => void;
-	product: Product | undefined;
-	isFavorited: boolean;
-	setIsFavorited: React.Dispatch<React.SetStateAction<boolean>>;
-	addFavorite: (productId: string) => void;
-	removeFavorite: (productId: string) => void;
-	auth: {
-		user: User;
-		isAuth: boolean;
+	readonly product: Product | undefined;
+	readonly isFavorited: boolean;
+	readonly openModal: boolean;
+	readonly choosenSize: number;
+	readonly choosedId: string;
+	readonly auth: {
+		readonly user: User;
+		readonly isAuth: boolean;
 	};
-	openModal: boolean;
-	setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-	addToCartHandler: () => Promise<void>;
-	choosenSize: number;
-	setChoosenSize: React.Dispatch<React.SetStateAction<number>>;
-	choosedId: string;
-	setChoosenId: React.Dispatch<React.SetStateAction<string>>;
+	readonly onClick?: () => void;
+	readonly setIsFavorited: React.Dispatch<React.SetStateAction<boolean>>;
+	readonly addFavorite: (productId: string) => void;
+	readonly removeFavorite: (productId: string) => void;
+	readonly setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+	readonly addToCartHandler: () => Promise<void>;
+	readonly setChoosenSize: React.Dispatch<React.SetStateAction<number>>;
+	readonly setChoosenId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const ProductPageView: React.FC<ProductPageViewProps> = ({
 	product,
 	isFavorited,
+	auth,
+	openModal,
+	choosenSize,
 	addFavorite,
 	removeFavorite,
 	setIsFavorited,
-	auth,
-	openModal,
 	setOpenModal,
 	addToCartHandler,
 	setChoosenId,
 	setChoosenSize,
-	choosenSize,
 }) => {
 	if (!product) {
 		return (

@@ -1,18 +1,29 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+
 import img from '../../../assets/pants.jpeg';
 import woman from '../../../assets/woman.jpeg';
 import man from '../../../assets/man.jpeg';
 
 import classes from './Home.module.scss';
 
-// let classes
+interface IHomeView {
+	readonly setManDialog: React.Dispatch<React.SetStateAction<boolean>>;
+	readonly setWomanDialog: React.Dispatch<React.SetStateAction<boolean>>;
+	readonly setPantsDialog: React.Dispatch<React.SetStateAction<boolean>>;
+	readonly manDialog: boolean;
+	readonly womanDialog: boolean;
+	readonly PantsDialog: boolean;
+}
 
-const HomeView = () => {
-	const [manDialog, setManDialog] = useState(false);
-	const [womanDialog, setWomanDialog] = useState(false);
-	const [PantsDialog, setPantsDialog] = useState(false);
-
+const HomeView: React.FC<IHomeView> = ({
+	setManDialog,
+	setWomanDialog,
+	setPantsDialog,
+	manDialog,
+	womanDialog,
+	PantsDialog,
+}) => {
 	return (
 		<>
 			<div className={classes.main}>
@@ -24,7 +35,6 @@ const HomeView = () => {
 							alt="picture of Pats"
 							onClick={() => {
 								setPantsDialog(!PantsDialog);
-								// eslint-disable-next-line no-trailing-spaces
 
 								if (!PantsDialog) {
 									window.scrollBy({ left: 0, top: 180, behavior: 'smooth' });
@@ -205,6 +215,6 @@ const HomeView = () => {
 	);
 };
 
-HomeView.displayName = HomeView;
+HomeView.displayName = 'HomeView';
 
 export default HomeView;

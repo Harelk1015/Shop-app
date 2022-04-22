@@ -1,25 +1,24 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { User } from '../../pages/Profile/Profile';
+import { Product, User } from '../../../utils/types';
 import cartPng from '../../../assets/cart.png';
-import { Product } from '../../pages/ProductsPage/ProductsPage';
 import logoSvg from './snapsvg-seeklogo.com.svg';
 import classes from './NavBar.module.scss';
 
 interface IProps {
-	ToggleNavMenu: () => void;
-	isActive: boolean;
-	auth: {
+	readonly isActive: boolean;
+	readonly navSearchProducts: Product[];
+	readonly auth: {
 		user: User;
 		isAuth: boolean;
 	};
-	cart: {
+	readonly cart: {
 		cartLength: number;
 	};
-	onLogout: () => void;
-	searchBarChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
-	navSearchProducts: Product[];
-	setNavSearchProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+	readonly onLogout: () => void;
+	readonly ToggleNavMenu: () => void;
+	readonly searchBarChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	readonly setNavSearchProducts: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
 const NavBarView: React.FC<IProps> = ({

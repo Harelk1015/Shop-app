@@ -1,4 +1,3 @@
-// import classes from './PageNotFound.module.scss';
 import PageNotFoundView from './PageNotFound.view';
 
 const PageNotFound = () => {

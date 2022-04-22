@@ -7,33 +7,27 @@ import { useSearchParams } from 'react-router-dom';
 import { ReducersState } from '../../../state/reducers';
 import * as actionCreators from '../../../state/reducers/actionCreator';
 
-import { Product } from '../ProductsPage/ProductsPage';
+import { IFavorite, Product, User } from '../../../utils/types';
+
 import { addFavorite, removeFavorite } from '../../../utils/favorite';
-import { User } from '../Profile/Profile';
+
 import ProductPageView from './ProductPage.view';
 
-interface IFavorite {
-	_id: string;
-	imageUrl: string;
-	name: string;
-}
-
 const ProductPage: React.FC = () => {
-	const dispacth = useDispatch();
+	const dispatch = useDispatch();
 	const params = new URLSearchParams(window.location.search);
-
-	const { addCartItem } = bindActionCreators(actionCreators, dispacth);
-	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
-
 	const _id = params.get('_id');
-
-	const [searchParams] = useSearchParams();
 
 	const [isFavorited, setIsFavorited] = useState(false);
 	const [product, setProduct] = useState<Product>();
 	const [openModal, setOpenModal] = useState(false);
 	const [choosenSize, setChoosenSize] = useState<number>(0);
 	const [choosenId, setChoosenId] = useState<string>('');
+
+	const { addCartItem } = bindActionCreators(actionCreators, dispatch);
+	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
+
+	const [searchParams] = useSearchParams();
 
 	useEffect(() => {
 		axios

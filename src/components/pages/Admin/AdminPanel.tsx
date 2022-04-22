@@ -2,11 +2,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Ticket } from '../Profile/Profile';
-import { IReactEvent } from '../../../utils/types';
+
+import { IReactEvent, Ticket } from '../../../utils/types';
+
 import AdminPanelView from './AdminPanel.view';
 
 const AdminPanel = () => {
+	const navigate = useNavigate();
+
 	const [name, setName] = useState('');
 	const [price, setPrice] = useState<number>(0);
 	const [sex, setSex] = useState('');
@@ -26,13 +29,11 @@ const AdminPanel = () => {
 	const [editErrMessage, setEditErrMessage] = useState<string>('');
 	const [serach, setSearch] = useState('');
 	const [prodName, setProdName] = useState('');
-	const [prodPrice, setProdPrice] = useState<number>(Number);
+	const [prodPrice, setProdPrice] = useState<number>();
 	const [prodSizes, setProdSizes] = useState<[] | string>();
 	const [prodId, setProdId] = useState('');
 
 	const [tickets, setTickets] = useState<Ticket[]>([]);
-
-	const navigate = useNavigate();
 
 	let sizes = [size36, size37, size38, size39, size40, size41, size42];
 
@@ -40,7 +41,6 @@ const AdminPanel = () => {
 		axios
 			.get(process.env.REACT_APP_BACKEND_URL + '/ticket/get-tickets')
 			.then((res) => {
-				console.log(res.data.tickets);
 				setTickets(res.data.tickets);
 			})
 			.catch((err) => {
@@ -50,7 +50,6 @@ const AdminPanel = () => {
 
 	const addProductHandler = () => {
 		sizes = sizes.filter(Boolean);
-		console.log(sizes);
 
 		axios
 			.post(process.env.REACT_APP_BACKEND_URL + '/products/add-product', {
@@ -104,14 +103,9 @@ const AdminPanel = () => {
 			setProdSizes([]);
 			setSearchLoading(false);
 		}
-
-		console.log(prodSizes);
 	};
 
 	const editProductHandler = () => {
-		// setEditLoading(true);
-		console.log(prodSizes);
-
 		let tempSizes;
 
 		if (typeof prodSizes !== 'object' && prodSizes !== null) {
@@ -119,8 +113,6 @@ const AdminPanel = () => {
 		} else {
 			tempSizes = prodSizes;
 		}
-
-		console.log(tempSizes);
 
 		axios
 			.post(process.env.REACT_APP_BACKEND_URL + '/products/edit-product', {

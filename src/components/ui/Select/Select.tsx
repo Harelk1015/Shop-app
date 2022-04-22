@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import classes from './Select.module.scss';
 
 interface ISelect {
-	quantity: string;
-	_id: string;
-	cartItemHandler: (quantity: number, id: string) => void;
+	readonly quantity: string;
+	readonly _id: string;
+	readonly cartItemHandler: (quantity: number, id: string) => void;
 }
 
 const Select: React.FC<ISelect> = ({ quantity, _id, cartItemHandler }) => {

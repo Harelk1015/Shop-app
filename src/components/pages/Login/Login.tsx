@@ -7,6 +7,9 @@ import * as actionCreators from '../../../state/reducers/actionCreator';
 import LoginView from './Login.view';
 
 const Login = () => {
+	const dispacth = useDispatch();
+	const navigate = useNavigate();
+
 	const [emailState, setEmailState] = useState<string>('');
 	const [passwordState, setPasswordState] = useState<string>('');
 	const [errorMessage, setErrorMessage] = useState<string>('');
@@ -15,9 +18,6 @@ const Login = () => {
 	const emailChangeHandler = (value: string) => setEmailState(() => value);
 	const passwordChangeHandler = (value: string) => setPasswordState(() => value);
 	const errorMessageChangeHandler = (value: string) => setErrorMessage(() => value);
-
-	const dispacth = useDispatch();
-	const navigate = useNavigate();
 
 	const { login } = bindActionCreators(actionCreators, dispacth);
 
@@ -49,8 +49,6 @@ const Login = () => {
 
 	return (
 		<LoginView
-			email={emailState}
-			password={passwordState}
 			emailChangeHandler={emailChangeHandler}
 			passwordChangeHandler={passwordChangeHandler}
 			submitHandler={submitHandler}
