@@ -79,16 +79,10 @@ const AdminPanel = () => {
 					_id: event.target.value.toString(),
 				})
 				.then((res) => {
-					const sizes = res.data.product.sizes.map((size: { size: string }) => {
-						return size.size;
-					});
-
-					console.log(sizes);
-
 					console.log(res.data.product);
 					setProdName(res.data.product.name);
 					setProdPrice(res.data.product.price);
-					setProdSizes(sizes);
+					setProdSizes(res.data.product.sizes);
 					setSearchLoading(false);
 				})
 				.catch(() => {

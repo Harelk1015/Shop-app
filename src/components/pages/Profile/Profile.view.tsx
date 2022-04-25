@@ -55,8 +55,6 @@ const ProfileView: React.FC<IProps> = ({
 		});
 	}
 
-	console.log(user.favorites);
-
 	if (user.favorites?.length === 0) {
 		favoritesContent = <p>You dont have any favorite items</p>;
 	} else {

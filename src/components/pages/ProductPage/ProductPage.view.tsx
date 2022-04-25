@@ -72,32 +72,32 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 						<form className={classes.productPage__sizesSelection__form}>
 							{product?.sizes.map((size) => {
 								return (
-									<div className={classes.productPage__sizesSelection__div} key={size._id}>
+									<div className={classes.productPage__sizesSelection__div} key={size}>
 										<input
 											type="radio"
 											name="size"
-											id={size.size.toString()}
+											id={size.toString()}
 											className={classes.productPage__sizesSelection__btn}
-											value={size.size}
+											value={size}
 											onClick={(event: React.MouseEvent<HTMLElement>) => {
 												setChoosenSize((event.target as any).value);
-												setChoosenId(size._id);
+												setChoosenId(product._id);
 											}}
 										/>
 										<label
 											className={classes.productPage__sizesSelection__label}
-											htmlFor={size.size.toString()}
+											htmlFor={size.toString()}
 										>
 											<div
 												className={`${
 													classes.productPage__sizesSelection__label__item
 												} ${
-													choosenSize === size.size
+													choosenSize.toString() === size
 														? classes.productPage__sizesSelection__label__item__active
 														: ''
 												}`}
 											>
-												{size.size}
+												{size}
 											</div>
 										</label>
 									</div>

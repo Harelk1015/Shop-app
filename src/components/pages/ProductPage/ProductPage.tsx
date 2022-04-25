@@ -62,8 +62,7 @@ const ProductPage: React.FC = () => {
 
 		try {
 			const res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/cart', {
-				parentId: _id,
-				_id: choosenId,
+				_id: _id,
 				name: product.name,
 				price: product.price,
 				size: choosenSize,

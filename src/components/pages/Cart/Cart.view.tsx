@@ -26,11 +26,8 @@ const CartView: React.FC<ICartView> = ({ user, cartItemHandler, isLoading, cartR
 	if (user.cart) {
 		bodyContent = user.cart.map((product) => {
 			return (
-				<div key={product._id} className={classes.left__body__card}>
-					<Link
-						to={`/product-page?_id=${product.parentId}`}
-						className={classes.left__body__card__img}
-					>
+				<div key={product._id + product.size} className={classes.left__body__card}>
+					<Link to={`/product-page?_id=${product._id}`} className={classes.left__body__card__img}>
 						<img
 							src={product.imageUrl}
 							alt={product.name}

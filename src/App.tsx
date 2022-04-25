@@ -33,9 +33,12 @@ const App = () => {
 
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
-			axios.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin').then((res) => {
-				login(res.data.user);
-			});
+			axios
+				.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin')
+				.then((res) => {
+					login(res.data.user);
+				})
+				.catch((err) => console.log(err.response.data.message));
 		}
 	}, [auth.isAuth]);
 

@@ -28,15 +28,18 @@ const Profile = () => {
 
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
-			axios.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin').then((res) => {
-				login(res.data.user);
-			});
+			axios
+				.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin')
+				.then((res) => {
+					login(res.data.user);
+				})
+				.catch((err) => console.log(err.response.data.message));
 		}
 
 		axios
 			.post(process.env.REACT_APP_BACKEND_URL + '/user/get-favorites')
 			.then((res) => setUserFavorites(res.data.userFavorites))
-			.catch((err) => console.log(err.message));
+			.catch((err) => console.log(err.response.data.message));
 	}, [auth.isAuth]);
 
 	const changePasswordHandler = async () => {
