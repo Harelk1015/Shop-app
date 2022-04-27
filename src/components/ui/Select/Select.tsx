@@ -4,10 +4,11 @@ import classes from './Select.module.scss';
 interface ISelect {
 	readonly quantity: string;
 	readonly _id: string;
-	readonly cartItemHandler: (quantity: number, id: string) => void;
+	readonly cartItemHandler: (quantity: number, id: string, size: string) => Promise<void>;
+	size: string;
 }
 
-const Select: React.FC<ISelect> = ({ quantity, _id, cartItemHandler }) => {
+const Select: React.FC<ISelect> = ({ quantity, _id, cartItemHandler, size }) => {
 	const [itemQuantity, setItemQuantity] = useState<string>();
 
 	useEffect(() => {
@@ -21,7 +22,7 @@ const Select: React.FC<ISelect> = ({ quantity, _id, cartItemHandler }) => {
 			name="quantity"
 			value={itemQuantity}
 			onChange={(event) => {
-				cartItemHandler(parseInt(event.target.value), _id);
+				cartItemHandler(parseInt(event.target.value), _id, size);
 				setItemQuantity(event.target.value);
 			}}
 		>

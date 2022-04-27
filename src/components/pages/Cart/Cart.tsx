@@ -16,19 +16,23 @@ const Cart = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [cartTotal, setCartTotal] = useState(0);
 
-	const cartItemHandler = async (quantity: number, id: string) => {
+	const cartItemHandler = async (quantity: number, id: string, size: string) => {
 		setIsLoading(true);
+		console.log(quantity, id, size);
 
 		try {
 			const res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/cart/set-cart', {
 				prodId: id,
+				size,
 				quantity,
 			});
 
 			setIsLoading(false);
 			console.log(res);
 			window.location.reload();
-		} catch (err) {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		} catch (err: any) {
+			console.log(err.response);
 			setIsLoading(false);
 		}
 	};
