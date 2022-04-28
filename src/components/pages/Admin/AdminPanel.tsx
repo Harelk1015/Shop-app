@@ -134,6 +134,7 @@ const AdminPanel = () => {
 		try {
 			const res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/products/delete-product', {
 				_id: prodId,
+				
 			});
 
 			if (!res) {

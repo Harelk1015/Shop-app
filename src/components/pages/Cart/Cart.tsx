@@ -37,12 +37,13 @@ const Cart = () => {
 		}
 	};
 
-	const cartRemoveItem = async (id: string) => {
+	const cartRemoveItem = async (id: string, size: string) => {
 		setIsLoading(true);
 
 		try {
 			await axios.post(process.env.REACT_APP_BACKEND_URL + '/cart/remove-cart-item', {
 				_id: id,
+				size,
 			});
 
 			setIsLoading(false);

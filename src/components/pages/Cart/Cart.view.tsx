@@ -17,7 +17,7 @@ interface ICartView {
 	readonly setQuantity: React.Dispatch<React.SetStateAction<number | undefined>>;
 	readonly cartItemHandler: (quantity: number, id: string, size: string) => Promise<void>;
 	readonly setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-	readonly cartRemoveItem: (id: string) => Promise<void>;
+	readonly cartRemoveItem: (id: string, size: string) => Promise<void>;
 }
 
 const CartView: React.FC<ICartView> = ({ user, cartItemHandler, isLoading, cartRemoveItem, cartTotal }) => {
@@ -53,7 +53,7 @@ const CartView: React.FC<ICartView> = ({ user, cartItemHandler, isLoading, cartR
 						<p
 							className={classes.left__body__card__x}
 							onClick={() => {
-								cartRemoveItem(product._id);
+								cartRemoveItem(product._id, product.size);
 							}}
 						>
 							X
