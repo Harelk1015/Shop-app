@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,23 +22,31 @@ import Profile from './components/pages/Profile/Profile';
 import AdminPanel from './components/pages/Admin/AdminPanel';
 import Tickets from './components/pages/Tickets/Tickets';
 import Cart from './components/pages/Cart/Cart';
+import LoadingSpinner from './components/ui/LoadingSpinner/LoadingSpinner';
 
 import './App.scss';
 
 const App = () => {
 	const dispacth = useDispatch();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const auth: { user: User; isAuth: boolean } = useSelector((state: ReducersState) => state.auth);
 	const { login } = bindActionCreators(actionCreators, dispacth);
 
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
+			setIsLoading(true);
+
 			axios
 				.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin')
 				.then((res) => {
+					setIsLoading(false);
 					login(res.data.user);
 				})
-				.catch((err) => console.log(err.response.data.message));
+				.catch((err) => {
+					setIsLoading(false);
+					console.log(err.response.data.message);
+				});
 		}
 	}, [auth.isAuth]);
 
@@ -61,6 +69,9 @@ const App = () => {
 		<BrowserRouter>
 			<NavBar />
 			<Routes>
+				{/* Loading */}
+				{!!isLoading && <Route path="/" element={<LoadingSpinner />} />}
+
 				{/* Routes for all users */}
 				<Route path="/" element={<Home />} />
 				<Route path="/products-page" element={<ProductsPage />} />
