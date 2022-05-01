@@ -40,15 +40,15 @@ const App = () => {
 			axios
 				.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin')
 				.then((res) => {
-					setIsLoading(false);
 					login(res.data.user);
+					setIsLoading(false);
 				})
 				.catch((err) => {
-					setIsLoading(false);
 					console.log(err.response.data.message);
+					setIsLoading(false);
 				});
 		}
-	}, [auth.isAuth]);
+	}, []);
 
 	axios.interceptors.request.use(
 		(config) => {
@@ -78,7 +78,7 @@ const App = () => {
 				<Route path="/product-page" element={<ProductPage />} />
 
 				{/* Routes for unauthenticated users */}
-				{!auth.isAuth ? (
+				{!auth.isAuth? (
 					<>
 						<Route path="/login" element={<Login />} />
 						<Route path="/register" element={<Register />} />
@@ -88,7 +88,7 @@ const App = () => {
 				)}
 
 				{/* Routes for Authenticated users */}
-				{auth.isAuth && (
+				{auth.isAuth && !isLoading && (
 					<>
 						<Route path="/contact" element={<Contact />} />
 						<Route path="/profile" element={<Profile />} />

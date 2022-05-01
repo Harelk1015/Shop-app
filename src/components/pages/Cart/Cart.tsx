@@ -16,6 +16,16 @@ const Cart = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [cartTotal, setCartTotal] = useState(0);
 
+	useEffect(() => {
+		auth.user.cart.map((item) => {
+			const itemTotalPrice = parseInt(item.quantity) * parseInt(item.price);
+
+			setCartTotal((prev) => {
+				return prev + itemTotalPrice;
+			});
+		});
+	}, []);
+
 	const cartItemHandler = async (quantity: number, id: string, size: string) => {
 		setIsLoading(true);
 		console.log(quantity, id, size);
@@ -53,16 +63,6 @@ const Cart = () => {
 			setIsLoading(false);
 		}
 	};
-
-	useEffect(() => {
-		auth.user.cart.map((item) => {
-			const itemTotalPrice = parseInt(item.quantity) * parseInt(item.price);
-
-			setCartTotal((prev) => {
-				return prev + itemTotalPrice;
-			});
-		});
-	}, []);
 
 	return (
 		<CartView
