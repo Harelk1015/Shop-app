@@ -36,6 +36,7 @@ const App = () => {
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
 			setIsLoading(true);
+
 			axios
 				.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin')
 				.then((res) => {
@@ -47,8 +48,6 @@ const App = () => {
 					setIsLoading(false);
 				});
 		}
-
-		setIsLoading(false);
 	}, []);
 
 	axios.interceptors.request.use(
