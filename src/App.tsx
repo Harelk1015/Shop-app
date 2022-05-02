@@ -47,6 +47,8 @@ const App = () => {
 					setIsLoading(false);
 				});
 		}
+
+		setIsLoading(false);
 	}, []);
 
 	axios.interceptors.request.use(
