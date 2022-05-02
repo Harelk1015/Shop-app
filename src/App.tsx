@@ -22,7 +22,7 @@ import Profile from './components/pages/Profile/Profile';
 import AdminPanel from './components/pages/Admin/AdminPanel';
 import Tickets from './components/pages/Tickets/Tickets';
 import Cart from './components/pages/Cart/Cart';
-import LoadingSpinner from './components/ui/LoadingSpinner/LoadingSpinner';
+import PageLoading from './components/ui/PageLoading/PageLoading';
 
 import './App.scss';
 
@@ -34,9 +34,9 @@ const App = () => {
 	const { login } = bindActionCreators(actionCreators, dispacth);
 
 	useEffect(() => {
-		if (localStorage.getItem('accessToken')) {
-			setIsLoading(true);
+		setIsLoading(true);
 
+		if (localStorage.getItem('accessToken')) {
 			axios
 				.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin')
 				.then((res) => {
@@ -55,7 +55,6 @@ const App = () => {
 			if (config.headers) {
 				config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`;
 				config.headers.AuthorizationRefresh = `Bearer ${localStorage.getItem('refreshToken')}`;
-				config.headers.User = `userId ${localStorage.getItem('refreshToken')}`;
 
 				return config;
 			}
@@ -65,30 +64,35 @@ const App = () => {
 		},
 	);
 
+	if (isLoading) {
+		return (
+			<>
+				{/* <NavBar /> */}
+				<PageLoading />
+				{/* <Footer /> */}
+			</>
+		);
+	}
+
 	return (
 		<BrowserRouter>
 			<NavBar />
 			<Routes>
-				{/* Loading */}
-				{!!isLoading && <Route path="/" element={<LoadingSpinner />} />}
-
 				{/* Routes for all users */}
 				<Route path="/" element={<Home />} />
 				<Route path="/products-page" element={<ProductsPage />} />
 				<Route path="/product-page" element={<ProductPage />} />
 
 				{/* Routes for unauthenticated users */}
-				{!auth.isAuth? (
+				{!auth.isAuth && (
 					<>
 						<Route path="/login" element={<Login />} />
 						<Route path="/register" element={<Register />} />
 					</>
-				) : (
-					<Route path="/" element={<Home />} />
 				)}
 
 				{/* Routes for Authenticated users */}
-				{auth.isAuth && !isLoading && (
+				{auth.isAuth && (
 					<>
 						<Route path="/contact" element={<Contact />} />
 						<Route path="/profile" element={<Profile />} />
