@@ -133,6 +133,8 @@
 	height: 100px;
 	animation: spin 2s linear infinite;
 	align-self: center;
+	position: fixed;
+	top: 40%;
 }
 
 @keyframes spin {
