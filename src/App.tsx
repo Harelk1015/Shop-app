@@ -34,9 +34,8 @@ const App = () => {
 	const { login } = bindActionCreators(actionCreators, dispacth);
 
 	useEffect(() => {
-		setIsLoading(true);
-
 		if (localStorage.getItem('accessToken')) {
+			setIsLoading(true);
 			axios
 				.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin')
 				.then((res) => {
@@ -65,13 +64,7 @@ const App = () => {
 	);
 
 	if (isLoading) {
-		return (
-			<>
-				{/* <NavBar /> */}
-				<PageLoading />
-				{/* <Footer /> */}
-			</>
-		);
+		return <PageLoading />;
 	}
 
 	return (
