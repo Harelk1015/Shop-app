@@ -57,7 +57,7 @@ const HomeView: React.FC<IHomeView> = ({
 								<hr />
 								<button className={classes.dialog__btn}>
 									<Link
-										to="products-page?sex=Male&kind=Pants"
+										to="products-page?sex=Man&kind=Pants"
 										className={classes.dialog__btn}
 										onClick={() => {
 											window.scrollTo(0, 0);

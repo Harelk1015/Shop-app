@@ -91,8 +91,9 @@
 			width: 2rem;
 		}
 		&__img {
-			max-height: 450px;
-			max-width: 400px;
+			width: 300px;
+			height: 337px;
+			object-fit: cover;
 		}
 
 		&__details__text {
