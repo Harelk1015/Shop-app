@@ -78,21 +78,20 @@
 
 @media (min-width: 880px) {
 	.productPage {
-		margin: auto auto;
-		width: 50%;
+		margin: 7% auto;
+		width: 70%;
 		max-width: 1500px;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		gap: 1rem;
 
 		&__header {
 			margin: 0;
 		}
 
 		&__img {
-			width: 50%;
-			max-width: 400px;
+			width: 100%;
+			max-width: 500px;
 
 			&__view {
 				width: 100%;
