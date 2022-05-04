@@ -43,17 +43,32 @@ const Footer = () => {
 					<ul className={classes.list}>
 						<h2>Social</h2>
 						<li>
-							<Link to="/www.instagram.com/harelkau" className={classes.nav__link}>
-								<p className={classes.nav__link}>Instagram</p>
-							</Link>
+							<a href="https://www.instagram.com/harelkau" className={classes.nav__link}>
+								Instagram
+							</a>
 						</li>
 						<li>
-							<Link to="#" />
-							<p className={classes.nav__link}>Facebook</p>
+							<a href="https://www.facebook.com/Harelk1015/" className={classes.nav__link}>
+								Facebook
+							</a>
 						</li>
 						<li>
-							<Link to="#" />
-							<p className={classes.nav__link}>Discord</p>
+							<a href="https://discord.gg/pAaFfX8" className={classes.nav__link}>
+								Discord
+							</a>
+						</li>
+						<li>
+							<a href="https://github.com/Harelk1015" className={classes.nav__link}>
+								GitHub
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://www.linkedin.com/in/harel-kaufman-61739821b/"
+								className={classes.nav__link}
+							>
+								Linkedin
+							</a>
 						</li>
 					</ul>
 				</div>
