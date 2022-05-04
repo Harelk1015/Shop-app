@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import * as actionCreators from '../../../state/reducers/actionCreator';
+import * as actionCreators from '../../../store/reducers/actionCreator';
 import LoginView from './Login.view';
 
 const Login = () => {

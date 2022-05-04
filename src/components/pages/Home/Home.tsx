@@ -18,6 +18,6 @@ const Home = () => {
 	);
 };
 
-Home.displayName = Home;
+Home.displayName = 'Home';
 
 export default Home;

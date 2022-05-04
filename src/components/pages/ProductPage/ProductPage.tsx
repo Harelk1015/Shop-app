@@ -4,12 +4,12 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { useSearchParams } from 'react-router-dom';
-import { ReducersState } from '../../../state/reducers';
-import * as actionCreators from '../../../state/reducers/actionCreator';
+import { ReducersState } from '../../../store/reducers';
+import * as actionCreators from '../../../store/reducers/actionCreator';
 
 import { IFavorite, Product, User } from '../../../utils/types';
 
-import { addFavorite, removeFavorite } from '../../../utils/favorite';
+import { favoriteHandler } from '../../../utils/favorite';
 
 import ProductPageView from './ProductPage.view';
 
@@ -85,8 +85,7 @@ const ProductPage: React.FC = () => {
 			product={product}
 			isFavorited={isFavorited}
 			setIsFavorited={setIsFavorited}
-			addFavorite={addFavorite}
-			removeFavorite={removeFavorite}
+			favoriteHandler={favoriteHandler}
 			auth={auth}
 			openModal={openModal}
 			setOpenModal={setOpenModal}

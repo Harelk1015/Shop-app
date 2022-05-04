@@ -3,22 +3,22 @@ import classes from './Footer.module.scss';
 
 const Footer = () => {
 	return (
-		<footer className={classes.footer}> 
+		<footer className={classes.footer}>
 			<div className={classes.links}>
 				<div className={`${classes.links__left} ${classes.center}`}>
 					<ul className={classes.list}>
 						<h2>Tools</h2>
 						<li>
-							<Link to="#" className={classes.nav__link} />
-							Create
+							<Link to="#" />
+							<p className={classes.nav__link}>Create</p>
 						</li>
 						<li>
-							<Link to="#" className={classes.nav__link} />
-							Paint
+							<Link to="#" />
+							<p className={classes.nav__link}>Paint</p>
 						</li>
 						<li>
-							<Link to="#" className={classes.nav__link} />
-							Style
+							<Link to="#" />
+							<p className={classes.nav__link}>Style</p>
 						</li>
 					</ul>
 				</div>
@@ -26,16 +26,16 @@ const Footer = () => {
 					<ul className={classes.list}>
 						<h2>Credits</h2>
 						<li>
-							<Link to="#" className={classes.nav__link} />
-							Harel
+							<Link to="#" />
+							<p className={classes.nav__link}>Harel</p>
 						</li>
 						<li>
-							<Link to="#" className={classes.nav__link} />
-							Kaufman
+							<Link to="#" />
+							<p className={classes.nav__link}>Kaufman</p>
 						</li>
 						<li>
-							<Link to="#" className={classes.nav__link} />
-							Hagever
+							<Link to="#" />
+							<p className={classes.nav__link}>Hagever</p>
 						</li>
 					</ul>
 				</div>
@@ -43,16 +43,17 @@ const Footer = () => {
 					<ul className={classes.list}>
 						<h2>Social</h2>
 						<li>
-							<Link to="#" className={classes.nav__link} />
-							Instagram
+							<Link to="/www.instagram.com/harelkau" className={classes.nav__link}>
+								<p className={classes.nav__link}>Instagram</p>
+							</Link>
 						</li>
 						<li>
-							<Link to="#" className={classes.nav__link} />
-							Facebook
+							<Link to="#" />
+							<p className={classes.nav__link}>Facebook</p>
 						</li>
 						<li>
-							<Link to="#" className={classes.nav__link} />
-							Discord
+							<Link to="#" />
+							<p className={classes.nav__link}>Discord</p>
 						</li>
 					</ul>
 				</div>

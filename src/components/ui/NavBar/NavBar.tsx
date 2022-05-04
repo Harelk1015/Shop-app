@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { Product, User } from '../../../utils/types';
-import * as actionCreators from '../../../state/reducers/actionCreator';
-import { ReducersState } from '../../../state/reducers';
+import * as actionCreators from '../../../store/reducers/actionCreator';
+import { ReducersState } from '../../../store/reducers';
 
 import NavBarView from './NavBar.view';
 

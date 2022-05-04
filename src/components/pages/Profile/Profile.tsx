@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ReducersState } from '../../../state/reducers';
-import * as actionCreators from '../../../state/reducers/actionCreator';
+import { ReducersState } from '../../../store/reducers';
+import * as actionCreators from '../../../store/reducers/actionCreator';
 
 import { Order, User } from '../../../utils/types';
 
@@ -29,7 +29,7 @@ const Profile = () => {
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
 			axios
-				.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin')
+				.get(process.env.REACT_APP_BACKEND_URL + '/auth/auto-login')
 				.then((res) => {
 					login(res.data.user);
 				})

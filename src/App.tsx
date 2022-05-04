@@ -4,12 +4,13 @@ import { bindActionCreators } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
-import { ReducersState } from './state/reducers';
-import * as actionCreators from './state/reducers/actionCreator';
+import { ReducersState } from './store/reducers';
+import * as actionCreators from './store/reducers/actionCreator';
 
 import { User } from './utils/types';
 
 import Home from './components/pages/Home/Home';
+
 import Login from './components/pages/Login/Login';
 import Register from './components/pages/Register/Register';
 import Footer from './components/ui/Footer/Footer';
@@ -23,6 +24,21 @@ import AdminPanel from './components/pages/Admin/AdminPanel';
 import Tickets from './components/pages/Tickets/Tickets';
 import Cart from './components/pages/Cart/Cart';
 import PageLoading from './components/ui/PageLoading/PageLoading';
+
+// const Home = React.lazy(() => import('./components/pages/Home/Home'));
+// const Login = React.lazy(() => import('./components/pages/Login/Login'));
+// const Register = React.lazy(() => import('./components/pages/Register/Register'));
+// const Footer = React.lazy(() => import('./components/ui/Footer/Footer'));
+// const NavBar = React.lazy(() => import('./components/ui/NavBar/NavBar'));
+// const PageNotFound = React.lazy(() => import('./components/pages/404/PageNotFound'));
+// const Contact = React.lazy(() => import('./components/pages/Contact/Contact'));
+// const ProductsPage = React.lazy(() => import('./components/pages/ProductsPage/ProductsPage'));
+// const ProductPage = React.lazy(() => import('./components/pages/ProductPage/ProductPage'));
+// const Profile = React.lazy(() => import('./components/pages/Profile/Profile'));
+// const AdminPanel = React.lazy(() => import('./components/pages/Admin/AdminPanel'));
+// const Tickets = React.lazy(() => import('./components/pages/Tickets/Tickets'));
+// const Cart = React.lazy(() => import('./components/pages/Cart/Cart'));
+// const PageLoading = React.lazy(() => import('./components/ui/PageLoading/PageLoading'));
 
 import './App.scss';
 
@@ -38,15 +54,14 @@ const App = () => {
 			setIsLoading(true);
 
 			axios
-				.get(process.env.REACT_APP_BACKEND_URL + '/auth/autologin')
+				.get(process.env.REACT_APP_BACKEND_URL + '/auth/auto-login')
 				.then((res) => {
 					login(res.data.user);
-					setIsLoading(false);
 				})
 				.catch((err) => {
 					console.log(err.response.data.message);
-					setIsLoading(false);
-				});
+				})
+				.finally(() => setIsLoading(false));
 		}
 	}, []);
 
@@ -74,14 +89,15 @@ const App = () => {
 			<Routes>
 				{/* Routes for all users */}
 				<Route path="/" element={<Home />} />
-				<Route path="/products-page" element={<ProductsPage />} />
-				<Route path="/product-page" element={<ProductPage />} />
+				<Route path="/products" element={<ProductsPage />} />
+				<Route path="/product" element={<ProductPage />} />
 
 				{/* Routes for unauthenticated users */}
 				{!auth.isAuth && (
 					<>
 						<Route path="/login" element={<Login />} />
 						<Route path="/register" element={<Register />} />
+						<Route path="/*" element={<Login />} />
 					</>
 				)}
 

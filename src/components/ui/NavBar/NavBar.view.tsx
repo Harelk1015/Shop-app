@@ -43,7 +43,7 @@ const NavBarView: React.FC<IProps> = ({
 					key={product._id}
 					className={classes.nav__search__box__result}
 					onClick={() => {
-						navigate(`/product-page?_id=${product._id}`);
+						navigate(`/product?_id=${product._id}`);
 						setNavSearchProducts([]);
 						ToggleNavMenu();
 					}}

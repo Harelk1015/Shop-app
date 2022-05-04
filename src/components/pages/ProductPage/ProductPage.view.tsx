@@ -4,6 +4,7 @@ import React from 'react';
 
 import { Product, User } from '../../../utils/types';
 
+import { IFavoriteOperations } from '../../../utils/favorite';
 import AddedToCart from '../../ui/AddedToCartModal/AddedToCartModal';
 import emptyHeart from '../../../assets/empty-heart.svg';
 import fullHeart from '../../../assets/full-heart.svg';
@@ -23,8 +24,7 @@ interface ProductPageViewProps {
 	};
 	readonly onClick?: () => void;
 	readonly setIsFavorited: React.Dispatch<React.SetStateAction<boolean>>;
-	readonly addFavorite: (productId: string) => void;
-	readonly removeFavorite: (productId: string) => void;
+	readonly favoriteHandler: (productId: string, operation?: IFavoriteOperations | undefined) => void;
 	readonly setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 	readonly addToCartHandler: () => Promise<void>;
 	readonly setChoosenSize: React.Dispatch<React.SetStateAction<number>>;
@@ -37,8 +37,7 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 	auth,
 	openModal,
 	choosenSize,
-	addFavorite,
-	removeFavorite,
+	favoriteHandler,
 	setIsFavorited,
 	setOpenModal,
 	addToCartHandler,
@@ -125,7 +124,7 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 									src={fullHeart}
 									alt="favorite"
 									onClick={() => {
-										removeFavorite(product!._id);
+										favoriteHandler(product!._id , 'remove');
 										setIsFavorited(!isFavorited);
 									}}
 								/>
@@ -135,7 +134,7 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 									src={emptyHeart}
 									alt="favorite"
 									onClick={() => {
-										addFavorite(product!._id);
+										favoriteHandler(product!._id);
 										setIsFavorited(!isFavorited);
 									}}
 								/>

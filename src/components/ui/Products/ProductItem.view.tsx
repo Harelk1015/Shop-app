@@ -2,9 +2,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { ReducersState } from '../../../state/reducers';
+import { ReducersState } from '../../../store/reducers';
 
-import { addFavorite, removeFavorite } from '../../../utils/favorite';
+import { favoriteHandler } from '../../../utils/favorite';
 
 import { User } from '../../../utils/types';
 
@@ -40,7 +40,7 @@ const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({
 					src={imageUrl}
 					alt={name}
 					onClick={() => {
-						navigate(`/product-page?_id=${_id}`);
+						navigate(`/product?_id=${_id}`);
 						window.scrollTo(0, 0);
 					}}
 				/>
@@ -49,7 +49,7 @@ const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({
 				<div
 					className={classes.productItem__details__text}
 					onClick={() => {
-						navigate(`/product-page?_id=${_id}`);
+						navigate(`/product?_id=${_id}`);
 						window.scrollTo(0, 0);
 					}}
 				>
@@ -63,7 +63,7 @@ const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({
 							src={fullHeart}
 							alt="favorite"
 							onClick={() => {
-								removeFavorite(_id);
+								favoriteHandler(_id, 'remove');
 								setIsFavorited(!isFavorited);
 							}}
 						/>
@@ -73,7 +73,7 @@ const ProductItemView: React.FunctionComponent<ProductItemViewProps> = ({
 							src={emptyHeart}
 							alt="favorite"
 							onClick={() => {
-								addFavorite(_id);
+								favoriteHandler(_id);
 								setIsFavorited(!isFavorited);
 							}}
 						/>

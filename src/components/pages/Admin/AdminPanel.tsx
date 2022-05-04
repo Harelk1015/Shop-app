@@ -63,7 +63,7 @@ const AdminPanel = () => {
 			.then((res: any) => {
 				const _id = res.data.message._id;
 
-				navigate(`/product-page?_id=${_id}`);
+				navigate(`/product?_id=${_id}`);
 			})
 			.catch((err) => {
 				console.log(err?.response?.data?.message);
@@ -119,7 +119,7 @@ const AdminPanel = () => {
 				setEditLoading(false);
 				const _id = res.data._id;
 
-				navigate(`/product-page?_id=${_id}`);
+				navigate(`/product?_id=${_id}`);
 			})
 			.catch((err) => {
 				setEditLoading(false);

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 import { User } from '../../../utils/types';
-import { ReducersState } from '../../../state/reducers';
+import { ReducersState } from '../../../store/reducers';
 
 import CartView from './Cart.view';
 

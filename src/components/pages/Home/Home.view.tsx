@@ -45,7 +45,7 @@ const HomeView: React.FC<IHomeView> = ({
 							<dialog open className={classes.dialog}>
 								<button className={classes.dialog__btn}>
 									<Link
-										to="products-page?sex=Woman&kind=Pants"
+										to="products?sex=Woman&kind=Pants"
 										className={classes.dialog__btn}
 										onClick={() => {
 											window.scrollTo(0, 0);
@@ -57,7 +57,7 @@ const HomeView: React.FC<IHomeView> = ({
 								<hr />
 								<button className={classes.dialog__btn}>
 									<Link
-										to="products-page?sex=Man&kind=Pants"
+										to="products?sex=Man&kind=Pants"
 										className={classes.dialog__btn}
 										onClick={() => {
 											window.scrollTo(0, 0);
@@ -106,7 +106,7 @@ const HomeView: React.FC<IHomeView> = ({
 								<dialog open className={classes.dialog}>
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?sex=Woman&kind=Shirts"
+											to="products?sex=Woman&kind=Shirts"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -118,7 +118,7 @@ const HomeView: React.FC<IHomeView> = ({
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?sex=Woman&kind=Pants"
+											to="products?sex=Woman&kind=Pants"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -130,7 +130,7 @@ const HomeView: React.FC<IHomeView> = ({
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?sex=Woman&kind=Shoes"
+											to="products?sex=Woman&kind=Shoes"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -172,7 +172,7 @@ const HomeView: React.FC<IHomeView> = ({
 								<dialog open className={classes.dialog}>
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?sex=Man&kind=Shirts"
+											to="products?sex=Man&kind=Shirts"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -184,7 +184,7 @@ const HomeView: React.FC<IHomeView> = ({
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?sex=Man&kind=Pants"
+											to="products?sex=Man&kind=Pants"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);
@@ -196,7 +196,7 @@ const HomeView: React.FC<IHomeView> = ({
 									<hr />
 									<button className={classes.dialog__btn}>
 										<Link
-											to="products-page?sex=Man&kind=Shoes"
+											to="products?sex=Man&kind=Shoes"
 											className={classes.dialog__btn}
 											onClick={() => {
 												window.scrollTo(0, 0);

@@ -61,7 +61,7 @@ const ProfileView: React.FC<IProps> = ({
 		favoritesContent = userFavorites.map((favorite: any) => {
 			return (
 				<Link
-					to={`/product-page?_id=${favorite._id}`}
+					to={`/product?_id=${favorite._id}`}
 					key={favorite._id}
 					className={classes.profile__main__favorites__view}
 					onClick={() => {
