@@ -67,7 +67,7 @@ const Footer = () => {
 								href="https://www.linkedin.com/in/harel-kaufman-61739821b/"
 								className={classes.nav__link}
 							>
-								Linkedin
+								LinkedIn
 							</a>
 						</li>
 					</ul>
