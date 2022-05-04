@@ -108,7 +108,8 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 						<button
 							type="button"
 							className={`${classes.productPage__clickers__cartBtn} ${
-								!choosenSize && classes.productPage__clickers__cartBtn__disabled
+								(!choosenSize || !auth.isAuth) &&
+								classes.productPage__clickers__cartBtn__disabled
 							}`}
 							disabled={!choosenSize}
 							onClick={() => {
@@ -117,6 +118,12 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 						>
 							Add to cart
 						</button>
+
+						{!auth.isAuth && (
+							<h3 className={classes.productPage__clickers__text}>
+								You must Login inorder to add items to your cart
+							</h3>
+						)}
 						{auth.isAuth ? (
 							isFavorited ? (
 								<img
@@ -124,7 +131,7 @@ const ProductPageView: React.FC<ProductPageViewProps> = ({
 									src={fullHeart}
 									alt="favorite"
 									onClick={() => {
-										favoriteHandler(product!._id , 'remove');
+										favoriteHandler(product!._id, 'remove');
 										setIsFavorited(!isFavorited);
 									}}
 								/>
