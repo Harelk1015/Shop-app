@@ -21,14 +21,14 @@ const App = () => {
 	useEffect(() => {
 		if (localStorage.getItem('accessToken')) {
 			setIsLoading(true);
-
+			
 			axios
 				.get(process.env.REACT_APP_BACKEND_URL + '/auth/auto-login')
 				.then((res) => {
 					login(res.data.user);
 				})
 				.catch((err) => {
-					console.log(err.response.data.message);
+					console.error(err.response.data.message);
 				})
 				.finally(() => setIsLoading(false));
 		}
