@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../../utils/types';
 
 import ProductsPageView from './ProductsPage.view';
 
 const ProductsPage: React.FC = () => {
 	const params = new URLSearchParams(window.location.search);
+	const [searchParams] = useSearchParams();
+
 
 	const [products, setProducts] = useState<Product[]>();
 	const [userFavorites, setUserFavorites] = useState<{ _id: string; name: string; imageUrl: string }[]>();
@@ -36,7 +39,7 @@ const ProductsPage: React.FC = () => {
 			.catch((err) => {
 				console.log(err.response.data.message);
 			});
-	}, []);
+	}, [searchParams]);
 
 	let userFavoritesId: string[] | undefined = [];
 

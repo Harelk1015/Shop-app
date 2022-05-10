@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Product } from '../../../utils/types';
 
 import ProductItem from '../../ui/Products/ProductItem';
@@ -16,8 +17,15 @@ const ProductsPageView: React.FC<ProductsViewProps> = ({ items, sex, kind, userF
 	return (
 		<div className={classes.productsPage}>
 			<header className={classes.productsPage__header}>
-				<h1 className={classes.productsPage__header__text}>{sex}</h1>
-				<h1 className={`${classes.productsPage__header__text} ${classes.kind}`}>{kind}</h1>
+				<Link className={classes.productsPage__header__text} to={`/products?sex=${sex}`}>
+					{sex}
+				</Link>
+				<Link
+					className={`${classes.productsPage__header__text} ${classes.kind}`}
+					to={`/products?kind=${kind}`}
+				>
+					{kind}
+				</Link>
 			</header>
 			<main className={classes.productsPage__main}>
 				{items?.map((item) => {

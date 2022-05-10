@@ -97,7 +97,7 @@ const ProfileView: React.FC<IProps> = ({
 				</div>
 				<div className={`${classes.profile__main__password} ${classes.card}`}>
 					<h2 className={classes.profile__card__header}>Change Password</h2>
-					<p className={classes.profile__main__password__text}>old password</p>
+					<p className={classes.profile__main__password__text}>Old password</p>
 					<input
 						className={classes.profile__main__input}
 						type="password"
@@ -105,7 +105,7 @@ const ProfileView: React.FC<IProps> = ({
 							setOldPassword(event.target.value);
 						}}
 					/>
-					<p className={classes.profile__main__password__text}>new password</p>
+					<p className={classes.profile__main__password__text}>New password</p>
 					<input
 						className={classes.profile__main__input}
 						type="password"

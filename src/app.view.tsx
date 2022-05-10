@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -52,6 +53,8 @@ const AppView: React.FC<IAppView> = ({ isLoading, auth }) => {
 		<BrowserRouter>
 			<NavBar />
 			<Routes>
+				{isLoading && <PageNotFound />}
+
 				{/* Routes for all users */}
 				<Route path="/" element={<Home />} />
 				<Route path="/products" element={<ProductsPage />} />
