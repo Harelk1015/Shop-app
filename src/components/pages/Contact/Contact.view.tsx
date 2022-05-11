@@ -4,7 +4,6 @@ import classes from './Contact.module.scss';
 
 interface IContactViewProps {
 	readonly setSubjectState: React.Dispatch<React.SetStateAction<string>>;
-	readonly setEmailState: React.Dispatch<React.SetStateAction<string>>;
 	readonly setMessageState: React.Dispatch<React.SetStateAction<string>>;
 	readonly contactSubmitHandler: (event: React.FormEvent) => void;
 
@@ -15,7 +14,6 @@ interface IContactViewProps {
 
 const ContactView: React.FC<IContactViewProps> = ({
 	setSubjectState,
-	setEmailState,
 	setMessageState,
 	contactSubmitHandler,
 	isLoading,
@@ -40,17 +38,7 @@ const ContactView: React.FC<IContactViewProps> = ({
 							setSubjectState(event.target.value);
 						}}
 					/>
-					<label className={classes.main__form__label} htmlFor="E-Mail">
-						E-Mail
-					</label>
-					<input
-						className={classes.main__form__input}
-						type="email"
-						name="E-Mail"
-						onChange={(event) => {
-							setEmailState(event.target.value);
-						}}
-					/>
+
 					<label className={classes.main__form__label} htmlFor="message">
 						Message
 					</label>

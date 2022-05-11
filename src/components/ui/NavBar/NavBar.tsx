@@ -44,15 +44,17 @@ const NavBar = () => {
 	};
 
 	const searchBarChangeHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (event.target.value.length === 0) {
+			return;
+		}
+
 		const res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/products/nav-search', {
 			searchInput: event.target.value,
 		});
 
-		setNavSearchProducts(res.data.products);
+		console.log(res);
 
-		if (event.target.value.length === 0) {
-			setNavSearchProducts([]);
-		}
+		setNavSearchProducts(res.data.products);
 	};
 
 	return (

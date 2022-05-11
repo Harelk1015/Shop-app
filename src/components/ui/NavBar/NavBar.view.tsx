@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Product, User } from '../../../utils/types';
 import cartPng from '../../../assets/cart.png';
+import profileSvg from '../../../assets/user-profile.png';
 import logoSvg from './snapsvg-seeklogo.com.svg';
 import classes from './NavBar.module.scss';
 
@@ -99,7 +100,19 @@ const NavBarView: React.FC<IProps> = ({
 								</a>
 
 								<li className={classes.nav__item}>
-									<Link
+									<img
+										src={profileSvg}
+										className={classes.nav__item__profile}
+										onClick={() => {
+											if (pageWidth < 880) {
+												ToggleNavMenu();
+											}
+											
+											navigate('/profile');
+										}}
+									/>
+
+									{/* <Link
 										to="/profile"
 										className={classes.nav__link}
 										onClick={() => {
@@ -109,7 +122,7 @@ const NavBarView: React.FC<IProps> = ({
 										}}
 									>
 										Profile
-									</Link>
+									</Link> */}
 								</li>
 								<li className={classes.nav__item}>
 									<Link
