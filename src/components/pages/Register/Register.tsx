@@ -25,6 +25,13 @@ const Register = () => {
 		event.preventDefault();
 		setLoading(true);
 
+		if (!emailState || !usernameState || !passwordState || !passwordConfirmState) {
+			errorMessageChangeHandler('Please make sure all inputs are valid');
+			setLoading(false);
+			
+			return;
+		}
+
 		axios
 			.post(process.env.REACT_APP_BACKEND_URL + '/auth/register', {
 				email: emailState,

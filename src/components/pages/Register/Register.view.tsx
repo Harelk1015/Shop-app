@@ -34,7 +34,7 @@ const RegisterView: React.FC<IProps> = ({
 		<div className={classes.register}>
 			<h1 className={classes.register__header}>Register</h1>
 			<div className={classes.register__form}>
-				<form>
+				<form onSubmit={submitHandler}>
 					<label htmlFor="username">UserName</label>
 					<input
 						value={username}
@@ -75,9 +75,7 @@ const RegisterView: React.FC<IProps> = ({
 					{loading ? (
 						<LoadingSpinner />
 					) : (
-						<button className={classes.register__form__btn} onClick={submitHandler}>
-							Submit
-						</button>
+						<button className={classes.register__form__btn}>Submit</button>
 					)}
 					<Link className={classes.register__form__switch} to="/login">
 						Switch to login

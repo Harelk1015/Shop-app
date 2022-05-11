@@ -24,7 +24,7 @@ interface IProps {
 	readonly size42: number;
 	readonly search: string;
 	readonly prodName: string;
-	readonly prodPrice: number | undefined;
+	readonly prodPrice: string;
 	readonly prodSizes: string | [] | undefined;
 	readonly sizes: number[];
 	readonly searchLoading: boolean | undefined;
@@ -45,7 +45,7 @@ interface IProps {
 	readonly setSize42: React.Dispatch<React.SetStateAction<number>>;
 	readonly setSearch: React.Dispatch<React.SetStateAction<string>>;
 	readonly setProdName: React.Dispatch<React.SetStateAction<string>>;
-	readonly setProdPrice: React.Dispatch<React.SetStateAction<number | undefined>>;
+	readonly setProdPrice: React.Dispatch<React.SetStateAction<string>>;
 	readonly setProdSizes: React.Dispatch<React.SetStateAction<string | [] | undefined>>;
 	readonly editProductChangeHandler: (event: any) => void;
 	readonly addProductHandler: () => void;
@@ -250,7 +250,7 @@ const AdminPanelView: React.FC<IProps> = ({
 									</button>
 								</>
 							)}
-							{/* {editLoading ? <LoadingSpinner /> : ''} */}
+							{}
 						</>
 					)}
 				</div>

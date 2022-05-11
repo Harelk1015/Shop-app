@@ -29,7 +29,7 @@ const AdminPanel = () => {
 	const [editErrMessage, setEditErrMessage] = useState<string>('');
 	const [serach, setSearch] = useState('');
 	const [prodName, setProdName] = useState('');
-	const [prodPrice, setProdPrice] = useState<number>();
+	const [prodPrice, setProdPrice] = useState<string>('');
 	const [prodSizes, setProdSizes] = useState<[] | string>();
 	const [prodId, setProdId] = useState('');
 
@@ -61,12 +61,12 @@ const AdminPanel = () => {
 				sizes,
 			})
 			.then((res: any) => {
-				const _id = res.data.message._id;
+				const _id = res.data.newProduct._id;
 
 				navigate(`/product?_id=${_id}`);
 			})
 			.catch((err) => {
-				console.log(err?.response?.data?.message);
+				console.log(err);
 			});
 	};
 
@@ -87,20 +87,23 @@ const AdminPanel = () => {
 				})
 				.catch(() => {
 					setProdName('');
-					setProdPrice(0);
+					setProdPrice('');
 					setProdSizes([]);
 					setSearchLoading(false);
 				});
 		} else {
 			setProdName('');
-			setProdPrice(0);
+			setProdPrice('');
 			setProdSizes([]);
 			setSearchLoading(false);
 		}
 	};
 
 	const editProductHandler = () => {
+		// Making sure types are currect
+
 		let tempSizes;
+		const tempPrice = prodPrice.toString();
 
 		if (typeof prodSizes !== 'object' && prodSizes !== null) {
 			tempSizes = prodSizes!.split(',');
@@ -112,7 +115,7 @@ const AdminPanel = () => {
 			.post(process.env.REACT_APP_BACKEND_URL + '/products/edit-product', {
 				_id: prodId,
 				prodName,
-				prodPrice,
+				prodPrice: tempPrice,
 				prodSizes: tempSizes,
 			})
 			.then((res: any) => {
@@ -134,7 +137,6 @@ const AdminPanel = () => {
 		try {
 			const res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/products/delete-product', {
 				_id: prodId,
-				
 			});
 
 			if (!res) {

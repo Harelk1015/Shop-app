@@ -25,7 +25,7 @@ const LoginView: React.FC<IProps> = ({
 			<div className={classes.login}>
 				<h1 className={classes.login__header}>Login</h1>
 				<div className={classes.login__form}>
-					<form>
+					<form onSubmit={submitHandler}>
 						<label htmlFor="username">Email</label>
 						<input
 							type="email"
@@ -46,11 +46,7 @@ const LoginView: React.FC<IProps> = ({
 						{loading ? (
 							<LoadingSpinner />
 						) : (
-							<button
-								type="button"
-								className={classes.login__form__btn}
-								onClick={submitHandler}
-							>
+							<button type="submit" className={classes.login__form__btn}>
 								Submit
 							</button>
 						)}

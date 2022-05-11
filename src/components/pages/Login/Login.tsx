@@ -25,6 +25,13 @@ const Login = () => {
 		setLoading(true);
 		event.preventDefault();
 
+		if (!emailState || !passwordState) {
+			errorMessageChangeHandler('Please make sure all inputs are valid');
+			setLoading(false);
+
+			return;
+		}
+
 		axios
 			.post(
 				process.env.REACT_APP_BACKEND_URL + '/auth/login',
