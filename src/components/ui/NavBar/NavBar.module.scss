@@ -188,15 +188,9 @@ Works the same :) */
 		width: 50%;
 	}
 
-	.nav__list__secondary {
-		//   width: 40%;
-	}
-
 	.nav__search {
 		padding: 0.4em 0;
 		width: 100%;
-		// background-color: #360a14;
-		// border: white solid 2px;
 	}
 
 	.nav__input {
@@ -217,11 +211,9 @@ Works the same :) */
 		margin-left: 0.5em;
 
 		&__profile {
-			// margin-top: 0;
 			position: relative;
-			bottom: 2px;
+			bottom: 5px;
 			width: 29px;
-			// height: 45px;
 		}
 	}
 

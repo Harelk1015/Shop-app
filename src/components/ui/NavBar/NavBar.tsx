@@ -1,12 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { bindActionCreators } from 'redux';
-import { Product, User } from '../../../utils/types';
+
+import axios from 'axios';
+
 import * as actionCreators from '../../../store/reducers/actionCreator';
 import { ReducersState } from '../../../store/reducers';
-
+import { Product, User } from '../../../utils/types';
 import NavBarView from './NavBar.view';
 
 const NavBar = () => {
