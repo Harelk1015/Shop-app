@@ -16,8 +16,9 @@ const Modal: React.FC<IModal> = ({ setOpenModal }) => {
 					setOpenModal(false);
 				}}
 			/>
-			<div className={classes.main}>Maybe one day .. <br />
-			For now i can afford selling you lemonade ;)
+			<div className={classes.main}>
+				Maybe one day .. <br />
+				For now i can offer you lemonade ;)
 			</div>
 		</>
 	);

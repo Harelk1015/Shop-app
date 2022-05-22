@@ -107,15 +107,15 @@ const CartView: React.FC<ICartView> = ({
 						</button>
 					</div>
 				</div>
-				{openModal && <Modal setOpenModal={setOpenModal} />}
 			</div>
-			
+
 			{isLoading && (
 				<>
 					<div className={classes.modalBackground} />
 					<div className={classes.loader} />;
 				</>
 			)}
+			{openModal && <Modal setOpenModal={setOpenModal} />}
 		</>
 	);
 };
