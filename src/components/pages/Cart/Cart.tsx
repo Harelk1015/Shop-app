@@ -15,6 +15,7 @@ const Cart = () => {
 	const [quantity, setQuantity] = useState<number>();
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [cartTotal, setCartTotal] = useState(0);
+	const [openModal, setOpenModal] = useState(false);
 
 	useEffect(() => {
 		auth.user.cart.map((item) => {
@@ -64,6 +65,10 @@ const Cart = () => {
 		}
 	};
 
+	const addToCartHandler = () => {
+		setOpenModal(true);
+	};
+
 	return (
 		<CartView
 			user={auth.user}
@@ -74,6 +79,9 @@ const Cart = () => {
 			setIsLoading={setIsLoading}
 			cartRemoveItem={cartRemoveItem}
 			cartTotal={cartTotal}
+			addToCartHandler={addToCartHandler}
+			setOpenModal={setOpenModal}
+			openModal={openModal}
 		/>
 	);
 };

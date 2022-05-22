@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { User } from '../../../utils/types';
+import Modal from '../../ui/Modal/Modal';
 
 import Select from '../../ui/Select/Select';
 
@@ -14,13 +15,25 @@ interface ICartView {
 	readonly quantity: number | undefined;
 	readonly isLoading: boolean;
 	readonly cartTotal: number;
+	readonly openModal: boolean;
 	readonly setQuantity: React.Dispatch<React.SetStateAction<number | undefined>>;
 	readonly cartItemHandler: (quantity: number, id: string, size: string) => Promise<void>;
 	readonly setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 	readonly cartRemoveItem: (id: string, size: string) => Promise<void>;
+	readonly addToCartHandler: () => void;
+	readonly setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CartView: React.FC<ICartView> = ({ user, cartItemHandler, isLoading, cartRemoveItem, cartTotal }) => {
+const CartView: React.FC<ICartView> = ({
+	user,
+	cartTotal,
+	isLoading,
+	openModal,
+	cartItemHandler,
+	cartRemoveItem,
+	addToCartHandler,
+	setOpenModal,
+}) => {
 	let bodyContent;
 
 	if (user.cart) {
@@ -89,10 +102,14 @@ const CartView: React.FC<ICartView> = ({ user, cartItemHandler, isLoading, cartR
 						<h2>Tax: Free</h2>
 					</div>
 					<div className={classes.total__checkout}>
-						<button className={classes.total__checkout__btn}>CHECKOUT</button>
+						<button className={classes.total__checkout__btn} onClick={addToCartHandler}>
+							CHECKOUT
+						</button>
 					</div>
 				</div>
+				{openModal && <Modal setOpenModal={setOpenModal} />}
 			</div>
+			
 			{isLoading && (
 				<>
 					<div className={classes.modalBackground} />
