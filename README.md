@@ -1,3 +1,29 @@
+Preview of the project : https://harel-shop-app.herokuapp.com/ - * Might take up to 30 sec to load up because of poor hosting ;) . <br />
+System design : https://www.figma.com/file/KVpRBSclnqEcXzs6i0BT5T/System-Design?node-id=0%3A1 . <br />
+Style design : https://www.figma.com/file/pisJkwNakhMg84ZepABhAW/Pages?node-id=0%3A1.
+
+<!-- This project is my first full stack project ,
+
+Technologies I used -
+
+Front :
+React 
+TypeScript
+Redux
+Sass
+
+Back :
+Node.js
+Express.js
+TypeScript
+MongoDB
+Mongoose
+Winston
+Bcrypt
+Jsonwebtoken -->
+
+--------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
